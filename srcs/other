@@ -1,0 +1,53 @@
+/*while(get_next_line(0, &line))
+	{
+		object_id = get_object_id(line);
+		printf("\nLine = %s -- ID = %s\n", line, object_id);
+		if (ft_strncmp(object_id, "c", 1) == 0 && ft_strncmp(object_id, "cy", 2))
+		{
+			camera = parse_camera_parameters(line);
+			printf("Camera: coordinate [%f, %f, %f] -- orientation [%f, %f, %f] -- FOV = %f\n", camera.coordinate[0], camera.coordinate[1], camera.coordinate[2], camera.orientation[0], camera.orientation[1], camera.orientation[2], camera.fov);
+		}
+		else if (ft_strncmp(object_id, "R", 1) == 0)
+		{
+			window = parse_window_size(line);
+			printf("Window: width [%d] -- height [%d]\n", window.width, window.height);
+		}
+		else if (ft_strncmp(object_id, "A", 1) == 0)
+		{
+			a_light = parse_A_light_parameters(line);
+			printf("A_light: Ratio [%f] -- color [%f, %f, %f]\n", a_light.ratio, a_light.color[0], a_light.color[1], a_light.color[2]);
+		}
+		else if (ft_strncmp(object_id, "l", 1) == 0)
+		{
+			light = parse_light_parameters(line);
+			printf("Light: Coordinate = [%f, %f, %f] -- ratio = %f -- color = [%f, %f, %f]\n", light.coordinate[0], light.coordinate[1], light.coordinate[2], light.ratio, light.color[0], light.color[1], light.color[2]);
+		}
+		else if (ft_strncmp(object_id, "sp", 2) == 0)
+		{
+			sphere = parse_sphere_parameters(line);
+			printf("Sphere: Coordinate = [%f, %f, %f] -- diameter = %f -- color = [%f, %f, %f]\n", sphere.coordinate[0], sphere.coordinate[1], sphere.coordinate[2], sphere.diameter, sphere.color[0], sphere.color[1], sphere.color[2]);
+		}
+		else if (ft_strncmp(object_id, "pl", 2) == 0)
+		{
+			plane = parse_plane_parameters(line);
+			printf("Plane : coordinate = [%f, %f, %f] -- orientation = [%f, %f, %f] -- color = [%f, %f, %f]\n", plane.coordinate[0], plane.coordinate[1], plane.coordinate[2], plane.orientation[0], plane.orientation[1], plane.orientation[2], plane.color[0], plane.color[1], plane.color[2]);
+		}
+		else if (ft_strncmp(object_id, "sq", 2) == 0)
+		{
+			sq = parse_square_parameters(line);
+			printf("Square: coordinate = [%f, %f, %f] -- orientation = [%f, %f, %f] -- height = %f -- color = [%f, %f, %f]\n", sq.coordinate[0], sq.coordinate[1], sq.coordinate[2], sq.orientation[0], sq.orientation[1], sq.orientation[2], sq.height, sq.color[0], sq.color[1], sq.color[2]);
+		}
+		else if (ft_strncmp(object_id, "cy", 2) == 0)
+		{
+			cylinder = parse_cylinder_parameters(line);
+			printf("Cylinder: coordinate = [%f, %f, %f] -- orientation = [%f, %f, %f] -- diameter = %f -- height = %f -- color = [%f, %f, %f]\n", cylinder.coordinate[0], cylinder.coordinate[1], cylinder.coordinate[2], cylinder.orientation[0], cylinder.orientation[1], cylinder.orientation[2], cylinder.diameter, cylinder.height, cylinder.color[0], cylinder.color[1], cylinder.color[2]);
+		}
+		else if (ft_strncmp(object_id, "tr", 2) == 0)
+		{
+			triangle = parse_triangle_parameters(line);
+			printf("Triangle: first = [%f, %f, %f] -- second = [%f, %f, %f] -- third = [%f, %f, %f] -- color = [%f, %f, %f]", triangle.first[0], triangle.first[1], triangle.first[2], triangle.second[0], triangle.second[1], triangle.second[2], triangle.third[0], triangle.third[1], triangle.third[2], triangle.color[0], triangle.color[1], triangle.color[2]);
+		}
+		free(line);
+	}
+	free(line);*/
+	/*
