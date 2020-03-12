@@ -27,6 +27,12 @@ SRCS    =	srcs/window/ft_window.c\
 			srcs/objects/color/ft_add_color.c\
 			srcs/objects/rectangle/ft_rectangle.c\
 			srcs/objects/rectangle/ft_show_rectangle.c\
+			srcs/objects/map/ft_minimap.c\
+			srcs/objects/map/ft_clear_map.c\
+			srcs/objects/map/ft_map_show.c\
+			srcs/objects/character/ft_character_show.c\
+			srcs/objects/character/ft_character.c\
+			srcs/objects/character/ft_character_move.c\
 			srcs/display/ft_trace_line.c\
 
 			

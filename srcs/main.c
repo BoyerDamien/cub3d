@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:47:29 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/11 18:11:06 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/03/12 18:27:58 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,21 @@
 
 int key_center(int keycode, void *param)
 {
-	//(void)param;
+	t_map *map;
+
+	map = param;
 	ft_printf("%i\n", keycode);
 	if (keycode == 53)
 	{
-		mlx_destroy_image(((t_window *)param)->mlx_ptr, ((t_window *)param)->img.img_ptr);
+		mlx_destroy_image(map->window.mlx_ptr, map->window.img.img_ptr);
+		free(map->content);
 		exit(0);
+	}
+	else if (keycode >= LEFT && keycode <= UP)
+	{
+		map->character.move(&map->character, keycode);
+		map->show(map, map->window);
+		mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr, map->window.img.img_ptr, 0, 0);
 	}
 	return (0);
 }
@@ -29,86 +38,53 @@ int main(void)
 	t_window window;
 	int win_size[2] = {1200, 1200};
 	int vp_size[2] = {1200, 1200};
-	int worldMap[24][24]=
+	t_map minimap;
+	char *worldMap[25]=
 		{
-				{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,1,1,1,1,1,0,0,0,0,1,0,1,0,1,0,0,0,1},
-				{1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,1,0,0,0,1},
-				{1,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,1,1,0,1,1,0,0,0,0,1,0,1,0,1,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,1,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,'N',0,0,1},
-				{1,1,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-				{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
+				"111111111111111111111111",
+				"100000000000000000000001",
+				"100000000000000000000001",
+				"100000000000000000000001",
+				"100000111110000101010001",
+				"100000100010000000000001",
+				"100000100010000100010001",
+				"100000100010000000000001",
+				"100000110110000101010001",
+				"100000000000000000000001",
+				"100000000000000000000001",
+				"100000000000000000000001",
+				"100000000000000000000001",
+				"100000000000000000000001",
+				"100000000000000000000001",
+				"100000000000000000000001",
+				"111111111000000000000001",
+				"110100001000000000000001",
+				"110000101000000000000001",
+				"11010000100000000000N001",
+				"110111111000000000000001",
+				"110000000000000000000001",
+				"111111111000000000000001",
+				"111111111111111111111111",
+				NULL
 		};
-	int i;
-	int j;
-	int width;
-	int height;
-	t_vector coordinate;
-	double block_size;
-	t_rectangle rect;
-	t_color color;
-	t_color player;
-
-	player = ft_color(255,0,0);
-	color = ft_color(255,255,255);
-	i = 0;
-	j = 0;
-	width = 200;
-	height = 200;
-	coordinate = ft_vector(50, 50, 0);
-	block_size = 200 / 24;
-	window = ft_window(win_size, vp_size, "cub3d");
-	while (j < 24)
+	int i = 0;
+	char **map = (char **)malloc(sizeof(char *) * 25);
+	while (worldMap[i])
 	{
-		i = 0;
-		while (i < 24)
-		{
-			if (worldMap[j][i] == 1)
-			{
-				rect = ft_rectangle(block_size, block_size, ft_vector(coordinate.x + i * block_size, coordinate.y + j * block_size, 0) ,color);
-				rect.show(&rect, window);
-			}
-			else if (worldMap[j][i] == 'N')
-			{
-				rect = ft_rectangle(block_size, block_size, ft_vector(coordinate.x + i * block_size, coordinate.y + j * block_size, 0) ,player);
-				rect.show(&rect, window);
-			}
-			i++;
-		}
-		j++;
+		map[i] = worldMap[i];
+		i++;
 	}
-	mlx_put_image_to_window(window.mlx_ptr, window.win_ptr, window.img.img_ptr, 0, 0);
-	mlx_key_hook(window.win_ptr, key_center, &window);
-	mlx_loop(window.mlx_ptr);
-	/*int x;
-	int y;
-	t_rectangle rect;
+	map[i] = NULL;
 
-	x = 0;
-	y = 0;
-	color = ft_color(100, 100, 100);
+
+	minimap = ft_minimap(map, 400, 400, ft_vector(100, 100, 0));
 	window = ft_window(win_size, vp_size, "cub3d");
-	rect = ft_rectangle(100,100, ft_vector(550,550,0), ft_color(255,0,0));
-	rect.show(&rect, window);
+	minimap.window = window;
+	minimap.show(&minimap, window);
+
+
 	mlx_put_image_to_window(window.mlx_ptr, window.win_ptr, window.img.img_ptr, 0, 0);
-	mlx_key_hook(window.win_ptr, key_center, &window);
-	mlx_loop(window.mlx_ptr);*/
+	mlx_key_hook(window.win_ptr, key_center, &minimap);
+	mlx_loop(window.mlx_ptr);
 	return (0);
 }

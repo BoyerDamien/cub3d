@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                          :+:      :+:    :+:   */
+/*   ft_clear_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/05 14:06:25 by dboyer           ###   ########.fr       */
+/*   Created: 2020/03/12 12:56:44 by dboyer            #+#    #+#             */
+/*   Updated: 2020/03/12 12:59:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINI_RT_H
-#define MINI_RT_H
+#include "../../../includes/cub3d.h"
 
-#include "../lib/libft/includes/libft.h"
-#include "get_next_line.h"
-#include <math.h>
-#include <mlx.h>
-#include <stdio.h>
-#include "objects.h"
+void ft_clear_map(t_map *map)
+{
+	int i;
 
-#define RIGHT 124
-#define LEFT 123
-#define DOWN 125
-#define UP 126
-#define STEP 10
-
-void ft_trace_line(t_vector onset, t_vector offset, t_window window, t_color color);
-
-#endif
+	i = 0;
+	while (map->content[i])
+	{
+		free(map->content[i]);
+		i++;
+	}
+	free(map->content[i]);
+}

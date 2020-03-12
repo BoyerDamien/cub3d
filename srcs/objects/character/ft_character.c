@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                          :+:      :+:    :+:   */
+/*   ft_character.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/05 14:06:25 by dboyer           ###   ########.fr       */
+/*   Created: 2020/03/12 13:46:36 by dboyer            #+#    #+#             */
+/*   Updated: 2020/03/12 15:06:49 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINI_RT_H
-#define MINI_RT_H
+#include "../../../includes/cub3d.h"
 
-#include "../lib/libft/includes/libft.h"
-#include "get_next_line.h"
-#include <math.h>
-#include <mlx.h>
-#include <stdio.h>
-#include "objects.h"
+t_character ft_character(t_vector coordinate, double fov, double width, double height)
+{
+	t_character new;
 
-#define RIGHT 124
-#define LEFT 123
-#define DOWN 125
-#define UP 126
-#define STEP 10
-
-void ft_trace_line(t_vector onset, t_vector offset, t_window window, t_color color);
-
-#endif
+	new.coordinate = coordinate;
+	new.color = ft_color(255, 0, 0);
+	new.cube_height = height;
+	new.cube_width = width;
+	new.fov = fov;
+	new.show = ft_character_show;
+	new.move = ft_character_move;
+	return (new);
+}
