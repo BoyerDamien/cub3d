@@ -7,6 +7,7 @@ SRCS    =	srcs/window/ft_window.c\
 			srcs/window/put_pixel.c\
 			srcs/image/ft_image.c\
 			srcs/maths/ft_atof.c\
+			srcs/maths/ft_degree_to_rad.c\
 			srcs/objects/vector/ft_vec_add.c\
 			srcs/objects/vector/ft_vec_sub.c\
 			srcs/objects/vector/ft_vec_mul.c\
@@ -33,7 +34,10 @@ SRCS    =	srcs/window/ft_window.c\
 			srcs/objects/character/ft_character_show.c\
 			srcs/objects/character/ft_character.c\
 			srcs/objects/character/ft_character_move.c\
+			srcs/objects/character/ft_cast_ray.c\
+			srcs/objects/character/ft_character_rotate.c\
 			srcs/display/ft_trace_line.c\
+			srcs/display/ft_clear_image.c
 
 			
 			
@@ -46,7 +50,7 @@ OBJS    = 	$(SRCS:.c=.o)
 
 CFLAGS  =	-Werror -Wall -Wextra
 
-MLX 	= 	-lmlx -framework OpenGL -framework Appkit
+MLX 	= 	-L./linux_mlx/mlx/ -lmlx -framework OpenGL -framework Appkit
 
 CC      = 	gcc
 
@@ -62,7 +66,7 @@ all     :	$(NAME)
 
 $(NAME) : $(OBJS) $(OBJS_MAIN)
 	make -C $(LIBFT_PATH)
-	${CC} ${CFLAGS} ${MLX} -o ${NAME} ${LIBFT} ${OBJS} ${OBJS_MAIN}
+	${CC} ${CFLAGS} ${MLX} -o ${NAME} ${LIBFT} ./minilib/libmlx.a ${OBJS} ${OBJS_MAIN}
 
 clean   :
 	make clean -C $(LIBFT_PATH)

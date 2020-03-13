@@ -12,11 +12,27 @@
 
 #include "../../../includes/cub3d.h"
 
+
 void ft_character_show(t_character *character, t_window window)
 {
-	t_rectangle rect;
-
-	rect = ft_rectangle(character->cube_width, character->cube_height, character->coordinate, character->color);
-	rect.show(&rect, window);
+	int a;
+	int r;
+	t_vector coordinate;
+	
+	r = 3;
+	a = 0;
+	coordinate = ft_vector(0, 0, 0);
+	while (r)
+	{
+		a = 0;
+		while (a < 360)
+		{
+			coordinate.x = character->coordinate.x + r * sin(a);
+			coordinate.y = character->coordinate.y + r * cos(a);
+			window.draw(&window, coordinate, character->color);
+			a++;
+		}
+		r--;
+	}
 }
 

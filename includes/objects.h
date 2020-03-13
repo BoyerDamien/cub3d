@@ -59,11 +59,13 @@ typedef struct	s_window
 	int			height;
 	t_image		img;
 	void		(*draw)(struct s_window *, t_vector point, t_color color);
+	void		(*clear)(struct s_window *);
 }				t_window;
 
 t_window		ft_window(int win_size[2], int img_size[2], char *name);
 t_image			ft_image(t_window window, int img_size[2]);
 void			put_pixel(t_window *window, t_vector point, t_color color);
+void			ft_clear_image(t_window *window);
 
 
 /*********************************************************************/
@@ -90,18 +92,24 @@ void ft_show_rectangle(t_rectangle *rect, t_window window);
 typedef struct s_character
 {
 	t_vector coordinate;
+	t_vector map_coordinate;
 	t_color color;
 	double fov;
 	double cube_width;
 	double cube_height;
+	double orientation;
 	void (*show)(struct s_character*, t_window);
-	void (*move)(struct s_character*, int);
+	void (*move)(struct s_character*, int, char **);
+	void (*cast_ray)(struct s_character*, char**, t_window);
+	void (*rotate)(struct s_character*, int);
 
 }	t_character;
 
 t_character ft_character(t_vector coordinate, double fov, double width, double height);
 void ft_character_show(t_character *character, t_window window);
-void ft_character_move(t_character *character, int move);
+void ft_character_move(t_character *character, int move, char **map_content);
+void ft_cast_ray(t_character *character, char **map_content, t_window window);
+void ft_character_rotate(t_character *character, int rotation);
 
 /*********************************************************************/
 /** 							MAP							**/
@@ -109,17 +117,17 @@ void ft_character_move(t_character *character, int move);
 
 typedef struct s_map
 {
-	char **content;
 	int nx;
 	int ny;
-	t_window window;
-	t_character character;
+	char **content;
+	double cube_width;
+	double cube_height;
 	size_t width;
 	size_t height;
 	t_color color;
+	t_window window;
+	t_character character;
 	t_vector coordinate;
-	double cube_width;
-	double cube_height;
 
 	void (*clear)(struct s_map *);
 	void (*show)(struct s_map *, t_window);

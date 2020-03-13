@@ -12,15 +12,36 @@
 
 #include "../../../includes/cub3d.h"
 
-void ft_character_move(t_character *character, int move)
+static int get_map_height(char **map)
 {
+	int i;
 
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
+}
+
+void ft_character_move(t_character *character, int move, char **map_content)
+{
+	int rx;
+	int ry;
+	t_vector coordinate;
+	int map_height;
+
+	map_height  = get_map_height(map_content);
+	coordinate = character->coordinate;
 	if (move == RIGHT)
-		character->coordinate.x += STEP;
+		coordinate.x += STEP;
 	else if (move == LEFT)
-		character->coordinate.x -= STEP;
+		coordinate.x -= STEP;
 	else if (move == DOWN)
-		character->coordinate.y += STEP;
+		coordinate.y += STEP;
 	else if (move == UP)
-		character->coordinate.y -= STEP;
+		coordinate.y -= STEP;
+	rx = (coordinate.x - character->map_coordinate.x) / character->cube_width;
+	ry = (coordinate.y - character->map_coordinate.y) / character->cube_height;
+	ry = ry >= map_height ? map_height - 2 : ry;
+	if (map_content[ry][rx] != '1')
+		character->coordinate = coordinate;
 }

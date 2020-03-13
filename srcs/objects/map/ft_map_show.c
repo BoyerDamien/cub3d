@@ -12,32 +12,6 @@
 
 #include "../../../includes/cub3d.h"
 
-static void correct_character_location(t_character *character, t_map *map)
-{
-	double rx;
-	double ry;
-
-	int x;
-	int y;
-	rx = character->coordinate.x / map->width;
-	ry = character->coordinate.y / map->height;
-	x = map->nx * rx;
-	y = map->ny * ry;
-	x = x >= map->nx ? map->nx - 1 : x;
-	y = y >= map->ny ? map->ny - 1 : y;
-	printf("x = %d -- y = %d\n", map->nx , map->ny);
-	printf("x = %d -- y = %d\n", x , y);
-	printf("Character = %c\n", map->content[y][x]);
-	if (character->coordinate.x <= map->coordinate.x + map->cube_width)
-		character->coordinate.x = map->coordinate.x + map->cube_width;
-	if (character->coordinate.x >= map->coordinate.x + map->width - map->cube_width * 3)
-		character->coordinate.x = map->coordinate.x + map->width - map->cube_width * 3;
-	if (character->coordinate.y <= map->coordinate.y + map->cube_height)
-		character->coordinate.y = map->coordinate.y + map->cube_width;
-	if (character->coordinate.y >= map->coordinate.y + map->height - map->cube_height * 3)
-		character->coordinate.y = map->coordinate.y + map->height - map->cube_height * 3;
-}
-
 void ft_map_show(t_map *map, t_window window)
 {
 	int i;
@@ -47,6 +21,7 @@ void ft_map_show(t_map *map, t_window window)
 
 	i = 0;
 	j = 0;
+	window.clear(&window);
 	while (map->content[j])
 	{
 		i = 0;
@@ -68,6 +43,6 @@ void ft_map_show(t_map *map, t_window window)
 		}
 		j++;
 	}
-	correct_character_location(&map->character, map);
 	map->character.show(&map->character, window);
+	map->character.cast_ray(&map->character, map->content, window);
 }

@@ -16,7 +16,7 @@
 #include "../lib/libft/includes/libft.h"
 #include "get_next_line.h"
 #include <math.h>
-#include <mlx.h>
+#include "../minilib/mlx.h"
 #include <stdio.h>
 #include "objects.h"
 
@@ -24,8 +24,11 @@
 #define LEFT 123
 #define DOWN 125
 #define UP 126
+#define KEY_A 12
+#define KEY_Z 13
 #define STEP 10
+#define ROTATION 50
 
-void ft_trace_line(t_vector onset, t_vector offset, t_window window, t_color color);
-
+void    ft_trace_line(t_vector onset, t_vector offset, t_window window, t_color color);
+double  ft_degree_to_rad(double angle);
 #endif

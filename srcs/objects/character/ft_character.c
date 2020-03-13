@@ -17,11 +17,15 @@ t_character ft_character(t_vector coordinate, double fov, double width, double h
 	t_character new;
 
 	new.coordinate = coordinate;
+	new.map_coordinate = ft_vector(0, 0, 0);
 	new.color = ft_color(255, 0, 0);
 	new.cube_height = height;
 	new.cube_width = width;
 	new.fov = fov;
+	new.orientation = 90;
 	new.show = ft_character_show;
 	new.move = ft_character_move;
+	new.cast_ray = ft_cast_ray;
+	new.rotate = ft_character_rotate;
 	return (new);
 }

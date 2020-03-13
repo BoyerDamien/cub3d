@@ -29,6 +29,7 @@ static t_character search_character(t_map *map)
 			{
 				coordinate = ft_vector(map->coordinate.x + i * map->cube_width, map->coordinate.y + j * map->cube_height, 0);
 				new = ft_character(coordinate, 90, map->cube_width, map->cube_height);
+				new.map_coordinate = map->coordinate;
 				return (new);
 			}
 			i++;

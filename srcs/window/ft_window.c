@@ -30,5 +30,6 @@ t_window	ft_window(int win_size[2], int img_size[2], char *name)
 	new.height = win_size[1];
 	new.draw = put_pixel;
 	new.img = ft_image(new, img_size);
+	new.clear = ft_clear_image;
 	return (new);
 }

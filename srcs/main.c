@@ -17,7 +17,7 @@ int key_center(int keycode, void *param)
 	t_map *map;
 
 	map = param;
-	ft_printf("%i\n", keycode);
+	//ft_printf("%i\n", keycode);
 	if (keycode == 53)
 	{
 		mlx_destroy_image(map->window.mlx_ptr, map->window.img.img_ptr);
@@ -26,7 +26,19 @@ int key_center(int keycode, void *param)
 	}
 	else if (keycode >= LEFT && keycode <= UP)
 	{
-		map->character.move(&map->character, keycode);
+		map->character.move(&map->character, keycode, map->content);
+		map->show(map, map->window);
+		mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr, map->window.img.img_ptr, 0, 0);
+	}
+	else if (keycode == KEY_A)
+	{
+		map->character.rotate(&map->character, STEP);
+		map->show(map, map->window);
+		mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr, map->window.img.img_ptr, 0, 0);
+	}
+		else if (keycode == KEY_Z)
+	{
+		map->character.rotate(&map->character, -STEP);
 		map->show(map, map->window);
 		mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr, map->window.img.img_ptr, 0, 0);
 	}
@@ -36,8 +48,8 @@ int key_center(int keycode, void *param)
 int main(void)
 {
 	t_window window;
-	int win_size[2] = {1200, 1200};
-	int vp_size[2] = {1200, 1200};
+	int win_size[2] = {800, 800};
+	int vp_size[2] = {800, 800};
 	t_map minimap;
 	char *worldMap[25]=
 		{
@@ -77,14 +89,13 @@ int main(void)
 	map[i] = NULL;
 
 
-	minimap = ft_minimap(map, 400, 400, ft_vector(100, 100, 0));
+	minimap = ft_minimap(map, 300, 300, ft_vector(20, 20, 0));
 	window = ft_window(win_size, vp_size, "cub3d");
+	mlx_hook(window.win_ptr, 2, 1L << 0, key_center, &minimap);
 	minimap.window = window;
 	minimap.show(&minimap, window);
-
-
 	mlx_put_image_to_window(window.mlx_ptr, window.win_ptr, window.img.img_ptr, 0, 0);
-	mlx_key_hook(window.win_ptr, key_center, &minimap);
+	//mlx_key_hook(window.win_ptr, key_center, &minimap);
 	mlx_loop(window.mlx_ptr);
 	return (0);
 }
