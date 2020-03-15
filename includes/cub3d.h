@@ -20,15 +20,20 @@
 #include <stdio.h>
 #include "objects.h"
 
+#define GAME_NAME "cub3d"
 #define RIGHT 124
 #define LEFT 123
 #define DOWN 125
 #define UP 126
 #define KEY_A 12
 #define KEY_Z 13
-#define STEP 10
-#define ROTATION 50
+#define STEP 5
+#define ROTATION 10
+#define WIN_HEIGHT 800
+#define WIN_WIDTH 800
+#define FOV 60
 
+int     ft_search_character(t_map *map, t_character *character);
 void    ft_trace_line(t_vector onset, t_vector offset, t_window window, t_color color);
 double  ft_degree_to_rad(double angle);
 #endif

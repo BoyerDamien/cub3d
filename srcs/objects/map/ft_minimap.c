@@ -12,51 +12,29 @@
 
 #include "../../../includes/cub3d.h"
 
-static t_character search_character(t_map *map)
+static int map_height(char **map)
 {
 	int i;
-	int j;
-	t_character new;
-	t_vector coordinate;
 
-	j = 0;
-	while (map->content[j])
-	{
-		i = 0;
-		while (map->content[i])
-		{
-			if (ft_cinset(map->content[j][i], "NESW"))
-			{
-				coordinate = ft_vector(map->coordinate.x + i * map->cube_width, map->coordinate.y + j * map->cube_height, 0);
-				new = ft_character(coordinate, 90, map->cube_width, map->cube_height);
-				new.map_coordinate = map->coordinate;
-				return (new);
-			}
-			i++;
-		}
-		j++;
-	}
-	return (ft_character(ft_vector(0, 0, 0), 0, 0, 0));
+	i = 0;
+	while (map[i])
+		i++;
+	return (i);
 }
 
 t_map ft_minimap(char **map, size_t width, size_t height, t_vector coordinate)
 {
 	t_map new;
-	int i;
 
-	i = 0;
 	new.content = map;
 	new.width = width;
 	new.height = height;
 	new.coordinate = coordinate;
 	new.nx = ft_strlen(map[0]);
 	new.cube_width = new.width / new.nx;
-	while (map[i])
-		i++;
-	new.ny = i;
+	new.ny = map_height(map);
 	new.cube_height = new.height / new.ny;
 	new.color = ft_color(255, 255, 255);
 	new.show = ft_map_show;
-	new.character = search_character(&new);
 	return (new);
 }

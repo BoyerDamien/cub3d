@@ -13,32 +13,34 @@
 #include "../includes/cub3d.h"
 
 int key_center(int keycode, void *param)
-{
+{	
+	t_game *game;
 	t_map *map;
 
-	map = param;
+	game = param;
+	map = &game->map;
 	//ft_printf("%i\n", keycode);
 	if (keycode == 53)
 	{
-		mlx_destroy_image(map->window.mlx_ptr, map->window.img.img_ptr);
+		mlx_destroy_image(game->window.mlx_ptr, game->window.img.img_ptr);
 		free(map->content);
 		exit(0);
 	}
 	else if (keycode >= LEFT && keycode <= UP)
 	{
-		map->character.move(&map->character, keycode, map->content);
+		game->character.move(&game->character, keycode, map->content);
 		map->show(map, map->window);
 		mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr, map->window.img.img_ptr, 0, 0);
 	}
 	else if (keycode == KEY_A)
 	{
-		map->character.rotate(&map->character, STEP);
+		game->character.rotate(&game->character, ROTATION);
 		map->show(map, map->window);
 		mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr, map->window.img.img_ptr, 0, 0);
 	}
 		else if (keycode == KEY_Z)
 	{
-		map->character.rotate(&map->character, -STEP);
+		game->character.rotate(&game->character, -ROTATION);
 		map->show(map, map->window);
 		mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr, map->window.img.img_ptr, 0, 0);
 	}
@@ -47,10 +49,6 @@ int key_center(int keycode, void *param)
 
 int main(void)
 {
-	t_window window;
-	int win_size[2] = {800, 800};
-	int vp_size[2] = {800, 800};
-	t_map minimap;
 	char *worldMap[25]=
 		{
 				"111111111111111111111111",
@@ -87,15 +85,13 @@ int main(void)
 		i++;
 	}
 	map[i] = NULL;
+	int win_size[2] = {WIN_WIDTH, WIN_HEIGHT};
+	t_game game = ft_game(map, win_size);
+	game.map_show(&game);
+	
+	mlx_hook(game.window.win_ptr, 2, 1L << 0, key_center, &game);
+	mlx_put_image_to_window(game.window.mlx_ptr, game.window.win_ptr, game.window.img.img_ptr, 0, 0);
+	mlx_loop(game.window.mlx_ptr);
 
-
-	minimap = ft_minimap(map, 300, 300, ft_vector(20, 20, 0));
-	window = ft_window(win_size, vp_size, "cub3d");
-	mlx_hook(window.win_ptr, 2, 1L << 0, key_center, &minimap);
-	minimap.window = window;
-	minimap.show(&minimap, window);
-	mlx_put_image_to_window(window.mlx_ptr, window.win_ptr, window.img.img_ptr, 0, 0);
-	//mlx_key_hook(window.win_ptr, key_center, &minimap);
-	mlx_loop(window.mlx_ptr);
 	return (0);
 }

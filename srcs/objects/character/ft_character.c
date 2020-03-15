@@ -12,17 +12,15 @@
 
 #include "../../../includes/cub3d.h"
 
-t_character ft_character(t_vector coordinate, double fov, double width, double height)
+t_character ft_character(t_vector coordinate, double orientation, t_map map)
 {
 	t_character new;
 
 	new.coordinate = coordinate;
-	new.map_coordinate = ft_vector(0, 0, 0);
+	new.map = map;
 	new.color = ft_color(255, 0, 0);
-	new.cube_height = height;
-	new.cube_width = width;
-	new.fov = fov;
-	new.orientation = 90;
+	new.fov = FOV;
+	new.orientation = orientation;
 	new.show = ft_character_show;
 	new.move = ft_character_move;
 	new.cast_ray = ft_cast_ray;

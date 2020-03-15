@@ -14,22 +14,52 @@ static int check_map(t_vector point, t_character *character, char **map_content)
     return (0);
 }
 
+
 t_vector ft_cast_one_ray(t_character *character, char **map_content, t_window window, double angle)
 {
-    int dist;
+    float dist;
     t_vector point;
     t_vector direction;
 
     dist = 0;
     point = character->coordinate;
+    angle = ft_degree_to_rad(angle);
     while (check_map(point, character, map_content))
     {
         direction = ft_vector(dist * sin(angle), dist * cos(angle), 0);
         point = direction.add(&direction, character->coordinate);
         window.draw(&window, point, ft_color(255, 255, 255));
-        dist++;
+        //printf("DIST = %f\n", dist);
+        dist+=0.09;
     }
     return (point);
+}
+
+double ft_plane_intersect(t_vector point, t_character character, t_vector n)
+{
+	double t;
+	t_vector diff;
+	double denom;
+
+	denom = n.dot(&n, point.direction(&point, character.coordinate));
+	if (denom > 0.00001 || denom < -0.00001)
+    {
+        diff = point.sub(&point, character.coordinate);
+        t = diff.dot(&diff, n) / denom;
+        if (t >= 0)
+            return (t);
+    }
+    return(0);
+}
+
+double compute_dist(t_vector point, t_vector origin, double angle)
+{
+   double hyp;
+   t_vector tmp;
+
+   tmp = point.sub(&point, origin);
+   hyp = point.length(&tmp);
+   return (hyp * sin(ft_degree_to_rad(angle)));
 }
 
 void ft_cast_ray(t_character *character, char **map_content, t_window window)
@@ -41,21 +71,35 @@ void ft_cast_ray(t_character *character, char **map_content, t_window window)
     t_vector point;
     double dist;
     double i;
+    double width;
+    t_vector onset;
+    t_vector offset;
+    double x;
 
     i = 0;
-    rad_orientation = ft_degree_to_rad(character->orientation);
-    angle_min = rad_orientation - ft_degree_to_rad(character->fov / 2);
-    angle_max = rad_orientation + ft_degree_to_rad(character->fov / 2);
-    point = ft_cast_one_ray(character, map_content, window, rad_orientation);
+    rad_orientation = (character->orientation);
+    angle_min = rad_orientation - (character->fov / 2);
+    angle_max = rad_orientation + (character->fov / 2);
     while (angle_min + i < angle_max)
     {
         point = ft_cast_one_ray(character, map_content, window, angle_min + i);
         point = point.sub(&point, character->coordinate);
         dist = point.length(&point);
-        ratio = ((angle_min + i - angle_min) / (angle_max - angle_min));
-        //printf("DIST = %f\n", dist);
-        //printf("MIN = %f -- MAX = %f -- RATIO = %f -- x = %f\n",angle_min + i, angle_max, ratio, 800 * ratio);
-        ft_trace_line(ft_vector(800 * ratio, 400 - 200 / dist, 0),ft_vector(800 * ratio, 400 + 600 / dist , 0), window, ft_color(255,255,255));
-        i += 0.003;
+        if (angle_min + i != rad_orientation)
+            dist = dist * cos(ft_degree_to_rad(ft_abs(rad_orientation - (angle_min + i))));
+        ratio = ((angle_max - (angle_min + i)) / (angle_max - angle_min));
+        if (dist >= 0)
+        {
+            width = WALL_HEIGHT / (dist + 0.00001) * 35;
+            width = width > 800 ? 800 : width;
+            if (width <= 800)
+            {
+                x = 800 * ratio;
+                onset = ft_vector(x , round(400 - width / 2), 0);
+                offset = ft_vector(x, round(400 + width / 2) , 0);
+                ft_trace_line(onset, offset, window, ft_color(255,255,255));
+            }
+        }
+        i += 0.07;
     }
 }

@@ -28,6 +28,7 @@ void ft_character_move(t_character *character, int move, char **map_content)
 	int ry;
 	t_vector coordinate;
 	int map_height;
+	t_vector tmp;
 
 	map_height  = get_map_height(map_content);
 	coordinate = character->coordinate;
@@ -36,11 +37,18 @@ void ft_character_move(t_character *character, int move, char **map_content)
 	else if (move == LEFT)
 		coordinate.x -= STEP;
 	else if (move == DOWN)
-		coordinate.y += STEP;
+	{
+		tmp = ft_vector(sin(ft_degree_to_rad(character->orientation)),cos(ft_degree_to_rad(character->orientation)),0);
+		coordinate = coordinate.sub(&coordinate, tmp.mul_scalar(&tmp, STEP));
+	}
 	else if (move == UP)
-		coordinate.y -= STEP;
+	{
+		tmp = ft_vector(sin(ft_degree_to_rad(character->orientation)),cos(ft_degree_to_rad(character->orientation)),0);
+		coordinate = coordinate.add(&coordinate, tmp.mul_scalar(&tmp, STEP));
+	}
 	rx = (coordinate.x - character->map_coordinate.x) / character->cube_width;
 	ry = (coordinate.y - character->map_coordinate.y) / character->cube_height;
+	rx = rx >= (int)ft_strlen(map_content[0]) ? (int)ft_strlen(map_content[0]) - 2 : rx;
 	ry = ry >= map_height ? map_height - 2 : ry;
 	if (map_content[ry][rx] != '1')
 		character->coordinate = coordinate;

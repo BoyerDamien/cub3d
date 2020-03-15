@@ -31,13 +31,15 @@ SRCS    =	srcs/window/ft_window.c\
 			srcs/objects/map/ft_minimap.c\
 			srcs/objects/map/ft_clear_map.c\
 			srcs/objects/map/ft_map_show.c\
+			srcs/objects/map/ft_search_character.c\
 			srcs/objects/character/ft_character_show.c\
 			srcs/objects/character/ft_character.c\
 			srcs/objects/character/ft_character_move.c\
 			srcs/objects/character/ft_cast_ray.c\
 			srcs/objects/character/ft_character_rotate.c\
 			srcs/display/ft_trace_line.c\
-			srcs/display/ft_clear_image.c
+			srcs/display/ft_clear_image.c\
+			srcs/objects/game/ft_game.c\
 
 			
 			

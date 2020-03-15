@@ -12,7 +12,8 @@
 
 #include "../../../includes/cub3d.h"
 
-void ft_map_show(t_map *map, t_window window)
+
+void ft_map_show(t_game *game)
 {
 	int i;
 	int j;
@@ -21,28 +22,27 @@ void ft_map_show(t_map *map, t_window window)
 
 	i = 0;
 	j = 0;
-	window.clear(&window);
-	while (map->content[j])
+	while (game->map.content[j])
 	{
 		i = 0;
-		while (map->content[i])
+		while (game->map.content[i])
 		{
-			if (map->content[j][i] == '1')
+			if (game->map.content[j][i] == '1')
 			{
-				coordinate = ft_vector(map->coordinate.x + i * map->cube_width, map->coordinate.y + j * map->cube_height, 0);
-				rect = ft_rectangle(map->cube_width, map->cube_height, coordinate , map->color);
-				rect.show(&rect, window);
+				coordinate = ft_vector(game->map.coordinate.x + i * game->map.cube_width, game->map.coordinate.y + j * game->map.cube_height, 0);
+				rect = ft_rectangle(game->map.cube_width, game->map.cube_height, coordinate , game->map.color);
+				rect.show(&rect, game->window);
 			}
 			else
 			{
-				coordinate = ft_vector(map->coordinate.x + i * map->cube_width, map->coordinate.y + j * map->cube_height, 0);
-				rect = ft_rectangle(map->cube_width, map->cube_height, coordinate , ft_color(0, 0, 0));
-				rect.show(&rect, window);
+				coordinate = ft_vector(game->map.coordinate.x + i * game->map.cube_width, game->map.coordinate.y + j * game->map.cube_height, 0);
+				rect = ft_rectangle(game->map.cube_width, game->map.cube_height, coordinate , ft_color(0, 0, 0));
+				rect.show(&rect, game->window);
 			}
 			i++;
 		}
 		j++;
 	}
-	map->character.show(&map->character, window);
-	map->character.cast_ray(&map->character, map->content, window);
+	game->character.show(&game->character, game->window);
+	//game->character.cast_ray(&game->character, game->map.content, game->window);
 }
