@@ -33,16 +33,10 @@ void ft_map_show(t_game *game)
 				rect = ft_rectangle(game->map.cube_width, game->map.cube_height, coordinate , game->map.color);
 				rect.show(&rect, game->window);
 			}
-			else
-			{
-				coordinate = ft_vector(game->map.coordinate.x + i * game->map.cube_width, game->map.coordinate.y + j * game->map.cube_height, 0);
-				rect = ft_rectangle(game->map.cube_width, game->map.cube_height, coordinate , ft_color(0, 0, 0));
-				rect.show(&rect, game->window);
-			}
 			i++;
 		}
 		j++;
 	}
 	game->character.show(&game->character, game->window);
-	//game->character.cast_ray(&game->character, game->map.content, game->window);
+	game->cast_ray(game);
 }

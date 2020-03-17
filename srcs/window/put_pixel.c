@@ -16,8 +16,6 @@ void	put_pixel(t_window *window, t_vector point, t_color color)
 {
 	int index;
 
-	//point.x = point.x / point.z;
-	//point.y = point.y / point.z;
 	index = ((int)point.y * window->img.size_line + (int)point.x * 4);
 	window->img.img_data[index] = color.b;
 	window->img.img_data[++index] = color.g;

@@ -19,30 +19,32 @@ int key_center(int keycode, void *param)
 
 	game = param;
 	map = &game->map;
+	//ft_clear_image(&game->window);
 	//ft_printf("%i\n", keycode);
 	if (keycode == 53)
 	{
 		mlx_destroy_image(game->window.mlx_ptr, game->window.img.img_ptr);
-		free(map->content);
+		free(game->map.content);
 		exit(0);
 	}
 	else if (keycode >= LEFT && keycode <= UP)
 	{
-		game->character.move(&game->character, keycode, map->content);
-		map->show(map, map->window);
-		mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr, map->window.img.img_ptr, 0, 0);
+		game->character_move(game, keycode);
+		game->map_show(game);
+		
+		mlx_put_image_to_window(game->window.mlx_ptr, game->window.win_ptr, game->window.img.img_ptr, 0, 0);
 	}
 	else if (keycode == KEY_A)
 	{
-		game->character.rotate(&game->character, ROTATION);
-		map->show(map, map->window);
-		mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr, map->window.img.img_ptr, 0, 0);
+		game->character_rotate(game, 'l');
+		game->map_show(game);
+		mlx_put_image_to_window(game->window.mlx_ptr, game->window.win_ptr, game->window.img.img_ptr, 0, 0);
 	}
 		else if (keycode == KEY_Z)
 	{
-		game->character.rotate(&game->character, -ROTATION);
-		map->show(map, map->window);
-		mlx_put_image_to_window(map->window.mlx_ptr, map->window.win_ptr, map->window.img.img_ptr, 0, 0);
+		game->character_rotate(game, 'r');
+		game->map_show(game);
+		mlx_put_image_to_window(game->window.mlx_ptr, game->window.win_ptr, game->window.img.img_ptr, 0, 0);
 	}
 	return (0);
 }
@@ -88,7 +90,7 @@ int main(void)
 	int win_size[2] = {WIN_WIDTH, WIN_HEIGHT};
 	t_game game = ft_game(map, win_size);
 	game.map_show(&game);
-	
+
 	mlx_hook(game.window.win_ptr, 2, 1L << 0, key_center, &game);
 	mlx_put_image_to_window(game.window.mlx_ptr, game.window.win_ptr, game.window.img.img_ptr, 0, 0);
 	mlx_loop(game.window.mlx_ptr);

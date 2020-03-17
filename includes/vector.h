@@ -32,6 +32,7 @@ typedef	struct	s_vector
 	double			(*length)(struct s_vector*);
 	double			(*dot)(struct s_vector*, struct s_vector);
 	struct s_vector (*cross)(struct s_vector*, struct s_vector);
+	double			(*dist)(struct s_vector*, struct s_vector);
 }			t_vector;
 
 t_vector	ft_vector(double x, double y, double z);
@@ -49,5 +50,6 @@ double		ft_vec_dot(t_vector *vec1, t_vector vec2);
 void		ft_vec_update(t_vector *vec, double x, double y, double z);
 t_vector	ft_vec_normalise(t_vector *vec);
 t_vector	ft_vec_cross_product(t_vector *vec1, t_vector vec2);
+double		ft_vec_dist(t_vector *vec1, t_vector vec2);
 
 #endif

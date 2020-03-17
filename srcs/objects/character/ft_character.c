@@ -19,11 +19,8 @@ t_character ft_character(t_vector coordinate, double orientation, t_map map)
 	new.coordinate = coordinate;
 	new.map = map;
 	new.color = ft_color(255, 0, 0);
-	new.fov = FOV;
-	new.orientation = orientation;
+	new.fov = ft_degree_to_rad(FOV);
+	new.orientation = ft_degree_to_rad(orientation);
 	new.show = ft_character_show;
-	new.move = ft_character_move;
-	new.cast_ray = ft_cast_ray;
-	new.rotate = ft_character_rotate;
 	return (new);
 }

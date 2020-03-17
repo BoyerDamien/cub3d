@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "ft_game.C": "cpp"
-    }
+    },
+    "python.pythonPath": "/opt/miniconda3/bin/python"
 }

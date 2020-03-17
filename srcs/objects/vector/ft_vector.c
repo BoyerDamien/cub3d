@@ -32,5 +32,6 @@ t_vector	ft_vector(double x, double y, double z)
 	new.direction = ft_vec_direction;
 	new.update = ft_vec_update;
 	new.normalise = ft_vec_normalise;
+	new.dist = ft_vec_dist;
 	return (new);
 }

@@ -101,9 +101,7 @@ typedef struct s_map
 	t_color color;
 	t_window window;
 	t_vector coordinate;
-
 	void (*clear)(struct s_map *);
-	void (*show)(struct s_map *, t_window);
 }	t_map;
 
 t_map ft_minimap(char **map, size_t width, size_t height, t_vector coordinate);
@@ -122,17 +120,11 @@ typedef struct s_character
 	double fov;
 	double orientation;
 	void (*show)(struct s_character*, t_window);
-	void (*move)(struct s_character*, int, char **);
-	void (*cast_ray)(struct s_character*, char**, t_window);
-	void (*rotate)(struct s_character*, int);
-
 }	t_character;
 
 t_character ft_character(t_vector coordinate, double orientation, t_map map);
 void ft_character_show(t_character *character, t_window window);
-void ft_character_move(t_character *character, int move, char **map_content);
-void ft_cast_ray(t_character *character, char **map_content, t_window window);
-void ft_character_rotate(t_character *character, int rotation);
+
 
 /*********************************************************************/
 /** 							GAME								**/
@@ -144,9 +136,15 @@ typedef struct s_game
 	t_map		map;
 	t_character character;
 	void (*map_show)(struct s_game *);
+	void (*character_move)(struct s_game*, int);
+	void (*cast_ray)(struct s_game*);
+	void (*character_rotate)(struct s_game*, int);
 }	t_game;
 
-t_game ft_game(char **map, int win_size[2]);
-void   ft_map_show(t_game *game);
+t_game  ft_game(char **map, int win_size[2]);
+void    ft_map_show(t_game *game);
+void	ft_character_move(t_game *game, int move);
+void	ft_cast_ray(t_game *game);
+void	ft_character_rotate(t_game *game, int rotation);
 
 #endif

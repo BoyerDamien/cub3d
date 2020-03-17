@@ -35,6 +35,5 @@ t_map ft_minimap(char **map, size_t width, size_t height, t_vector coordinate)
 	new.ny = map_height(map);
 	new.cube_height = new.height / new.ny;
 	new.color = ft_color(255, 255, 255);
-	new.show = ft_map_show;
 	return (new);
 }

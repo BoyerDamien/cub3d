@@ -12,44 +12,72 @@
 
 #include "../../../includes/cub3d.h"
 
-static int get_map_height(char **map)
-{
-	int i;
 
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
+t_vector move_right(t_game *game)
+{
+	double angle;
+	t_vector move_vector;
+	t_vector coordinate;
+
+	coordinate = game->character.coordinate;
+	angle = game->character.orientation - ft_degree_to_rad(90);
+	move_vector = ft_vector(sin(angle), cos(angle), 0);
+	return (coordinate.add(&coordinate, move_vector.mul_scalar(&move_vector, STEP)));
 }
 
-void ft_character_move(t_character *character, int move, char **map_content)
+t_vector move_left(t_game *game)
 {
-	int rx;
-	int ry;
+	double angle;
+	t_vector move_vector;
 	t_vector coordinate;
-	int map_height;
-	t_vector tmp;
 
-	map_height  = get_map_height(map_content);
-	coordinate = character->coordinate;
+	coordinate = game->character.coordinate;
+	angle = game->character.orientation + ft_degree_to_rad(90);
+	move_vector = ft_vector(sin(angle), cos(angle), 0);
+	return (coordinate.add(&coordinate, move_vector.mul_scalar(&move_vector, STEP)));
+}
+
+t_vector move_up(t_game *game)
+{
+	double angle;
+	t_vector move_vector;
+	t_vector coordinate;
+
+	coordinate = game->character.coordinate;
+	angle = game->character.orientation;
+	move_vector = ft_vector(sin(angle), cos(angle), 0);
+	return (coordinate.add(&coordinate, move_vector.mul_scalar(&move_vector, STEP)));
+}
+
+t_vector move_down(t_game *game)
+{
+	double angle;
+	t_vector move_vector;
+	t_vector coordinate;
+
+	coordinate = game->character.coordinate;
+	angle = game->character.orientation;
+	move_vector = ft_vector(sin(angle), cos(angle), 0);
+	return (coordinate.sub(&coordinate, move_vector.mul_scalar(&move_vector, STEP)));
+}
+
+void ft_character_move(t_game *game, int move)
+{
+	t_vector new_coordinate;
+	t_vector coordinate;
+	t_vector move_vector;
+
+	move_vector = ft_vector(sin(game->character.orientation), cos(game->character.orientation), 0);
+	coordinate = game->character.coordinate;
 	if (move == RIGHT)
-		coordinate.x += STEP;
+		coordinate = move_right(game);
 	else if (move == LEFT)
-		coordinate.x -= STEP;
+		coordinate = move_left(game);
 	else if (move == DOWN)
-	{
-		tmp = ft_vector(sin(ft_degree_to_rad(character->orientation)),cos(ft_degree_to_rad(character->orientation)),0);
-		coordinate = coordinate.sub(&coordinate, tmp.mul_scalar(&tmp, STEP));
-	}
+		coordinate = move_down(game);
 	else if (move == UP)
-	{
-		tmp = ft_vector(sin(ft_degree_to_rad(character->orientation)),cos(ft_degree_to_rad(character->orientation)),0);
-		coordinate = coordinate.add(&coordinate, tmp.mul_scalar(&tmp, STEP));
-	}
-	rx = (coordinate.x - character->map_coordinate.x) / character->cube_width;
-	ry = (coordinate.y - character->map_coordinate.y) / character->cube_height;
-	rx = rx >= (int)ft_strlen(map_content[0]) ? (int)ft_strlen(map_content[0]) - 2 : rx;
-	ry = ry >= map_height ? map_height - 2 : ry;
-	if (map_content[ry][rx] != '1')
-		character->coordinate = coordinate;
+		coordinate = move_up(game);
+	new_coordinate = ft_check_map(game, coordinate);
+	if (game->map.content[(int)new_coordinate.y][(int)new_coordinate.x] != '1')
+		game->character.coordinate = coordinate;
 }

@@ -1,13 +1,13 @@
 #include "../../../includes/cub3d.h"
 
-int ft_check_map(t_vector point, t_character *character, char **map_content)
+t_vector ft_check_map(t_game *game, t_vector coordinate)
 {
     int rx;
     int ry;
 
-    rx = (point.x - character->map_coordinate.x) / character->cube_width;
-	ry = (point.y - character->map_coordinate.y) / character->cube_height;
-	if (map_content[ry][rx] != '1')
-		return (1);
-    return (0);
+    rx = round((coordinate.x - game->character.map.coordinate.x) / game->character.map.cube_width);
+	ry = round((coordinate.y - game->character.map.coordinate.y) / game->character.map.cube_height);
+	rx = rx >= game->map.nx ? game->map.nx - 2 : rx;
+	ry = ry >= game->map.ny ? game->map.ny - 2 : ry;
+    return (ft_vector(rx, ry, 0));
 }

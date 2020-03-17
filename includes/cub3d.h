@@ -31,9 +31,13 @@
 #define ROTATION 10
 #define WIN_HEIGHT 800
 #define WIN_WIDTH 800
+#define WIN_CENTER (WIN_WIDTH / 2)
+#define BLOCK_SIZE (WIN_HEIGHT / 2)
+#define CAM_DIST 35
 #define FOV 60
 
-int     ft_search_character(t_map *map, t_character *character);
-void    ft_trace_line(t_vector onset, t_vector offset, t_window window, t_color color);
-double  ft_degree_to_rad(double angle);
+int         ft_search_character(t_map *map, t_character *character);
+t_vector    ft_check_map(t_game *game, t_vector coordinate);
+void        ft_trace_line(t_vector onset, t_vector offset, t_window window, t_color color);
+double      ft_degree_to_rad(double angle);
 #endif

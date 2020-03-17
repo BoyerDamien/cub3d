@@ -23,6 +23,7 @@ SRCS    =	srcs/window/ft_window.c\
 			srcs/objects/vector/ft_vec_update.c\
 			srcs/objects/vector/ft_vec_normalise.c\
 			srcs/objects/vector/ft_vec_cross_product.c\
+			srcs/objects/vector/ft_vec_dist.c\
 			srcs/objects/color/ft_color.c\
 			srcs/objects/color/ft_add_light.c\
 			srcs/objects/color/ft_add_color.c\
@@ -32,6 +33,7 @@ SRCS    =	srcs/window/ft_window.c\
 			srcs/objects/map/ft_clear_map.c\
 			srcs/objects/map/ft_map_show.c\
 			srcs/objects/map/ft_search_character.c\
+			srcs/objects/map/ft_check_map.c\
 			srcs/objects/character/ft_character_show.c\
 			srcs/objects/character/ft_character.c\
 			srcs/objects/character/ft_character_move.c\

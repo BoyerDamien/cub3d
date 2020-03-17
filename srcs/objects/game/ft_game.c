@@ -9,5 +9,8 @@ t_game ft_game(char **map, int win_size[2])
     ft_search_character(&new.map, &new.character);
     new.window = ft_window(win_size, win_size, GAME_NAME);
     new.map_show = ft_map_show;
+    new.character_move = ft_character_move;
+    new.cast_ray = ft_cast_ray;
+    new.character_rotate = ft_character_rotate;
     return (new);
 }
