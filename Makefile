@@ -41,7 +41,9 @@ SRCS    =	srcs/window/ft_window.c\
 			srcs/objects/character/ft_character_rotate.c\
 			srcs/display/ft_trace_line.c\
 			srcs/display/ft_clear_image.c\
+			srcs/display/ft_draw_ground.c\
 			srcs/objects/game/ft_game.c\
+			srcs/algorithms/find_obstacles.c\
 
 			
 			

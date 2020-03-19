@@ -23,5 +23,9 @@ t_color ft_add_light(t_color *color, t_color light_color, double light_ratio)
 	new.b = new.b > 255 ? 255 : new.b;
 	new.g = new.g > 255 ? 255 : new.g;
 	new.r = new.r > 255 ? 255 : new.r;
+
+	new.b = new.b < 0 ? 0 : new.b;
+	new.g = new.g < 0 ? 0 : new.g;
+	new.r = new.r < 0 ? 0 : new.r;
 	return (new);
 }

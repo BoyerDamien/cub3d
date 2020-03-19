@@ -38,5 +38,4 @@ void ft_map_show(t_game *game)
 		j++;
 	}
 	game->character.show(&game->character, game->window);
-	game->cast_ray(game);
 }

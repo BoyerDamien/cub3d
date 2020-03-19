@@ -147,4 +147,14 @@ void	ft_character_move(t_game *game, int move);
 void	ft_cast_ray(t_game *game);
 void	ft_character_rotate(t_game *game, int rotation);
 
+
+/*********************************************************************/
+/** 							OBSTACLE							**/
+/*********************************************************************/
+typedef struct s_obstacle
+{
+	t_vector onset;
+	t_vector offset;
+	double length;
+}	t_obstacle;
 #endif

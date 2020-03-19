@@ -23,14 +23,14 @@ static t_vector ft_cast_one_ray(t_game *game, double angle)
         direction = ft_vector(dist * sin(angle), dist * cos(angle), 0);
         point = direction.add(&direction, game->character.coordinate);
         //game->window.draw(&game->window, point, ft_color(255, 255, 255));
-        dist += 0.5;
+        dist += 0.3;
     }
     while (!check_map(game, point))
     {
         direction = ft_vector(dist * sin(angle), dist * cos(angle), 0);
         point = direction.add(&direction, game->character.coordinate);
         //game->window.draw(&game->window, point, ft_color(255, 255, 255));
-        dist -= 0.02;
+        dist -= 0.03;
     }
     return (point);
 }
@@ -52,10 +52,10 @@ static void render(t_game *game, double dist, double ratio)
             x = WIN_WIDTH * ratio;
             onset = ft_vector(x, WIN_CENTER - height / 2, 0);
             offset = ft_vector(x, WIN_CENTER + height / 2, 0);
-            color = ft_color(100, 100, 100);
+            color = ft_color(0, 0, 0);
             ft_trace_line(ft_vector(x, 0, 0), onset, game->window, ft_color(0, 0, 255));
             ft_trace_line(onset, offset, game->window, color.add_light(&color, ft_color(255, 255, 255), 255/dist));
-            ft_trace_line(offset, ft_vector(x, WIN_HEIGHT-2, 0), game->window, color.add_light(&color, ft_color(0, 255, 0), 255/dist));
+            ft_draw_ground(offset, ft_vector(x, WIN_HEIGHT-2, 0), game->window, ft_color(0, 255, 0));
         }
     }
 }

@@ -37,7 +37,13 @@
 #define FOV 60
 
 int         ft_search_character(t_map *map, t_character *character);
+
 t_vector    ft_check_map(t_game *game, t_vector coordinate);
+
 void        ft_trace_line(t_vector onset, t_vector offset, t_window window, t_color color);
+void        ft_draw_ground(t_vector onset, t_vector offset, t_window window, t_color color);
+
 double      ft_degree_to_rad(double angle);
+void        find_obstacles(t_map *map, int x, int y);
+
 #endif

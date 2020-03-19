@@ -20,7 +20,7 @@ int key_center(int keycode, void *param)
 	game = param;
 	map = &game->map;
 	//ft_clear_image(&game->window);
-	//ft_printf("%i\n", keycode);
+	//printf("%i\n", keycode);
 	if (keycode == 53)
 	{
 		mlx_destroy_image(game->window.mlx_ptr, game->window.img.img_ptr);
@@ -28,24 +28,15 @@ int key_center(int keycode, void *param)
 		exit(0);
 	}
 	else if (keycode >= LEFT && keycode <= UP)
-	{
 		game->character_move(game, keycode);
-		game->map_show(game);
-		
-		mlx_put_image_to_window(game->window.mlx_ptr, game->window.win_ptr, game->window.img.img_ptr, 0, 0);
-	}
 	else if (keycode == KEY_A)
-	{
-		game->character_rotate(game, 'l');
-		game->map_show(game);
-		mlx_put_image_to_window(game->window.mlx_ptr, game->window.win_ptr, game->window.img.img_ptr, 0, 0);
-	}
-		else if (keycode == KEY_Z)
-	{
+		game->character_rotate(game, 'l');	
+	else if (keycode == KEY_Z)
 		game->character_rotate(game, 'r');
-		game->map_show(game);
-		mlx_put_image_to_window(game->window.mlx_ptr, game->window.win_ptr, game->window.img.img_ptr, 0, 0);
-	}
+	//game->map_show(game);
+	game->cast_ray(game);
+	//game->map_show(game);
+	mlx_put_image_to_window(game->window.mlx_ptr, game->window.win_ptr, game->window.img.img_ptr, 0, 0);
 	return (0);
 }
 
@@ -89,11 +80,17 @@ int main(void)
 	map[i] = NULL;
 	int win_size[2] = {WIN_WIDTH, WIN_HEIGHT};
 	t_game game = ft_game(map, win_size);
-	game.map_show(&game);
+	
+	//void *img = mlx_xpm_file_to_image(game.window.mlx_ptr, "textures/grass.xpm", &width, &height);
+	//mlx_destroy_image(game.window.mlx_ptr, img);
+	//game.map_show(&game);
 
 	mlx_hook(game.window.win_ptr, 2, 1L << 0, key_center, &game);
 	mlx_put_image_to_window(game.window.mlx_ptr, game.window.win_ptr, game.window.img.img_ptr, 0, 0);
 	mlx_loop(game.window.mlx_ptr);
+	/*find_obstacles(&game.map, 0, 0);
+	free(game.map.content);
+	mlx_destroy_image(game.window.mlx_ptr, game.window.img.img_ptr);*/
 
 	return (0);
 }
