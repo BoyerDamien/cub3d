@@ -8,6 +8,7 @@ SRCS    =	srcs/window/ft_window.c\
 			srcs/image/ft_image.c\
 			srcs/maths/ft_atof.c\
 			srcs/maths/ft_degree_to_rad.c\
+			srcs/maths/ft_map_value.c\
 			srcs/objects/vector/ft_vec_add.c\
 			srcs/objects/vector/ft_vec_sub.c\
 			srcs/objects/vector/ft_vec_mul.c\
@@ -42,8 +43,9 @@ SRCS    =	srcs/window/ft_window.c\
 			srcs/display/ft_trace_line.c\
 			srcs/display/ft_clear_image.c\
 			srcs/display/ft_draw_ground.c\
+			srcs/display/ft_draw_wall.c\
 			srcs/objects/game/ft_game.c\
-			srcs/algorithms/find_obstacles.c\
+			srcs/objects/texture/ft_texture.c\
 
 			
 			
@@ -56,7 +58,7 @@ OBJS    = 	$(SRCS:.c=.o)
 
 CFLAGS  =	-Werror -Wall -Wextra
 
-MLX 	= 	-L./linux_mlx/mlx/ -lmlx -framework OpenGL -framework Appkit
+MLX 	= 	-L./minilib -lmlx -framework OpenGL -framework Appkit
 
 CC      = 	gcc
 

@@ -12,7 +12,7 @@
 
 #include "../includes/libft.h"
 
-int		ft_abs(long nb)
+double		ft_abs(double nb)
 {
 	return (nb < 0 ? -nb : nb);
 }

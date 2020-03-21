@@ -32,7 +32,7 @@ int					ft_tolower(int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_cinset(const char c, const char *set);
-int					ft_abs(long nb);
+double					ft_abs(double nb);
 int					ft_nspace(char *str);
 int					ft_isflag(const char *flag);
 int					ft_print(t_format format, va_list *va);

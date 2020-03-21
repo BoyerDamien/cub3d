@@ -13,13 +13,13 @@
 #include "../../../includes/cub3d.h"
 
 
-void ft_character_show(t_character *character, t_window window)
+void ft_character_show(t_game *game)
 {
 	int a;
 	int r;
 	t_vector coordinate;
 	
-	r = 3;
+	r = 4;
 	a = 0;
 	coordinate = ft_vector(0, 0, 0);
 	while (r)
@@ -27,9 +27,9 @@ void ft_character_show(t_character *character, t_window window)
 		a = 0;
 		while (a < 360)
 		{
-			coordinate.x = character->coordinate.x + r * sin(a);
-			coordinate.y = character->coordinate.y + r * cos(a);
-			window.draw(&window, coordinate, character->color);
+			coordinate.x = game->character.coordinate.x * game->map.cube_width + MINIMAP_X + r * sin(a);
+			coordinate.y = game->character.coordinate.y * game->map.cube_height + MINIMAP_Y + r * cos(a);
+			game->window.draw(&game->window, coordinate, game->character.color);
 			a++;
 		}
 		r--;

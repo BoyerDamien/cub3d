@@ -119,12 +119,27 @@ typedef struct s_character
 	t_color color;
 	double fov;
 	double orientation;
-	void (*show)(struct s_character*, t_window);
 }	t_character;
 
 t_character ft_character(t_vector coordinate, double orientation, t_map map);
-void ft_character_show(t_character *character, t_window window);
 
+
+/*********************************************************************/
+/** 							TEXTURE								**/
+/*********************************************************************/
+
+typedef struct s_texture
+{
+	void	*img_ptr;
+	char	*img_data;
+	int		size_line;
+	int		bpp;
+	int		endian;
+	int		width;
+	int		height;
+}	t_texture;
+
+t_texture ft_texture(void *mlx_ptr, char *path);
 
 /*********************************************************************/
 /** 							GAME								**/
@@ -135,26 +150,25 @@ typedef struct s_game
 	t_window 	window;
 	t_map		map;
 	t_character character;
+	t_texture wall_texture_N;
+	t_texture wall_texture_S;
+	t_texture wall_texture_O;
+	t_texture wall_texture_E;
+	t_texture actual_text;
+	double cam_dist;
 	void (*map_show)(struct s_game *);
 	void (*character_move)(struct s_game*, int);
 	void (*cast_ray)(struct s_game*);
 	void (*character_rotate)(struct s_game*, int);
+	void (*character_show)(struct s_game *);
 }	t_game;
 
 t_game  ft_game(char **map, int win_size[2]);
 void    ft_map_show(t_game *game);
+void	ft_character_show(t_game *game);
 void	ft_character_move(t_game *game, int move);
 void	ft_cast_ray(t_game *game);
 void	ft_character_rotate(t_game *game, int rotation);
 
 
-/*********************************************************************/
-/** 							OBSTACLE							**/
-/*********************************************************************/
-typedef struct s_obstacle
-{
-	t_vector onset;
-	t_vector offset;
-	double length;
-}	t_obstacle;
 #endif

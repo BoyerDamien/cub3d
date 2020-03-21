@@ -5,7 +5,7 @@ static int check_map(t_game *game, t_vector point)
     t_vector result;
 
     result = ft_check_map(game, point);
-    if (game->map.content[(int)result.y][(int)result.x] != '1')
+    if (game->map.content[(int)round(result.y)][(int)round(result.x)] != '1')
         return (1);
     return (0);
 }
@@ -22,16 +22,17 @@ static t_vector ft_cast_one_ray(t_game *game, double angle)
     {
         direction = ft_vector(dist * sin(angle), dist * cos(angle), 0);
         point = direction.add(&direction, game->character.coordinate);
-        //game->window.draw(&game->window, point, ft_color(255, 255, 255));
-        dist += 0.3;
+        dist += 0.1;
     }
+    //printf("BEFORE = [%f -- %f]\n", point.x, point.y);
+   
     while (!check_map(game, point))
     {
         direction = ft_vector(dist * sin(angle), dist * cos(angle), 0);
         point = direction.add(&direction, game->character.coordinate);
-        //game->window.draw(&game->window, point, ft_color(255, 255, 255));
-        dist -= 0.03;
+        dist -= 0.001;
     }
+    //printf("After = [%f -- %f]\n", point.x, point.y);
     return (point);
 }
 
@@ -45,7 +46,7 @@ static void render(t_game *game, double dist, double ratio)
  
     if (dist >= 0)
     {
-        height = BLOCK_SIZE / (dist + 0.00001) * CAM_DIST;
+        height = BLOCK_SIZE / (dist + 0.00001) * game->cam_dist;
         height = height > WIN_HEIGHT ? WIN_HEIGHT : height;
         if (height <= WIN_HEIGHT)
         {
@@ -53,9 +54,9 @@ static void render(t_game *game, double dist, double ratio)
             onset = ft_vector(x, WIN_CENTER - height / 2, 0);
             offset = ft_vector(x, WIN_CENTER + height / 2, 0);
             color = ft_color(0, 0, 0);
-            ft_trace_line(ft_vector(x, 0, 0), onset, game->window, ft_color(0, 0, 255));
-            ft_trace_line(onset, offset, game->window, color.add_light(&color, ft_color(255, 255, 255), 255/dist));
-            ft_draw_ground(offset, ft_vector(x, WIN_HEIGHT-2, 0), game->window, ft_color(0, 255, 0));
+            ft_trace_line(ft_vector(x, 0, 0), onset, game->window, CEILING_COLOR);
+            ft_draw_wall(onset, offset, *game, 255/dist * LIGHT_RATIO);
+            ft_draw_ground(offset, ft_vector(x, WIN_HEIGHT-2, 0), *game, GROUND_COLOR);
         }
     }
 }
@@ -67,6 +68,12 @@ void ft_cast_ray(t_game *game)
     t_vector point;
     double dist;
     double i;
+    double ratiox;
+    double ratioy;
+    double ratiox_rounded;
+    double ratioy_rounded;
+    double calcx;
+    double calcy;
 
     i = 0;
     angle_min = game->character.orientation - (game->character.fov / 2);
@@ -74,6 +81,21 @@ void ft_cast_ray(t_game *game)
     while (angle_min + i < angle_max)
     {
         point = ft_cast_one_ray(game, angle_min + i);
+        ratiox = ((int)point.x + 1 - point.x) ;
+        ratioy = ((int)point.y + 1 - point.y) ;
+        ratiox_rounded = round(ratiox);
+        ratioy_rounded = round(ratioy);
+        calcx = ft_abs(ratiox - 0.5);
+        calcy = ft_abs(ratioy - 0.5);
+
+        if (calcx > calcy && ratiox_rounded == 0)
+            game->actual_text= game->wall_texture_O;
+        else if (calcx > calcy && ratiox_rounded == 1)
+            game->actual_text= game->wall_texture_E;
+        else if (calcy > calcx && ratioy_rounded == 0)
+            game->actual_text= game->wall_texture_N;
+        else if (calcy > calcx && ratioy_rounded == 1)
+            game->actual_text= game->wall_texture_S;
         dist = point.dist(&point, game->character.coordinate);
         if (angle_min + i != game->character.orientation)
             dist = dist * cos(game->character.orientation - (angle_min + i));
