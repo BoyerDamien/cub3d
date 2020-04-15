@@ -22,17 +22,8 @@ static t_vector ft_cast_one_ray(t_game *game, double angle)
     {
         direction = ft_vector(dist * sin(angle), dist * cos(angle), 0);
         point = direction.add(&direction, game->character.coordinate);
-        dist += 0.1;
+        dist += 0.01;
     }
-    //printf("BEFORE = [%f -- %f]\n", point.x, point.y);
-   
-    while (!check_map(game, point))
-    {
-        direction = ft_vector(dist * sin(angle), dist * cos(angle), 0);
-        point = direction.add(&direction, game->character.coordinate);
-        dist -= 0.001;
-    }
-    //printf("After = [%f -- %f]\n", point.x, point.y);
     return (point);
 }
 
