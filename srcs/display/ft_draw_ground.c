@@ -1,6 +1,6 @@
 #include "../../includes/cub3d.h"
 
-void ft_draw_ground(t_vector onset, t_vector offset, t_game game, t_color color)
+void ft_draw_ground(t_vector onset, t_vector offset, t_game *game, t_color color)
 {
 
 	t_vector direction;
@@ -14,7 +14,7 @@ void ft_draw_ground(t_vector onset, t_vector offset, t_game game, t_color color)
 	{
 		point = onset.add(&onset, direction.mul_scalar(&direction, dist));
         ratio = (point.y - WIN_CENTER) / (WIN_HEIGHT - WIN_CENTER);
-		game.window.draw(&game.window, point, color.add_light(&color, ft_color(255, 255, 255), ratio));
+		game->window.draw(&game->window, point, color.add_light(&color, ft_color(255, 255, 255), ratio));
 		dist--;
 	}
 }

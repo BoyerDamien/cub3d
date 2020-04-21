@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:32:57 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/12 18:16:20 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/20 11:12:27 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,7 @@ void ft_character_move(t_game *game, int move)
 {
 	t_vector new_coordinate;
 	t_vector coordinate;
-	t_vector move_vector;
 
-	move_vector = ft_vector(sin(game->character.orientation), cos(game->character.orientation), 0);
 	coordinate = game->character.coordinate;
 	if (move == RIGHT)
 		coordinate = move_right(game);

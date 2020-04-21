@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_concat.c                                        :+:      :+:    :+:   */
+/*   ft_display_message.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 13:42:55 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/20 09:17:32 by dboyer           ###   ########.fr       */
+/*   Created: 2020/04/21 17:03:15 by dboyer            #+#    #+#             */
+/*   Updated: 2020/04/21 17:17:34 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../includes/cub3d.h"
 
-static void	append(t_list *list1, t_list *list2)
+void ft_display_message(char *message)
 {
-	t_element *next;
-
-	next = list2->first;
-	while (next)
-	{
-		ft_add_back(list1, next->content);
-		next = next->next;
-	}
-}
-
-t_list	ft_concat(t_list *list1, t_list list2)
-{
-	t_list		new;
-
-	new = ft_list();
-	append(&new, list1);
-	append(&new, &list2);
-	return (new);
+    ft_printf("\n##################################################\n");
+    ft_printf("\t\t%s\n", message);
+    ft_printf("##################################################\n");
 }

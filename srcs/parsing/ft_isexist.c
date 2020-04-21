@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_concat.c                                        :+:      :+:    :+:   */
+/*   ft_isexist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 13:42:55 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/20 09:17:32 by dboyer           ###   ########.fr       */
+/*   Created: 2020/04/21 17:40:03 by dboyer            #+#    #+#             */
+/*   Updated: 2020/04/21 17:53:41 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../includes/cub3d.h"
 
-static void	append(t_list *list1, t_list *list2)
+int ft_isexist(char *path)
 {
-	t_element *next;
+    int fd;
+    int result;
 
-	next = list2->first;
-	while (next)
-	{
-		ft_add_back(list1, next->content);
-		next = next->next;
-	}
-}
-
-t_list	ft_concat(t_list *list1, t_list list2)
-{
-	t_list		new;
-
-	new = ft_list();
-	append(&new, list1);
-	append(&new, &list2);
-	return (new);
+    fd = open(path, O_RDONLY);
+    result = 0;
+    if (fd == -1 )
+        ft_display_process_status("File path", "error");
+    else{
+        ft_display_process_status("File path", "ok");
+        result = 1;
+    }
+    close(fd);
+    return (result);
 }

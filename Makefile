@@ -1,9 +1,27 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
+#    Updated: 2020/04/21 19:12:32 by dboyer           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME    	=	cub3D
 LIBFT_PATH	= "./lib/libft/"
-LIBFT		= "./lib/libft/libft.a"
+
 SCENES		= "scenes/"
 
-SRCS    =	srcs/window/ft_window.c\
+SRCS    =	srcs/parsing/ft_display_message.c\
+			srcs/parsing/ft_check_extension.c\
+			srcs/parsing/ft_display_process_status.c\
+			srcs/parsing/ft_display_error.c\
+			srcs/parsing/ft_isexist.c\
+			srcs/parsing/ft_check_resolution.c\
+			srcs/window/ft_window.c\
 			srcs/window/put_pixel.c\
 			srcs/image/ft_image.c\
 			srcs/maths/ft_atof.c\
@@ -44,11 +62,12 @@ SRCS    =	srcs/window/ft_window.c\
 			srcs/display/ft_clear_image.c\
 			srcs/display/ft_draw_ground.c\
 			srcs/display/ft_draw_wall.c\
+			srcs/display/ft_choose_texture.c\
 			srcs/objects/game/ft_game.c\
 			srcs/objects/texture/ft_texture.c\
+			lib/get_next_line/get_next_line.c\
+			lib/get_next_line/get_next_line_utils.c\
 
-			
-			
 
 MAIN 	= 	srcs/main.c
 
@@ -58,7 +77,9 @@ OBJS    = 	$(SRCS:.c=.o)
 
 CFLAGS  =	-Werror -Wall -Wextra
 
-MLX 	= 	-L./minilib -lmlx -framework OpenGL -framework Appkit
+LIBFT		= -L ./lib/libft -lft
+
+MLX 	= 	-L./minilibx-linux -lmlx -lm -lXext -lX11 -lbsd
 
 CC      = 	gcc
 
@@ -66,15 +87,15 @@ RM      = 	rm -f
 
 
 
-#############################################################################################################
+################################################################################
 #												Mini RT make
-#############################################################################################################
+################################################################################
 
 all     :	$(NAME)
 
 $(NAME) : $(OBJS) $(OBJS_MAIN)
 	make -C $(LIBFT_PATH)
-	${CC} ${CFLAGS} ${MLX} -o ${NAME} ${LIBFT} ./minilib/libmlx.a ${OBJS} ${OBJS_MAIN}
+	${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_MAIN} ${MLX} ${LIBFT}
 
 clean   :
 	make clean -C $(LIBFT_PATH)
@@ -86,13 +107,13 @@ fclean  : clean
 	$(RM) $(NAME)
 
 run 	: $(NAME)
-	./${NAME}
+	./${NAME} ./maps/map1.cub
 
 re      : fclean all
 
-#############################################################################################################
+################################################################################
 #												Extra make
-#############################################################################################################
+################################################################################
 
 norm:
 	norminette CheckForbiddenHeader $(LIBFT_PATH)
