@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/21 19:12:19 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/24 17:40:00 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,21 @@ void        ft_choose_texture(t_vector point, t_game *game);
 void        ft_display_message(char *message);
 void        ft_display_process_status(char *process, char *status);
 void        ft_display_error(char *message, const char *fun_name);
+void        ft_check_texture(char *path);
+void        ft_check_color(char *path);
+void        ft_find_map(char *path);
 
 int         ft_check_resolution(char *path);
-int         ft_check_extension(char *filename);
+int         ft_check_extension(char *filename, char* extension);
 int         ft_isexist(char *path);
+int         ft_test_extension_path(char *path, char *extension);
+int         ft_str_isequal(char *str1, char *str2 );
+int         ft_split_and_check(char *str, int c, char *charcode, int n);
+int         test_map_border(t_list *map);
+int         test_map_content(t_list *map);
+
+char        *ft_move_until(char *str, char* bool, int (*f)(int c));
+char        *ft_tag_line(char *path, char *charcode, int n);
 
 double      ft_degree_to_rad(double angle);
 double      ft_map_value(double val, double min1, double max1, double max2);

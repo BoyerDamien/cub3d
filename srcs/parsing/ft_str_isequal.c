@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_str_isequal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/07 16:43:13 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/23 09:32:05 by dboyer           ###   ########.fr       */
+/*   Created: 2020/04/22 09:38:57 by dboyer            #+#    #+#             */
+/*   Updated: 2020/04/22 10:23:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../includes/cub3d.h"
 
-int	ft_isspace(int c)
-{
-	return (ft_cinset(c, "\t\n\r\v\f "));
+int ft_str_isequal(char *str1, char *str2 ){
+    if (ft_strncmp(str1, str2, ft_strlen(str1)) == 0 && \
+    ft_strncmp(str1, str2, ft_strlen(str2)) == 0)
+    return (1);
+    return (0);
 }

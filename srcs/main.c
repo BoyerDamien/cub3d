@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:47:29 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/21 19:11:51 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/23 09:33:03 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 int main(int ac, char **av)
 {
-	(void)av;
 	ft_display_message("Check file ...");
-	if (ac > 1 && ft_check_extension(av[1]) && ft_isexist(av[1]))
+	if (ac > 1 && ft_check_extension(av[1], ".cub"))
 	{
+
 		ft_check_resolution(av[1]);
+		ft_check_texture(av[1]);
+		ft_check_color(av[1]);
+		ft_find_map(av[1]);
 		return (0);
 	}
 	else{

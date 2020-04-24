@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_extension.c                               :+:      :+:    :+:   */
+/*   ft_move_until.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/21 17:02:30 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/22 10:37:28 by dboyer           ###   ########.fr       */
+/*   Created: 2020/04/22 11:15:18 by dboyer            #+#    #+#             */
+/*   Updated: 2020/04/23 09:38:50 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int ft_check_extension(char *filename, char *extension)
+char *ft_move_until(char *str, char *bool, int (*f)(int))
 {
-    int result;
-    char *status;
-
-    result = 0;
-    status = ft_strjoin("Check ", filename);
-    if (ft_test_extension_path(filename, extension))
+    if (str)
     {
-        ft_display_process_status(status,"ok");
-        result = 1;
+        if (ft_str_isequal(bool, "is"))
+        {
+            while (*str && !f(*str))
+                str++;
+            return (f(*str) && *str ? str : NULL);
+        }
+        else if (ft_str_isequal(bool, "not"))
+        {
+            while (*str && f(*str))
+                str++;
+            return (!f(*str) && *str ? str : NULL);
+        }
     }
-    else
-        ft_display_process_status(status,"error");
-    free(status);
-    return (result);
+    return (str);
 }

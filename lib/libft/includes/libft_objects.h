@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 16:53:50 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/03 14:48:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/24 11:03:05 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct		s_format
 typedef struct		s_element
 {
 	void				*content;
+	int					index;
 	struct s_element	*previous;
 	struct s_element	*next;
 }					t_element;

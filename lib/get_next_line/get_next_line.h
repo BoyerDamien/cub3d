@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/12 10:46:02 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/21 18:11:59 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/23 10:03:42 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #	include <unistd.h>
 #	include <stdlib.h>
 #	include <fcntl.h>
-# 	define BUFFER_SIZE 20
+# 	define BUFFER_SIZE 1
 
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);

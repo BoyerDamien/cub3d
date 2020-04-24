@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_back.c                                      :+:      :+:    :+:   */
+/*   ft_split_and_check.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/23 11:27:04 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/24 11:24:14 by dboyer           ###   ########.fr       */
+/*   Created: 2020/04/22 11:00:45 by dboyer            #+#    #+#             */
+/*   Updated: 2020/04/22 11:07:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../includes/cub3d.h"
 
-void		ft_add_back(t_list *list, void *content)
-{
-	t_element *new_elem;
-	t_element *last;
+int ft_split_and_check(char *str, int c, char *charcode, int n){
+    char **str_splitted;
+    int result;
+    int i;
 
-	new_elem = ft_new_element(content);
-	if (list->size > 0)
-	{
-		list->size++;
-		last = ft_get_last_element(list);
-		new_elem->previous = last;
-		new_elem->index = list->size - 1;
-		last->next = new_elem;
-	}
-	else
-	{
-		list->size = 1;
-		new_elem->index = 0;
-		list->first = new_elem;
-	}
+    i = 0;
+    str_splitted = ft_split(str, c);
+    while (str_splitted && str_splitted[i])
+        i++;
+    result = i == n && ft_str_isequal(str_splitted[0], charcode) ? 1 : 0;
+    ft_split_clean(str_splitted);
+    return (result);
 }

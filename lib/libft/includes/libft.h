@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:32:33 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/03 14:49:12 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/24 11:05:34 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int					ft_isalpha(int c);
 int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
-int					ft_isspace(const char c);
+int					ft_isspace(int c);
 int					ft_isprint(int c);
 int					ft_islower(int c);
 int					ft_isupper(int c);
@@ -32,7 +32,7 @@ int					ft_tolower(int c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_cinset(const char c, const char *set);
-double					ft_abs(double nb);
+double				ft_abs(double nb);
 int					ft_nspace(char *str);
 int					ft_isflag(const char *flag);
 int					ft_print(t_format format, va_list *va);
@@ -79,7 +79,6 @@ void				ft_putnbr_fd(long nb, int fd);
 void				ft_bzero(void *s, size_t n);
 void				ft_putchar(char c);
 void				ft_putstr(char *str);
-void				ft_add_front(t_list *list, void *content);
 void				ft_add_back(t_list *list, void *content);
 void				ft_del(t_list *list, t_element *element);
 void				ft_clear(t_list *list);

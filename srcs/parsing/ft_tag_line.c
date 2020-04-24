@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isexist.c                                       :+:      :+:    :+:   */
+/*   ft_tag_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/04/21 17:40:03 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/22 10:02:57 by dboyer           ###   ########.fr       */
+/*   Created: 2020/04/22 11:32:24 by dboyer            #+#    #+#             */
+/*   Updated: 2020/04/22 12:52:06 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int ft_isexist(char *path)
-{
+char *ft_tag_line(char *path, char *charcode, int n){
     int fd;
-    int result;
-
-    fd = open(path, O_RDONLY);
-    result = fd == -1 ? 0 : 1;
+    char *line;
+    
+    if ((fd = open(path, O_RDONLY)) != -1){
+        while (get_next_line(fd, &line) == 1){
+            if (ft_split_and_check(line, ' ', charcode, n)){
+                close(fd);
+                return (line);
+            }
+            free(line);
+        }
+    }
     close(fd);
-    return (result);
+    return (NULL);
 }

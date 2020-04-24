@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 18:42:28 by dboyer            #+#    #+#              #
-#    Updated: 2020/02/19 13:59:54 by dboyer           ###   ########.fr        #
+#    Updated: 2020/04/24 11:06:00 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,6 @@ SRCS 	=	srcs/ft_atoi.c\
 			srcs/ft_print_space_after.c\
 			srcs/ft_print_zero_padding.c\
 			srcs/ft_add_back.c\
-			srcs/ft_add_front.c\
 			srcs/ft_clear.c\
 			srcs/ft_concat.c\
 			srcs/ft_del.c\
