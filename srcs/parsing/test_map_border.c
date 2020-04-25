@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 15:19:35 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/24 17:50:29 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/25 15:13:25 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,17 @@
 
 int is_valid_neighbour(t_element *element, int index, t_list *memory)
 {
-    if (ft_cinset(((char *)element->content)[index], "1D"))
+    char *content;
+
+    if (element && index >= 0)
     {
-        memory->append(memory, &element->index);
-        memory->append(memory, &index);
-        return (1);
+        content = (char *)(element->content);
+        if (index < (int)ft_strlen(content) && ft_cinset(content[index], "1D"))
+        {
+            memory->append(memory, &element->index);
+            memory->append(memory, &index);
+            return (1);
+        }
     }
     return (0);
 }
@@ -41,10 +47,13 @@ int back_index(t_list *memory)
     return (index);
 }
 
-int test_border(t_element *element, int index, t_list *map, t_list *memory)
+int test_border(t_element *element, int n_index, t_list *map, t_list *memory)
 {
-    char *content = (char *)element->content;
+    char *content;
+    int index;
 
+    index = n_index;
+    content = (char *)element->content;
     if (ft_cinset(content[index], "1X"))
     {
         content[index] = 'X';
@@ -74,14 +83,16 @@ int test_map_border(t_list *map)
     i = 0;
     memory = ft_list();
     element = map->first;
-    while (ft_isspace(((char *)element->content)[i]))
+    while (((char *)element->content)[i] != '1')
         i++;
     ((char *)element->content)[i] = 'D';
-    if (test_border(element, i + 1, map, &memory)){
+    if (test_border(element, i + 1, map, &memory))
+    {
         ft_display_process_status("Map border", "ok");
         result = 1;
     }
-    else{
+    else
+    {
         ft_display_process_status("Map border", "error");
         ft_display_error("Your map is not closed", __func__);
         result = 0;

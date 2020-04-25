@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/04/24 17:14:03 by dboyer           ###   ########.fr        #
+#    Updated: 2020/04/25 15:45:41 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS    =	srcs/parsing/ft_display_message.c\
 			srcs/parsing/ft_isexist.c\
 			srcs/parsing/ft_check_resolution.c\
 			srcs/parsing/ft_test_extension_path.c\
+			srcs/parsing/ft_is_texture_line.c\
 			srcs/parsing/ft_check_texture.c\
 			srcs/parsing/ft_str_isequal.c\
 			srcs/parsing/ft_split_and_check.c\
@@ -30,7 +31,8 @@ SRCS    =	srcs/parsing/ft_display_message.c\
 			srcs/parsing/ft_check_color.c\
 			srcs/parsing/test_map_border.c\
 			srcs/parsing/test_map_content.c\
-			srcs/parsing/ft_find_map.c\
+			srcs/parsing/ft_convert_map.c\
+			srcs/parsing/ft_test_map.c\
 			srcs/window/ft_window.c\
 			srcs/window/put_pixel.c\
 			srcs/image/ft_image.c\

@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_list_element.c                              :+:      :+:    :+:   */
+/*   ft_get_texture.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 14:43:28 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 11:03:23 by dboyer           ###   ########.fr       */
+/*   Created: 2020/04/25 15:46:49 by dboyer            #+#    #+#             */
+/*   Updated: 2020/04/25 16:05:55 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../includes/cub3d.h"
 
-t_element	*ft_get_list_element(t_list *list, int index)
-{
-	t_element	*next;
+char *ft_get_texture(char *path, char *charcode){
+    char *line;
 
-	if (index < list->size)
-	{
-		next = list->first;
-		while (next && next->index != index)
-			next = next->next;
-		return (next);
-	}
-	return (NULL);
+    line = ft_tag_line(path, charcode, 2);
 }

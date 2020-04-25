@@ -15,7 +15,7 @@ int main(void){
     test.append(&test, "ok6");
     test.remove(&test, test.get(&test, 2));
     test.iter(test.first, print);
-    printf("\n\n");
+    ft_printf("\n\n");
     test.remove(&test, test.first);
     test.iter(test.first, print);
     test.clear(&test);

@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 15:43:23 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/24 17:52:17 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/25 15:34:41 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,13 @@ static void print(t_element *element)
     printf("|%s| \n", (char *)(element->content));
 }
 
+void clear_map_content(t_element *element){
+    free(element->content);
+}
+
 static int apply_test(t_list *map)
 {
-    if (test_map_border(map) && test_map_content(map))
+    if (test_map_content(map) && test_map_border(map))
     {
         ft_printf("\nMap: \n\n");
         map->iter(map->first, print);
@@ -34,7 +38,7 @@ static int apply_test(t_list *map)
     return (0);
 }
 
-void ft_find_map(char *path)
+void ft_test_map(char *path)
 {
     char *line;
     int fd;
@@ -54,10 +58,12 @@ void ft_find_map(char *path)
                 free(line);
         }
     }
-    result = apply_test(&map) ? 1 : 0;
-    map.clear(&map);
     close(fd);
     free(line);
+    map.iter(map.first, ft_convert_map);
+    result = apply_test(&map);
+    map.iter(map.first, clear_map_content);
+    map.clear(&map);
     if (!result)
         exit(EXIT_FAILURE);
 }

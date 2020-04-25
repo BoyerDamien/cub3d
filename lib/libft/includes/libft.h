@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:32:33 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/24 11:05:34 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/25 14:43:44 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int					ft_print_memory(t_format format, va_list *va);
 int					ft_print_space_before(t_format format);
 int					ft_print_space_after(t_format format);
 int					ft_print_zero_padding(t_format format);
-int					ft_printf(const char *str, ...);
+int					ft_printf(const char *str, ...) __attribute__((format(printf, 1, 2)));
 
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);

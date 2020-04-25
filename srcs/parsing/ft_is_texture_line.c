@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_list_element.c                              :+:      :+:    :+:   */
+/*   ft_is_texture_line.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/18 14:43:28 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 11:03:23 by dboyer           ###   ########.fr       */
+/*   Created: 2020/04/25 15:44:48 by dboyer            #+#    #+#             */
+/*   Updated: 2020/04/25 15:45:00 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "../../includes/cub3d.h"
 
-t_element	*ft_get_list_element(t_list *list, int index)
+int ft_is_texture_line(char *line)
 {
-	t_element	*next;
+    char **line_splitted;
 
-	if (index < list->size)
-	{
-		next = list->first;
-		while (next && next->index != index)
-			next = next->next;
-		return (next);
-	}
-	return (NULL);
+    line_splitted = ft_split(line, ' ');
+    if (ft_check_extension(line_splitted[1], ".xpm"))
+    {
+        ft_split_clean(line_splitted);
+        return (1);
+    }
+    ft_split_clean(line_splitted);
+    return (0);
 }

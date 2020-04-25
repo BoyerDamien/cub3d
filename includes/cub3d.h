@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/24 17:40:00 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/25 15:45:25 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ void        ft_display_process_status(char *process, char *status);
 void        ft_display_error(char *message, const char *fun_name);
 void        ft_check_texture(char *path);
 void        ft_check_color(char *path);
-void        ft_find_map(char *path);
+void        ft_test_map(char *path);
+void        ft_convert_map(t_element *element);
 
 int         ft_check_resolution(char *path);
 int         ft_check_extension(char *filename, char* extension);
@@ -66,6 +67,7 @@ int         ft_str_isequal(char *str1, char *str2 );
 int         ft_split_and_check(char *str, int c, char *charcode, int n);
 int         test_map_border(t_list *map);
 int         test_map_content(t_list *map);
+int         ft_is_texture_line(char *line);
 
 char        *ft_move_until(char *str, char* bool, int (*f)(int c));
 char        *ft_tag_line(char *path, char *charcode, int n);

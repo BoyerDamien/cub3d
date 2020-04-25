@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/12 17:05:32 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/25 15:36:11 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ typedef struct s_game
 	void (*character_show)(struct s_game *);
 }	t_game;
 
-t_game  ft_game(char **map, int win_size[2]);
+t_game  ft_game(char *path);
 void    ft_map_show(t_game *game);
 void	ft_character_show(t_game *game);
 void	ft_character_move(t_game *game, int move);
