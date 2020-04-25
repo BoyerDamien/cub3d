@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 15:36:11 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/25 19:38:04 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ typedef struct	s_window
 	void		(*clear)(struct s_window *);
 }				t_window;
 
-t_window		ft_window(int win_size[2], int img_size[2], char *name);
-t_image			ft_image(t_window window, int img_size[2]);
+t_window		ft_window(int width, int height, char *name);
+t_image			ft_image(t_window window, int width, int height);
 void			put_pixel(t_window *window, t_vector point, t_color color);
 void			ft_clear_image(t_window *window);
 
@@ -161,6 +161,7 @@ typedef struct s_game
 	void (*cast_ray)(struct s_game*);
 	void (*character_rotate)(struct s_game*, int);
 	void (*character_show)(struct s_game *);
+	void (*finish)(struct s_game *);
 }	t_game;
 
 t_game  ft_game(char *path);

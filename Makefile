@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/04/25 15:45:41 by dboyer           ###   ########.fr        #
+#    Updated: 2020/04/25 19:30:55 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRCS    =	srcs/parsing/ft_display_message.c\
 			srcs/parsing/test_map_content.c\
 			srcs/parsing/ft_convert_map.c\
 			srcs/parsing/ft_test_map.c\
+			srcs/parsing/ft_get_window_dimensions.c\
+			srcs/parsing/ft_create_texture_from_file.c\
 			srcs/window/ft_window.c\
 			srcs/window/put_pixel.c\
 			srcs/image/ft_image.c\

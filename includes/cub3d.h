@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 15:45:25 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/25 19:30:45 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,15 @@ int         test_map_border(t_list *map);
 int         test_map_content(t_list *map);
 int         ft_is_texture_line(char *line);
 
+
 char        *ft_move_until(char *str, char* bool, int (*f)(int c));
 char        *ft_tag_line(char *path, char *charcode, int n);
 
 double      ft_degree_to_rad(double angle);
 double      ft_map_value(double val, double min1, double max1, double max2);
+
+t_vector    ft_get_window_dimensions(char *path);
+t_texture   ft_create_texture_from_file(char *path, char *charcode, t_window *window);
 
 
 #endif

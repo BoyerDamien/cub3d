@@ -6,12 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:47:29 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 16:06:09 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/25 19:42:14 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
 
 int main(int ac, char **av)
 {
@@ -23,8 +22,10 @@ int main(int ac, char **av)
 		ft_check_texture(av[1]);
 		ft_check_color(av[1]);
 		ft_test_map(av[1]);
-		//t_game game = ft_game(av[1]);
-		return (0);
+		
+		t_game game = ft_game(av[1]);
+		game.finish(&game);
+		exit (EXIT_SUCCESS);
 	}
 	else{
 		ft_display_error("No valid argument was provided", __func__);
