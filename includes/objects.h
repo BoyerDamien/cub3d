@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 19:38:04 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/27 17:26:15 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,11 @@ typedef struct s_rectangle
 	double height;
 	t_color color;
 	t_vector coordinate;
-	void (*show)(struct s_rectangle*, t_window);
+	void (*show)(struct s_rectangle*, t_window *);
 }	t_rectangle;
 
 t_rectangle ft_rectangle(double width, double height, t_vector coordinate, t_color);
-void ft_show_rectangle(t_rectangle *rect, t_window window);
+void ft_show_rectangle(t_rectangle *rect, t_window *window);
 
 
 /*********************************************************************/
@@ -155,7 +155,9 @@ typedef struct s_game
 	t_texture wall_texture_O;
 	t_texture wall_texture_E;
 	t_texture actual_text;
-	double cam_dist;
+	t_color ceil_color;
+	t_color floor_color;
+	int text_column;
 	void (*map_show)(struct s_game *);
 	void (*character_move)(struct s_game*, int);
 	void (*cast_ray)(struct s_game*);

@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_find_map.c                                      :+:      :+:    :+:   */
+/*   ft_test_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 15:43:23 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 15:34:41 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/26 11:52:38 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-int is_map(char *line)
-{
-    line = ft_move_until(line, "not", ft_isspace);
-    return (line && ft_isdigit(*line) ? 1 : 0);
-}
 
 static void print(t_element *element)
 {
     printf("|%s| \n", (char *)(element->content));
 }
 
-void clear_map_content(t_element *element){
+void clear_map_content(t_element *element)
+{
     free(element->content);
 }
 
@@ -40,27 +35,12 @@ static int apply_test(t_list *map)
 
 void ft_test_map(char *path)
 {
-    char *line;
-    int fd;
     t_list map;
     int result;
 
     result = 0;
-    map = ft_list();
     ft_display_message("Check map...");
-    if ((fd = open(path, O_RDONLY)) != -1)
-    {
-        while (get_next_line(fd, &line) == 1)
-        {
-            if (is_map(line))
-                map.append(&map, line);
-            else
-                free(line);
-        }
-    }
-    close(fd);
-    free(line);
-    map.iter(map.first, ft_convert_map);
+    map = ft_get_map(path);
     result = apply_test(&map);
     map.iter(map.first, clear_map_content);
     map.clear(&map);

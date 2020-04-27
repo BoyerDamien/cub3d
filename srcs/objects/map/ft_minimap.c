@@ -6,21 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 12:43:07 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/12 18:28:22 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/27 17:31:23 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cub3d.h"
-
-static int map_height(char **map)
-{
-	int i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
-}
 
 t_map ft_minimap(char **map, size_t width, size_t height, t_vector coordinate)
 {
@@ -30,10 +20,9 @@ t_map ft_minimap(char **map, size_t width, size_t height, t_vector coordinate)
 	new.width = width;
 	new.height = height;
 	new.coordinate = coordinate;
-	new.nx = ft_strlen(map[0]);
-	new.cube_width = new.width / new.nx;
-	new.ny = map_height(map);
-	new.cube_height = new.height / new.ny;
+	new.cube_width = new.width / 33;
+	new.cube_height = new.height / 25;
 	new.color = ft_color(255, 255, 255);
+	new.clear = ft_clear_map;
 	return (new);
 }

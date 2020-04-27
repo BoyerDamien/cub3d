@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 19:30:45 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/27 17:25:41 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,10 @@
 #define UP 65362
 #define KEY_A 97
 #define KEY_Z 122
-#define STEP 0.5
+#define STEP 0.2
 #define ROTATION 5
-#define WIN_HEIGHT 100
-#define WIN_WIDTH 100
-#define WIN_CENTER (WIN_WIDTH / 2)
-#define BLOCK_SIZE (WIN_HEIGHT / 10)
 #define LIGHT_RATIO 0.2
 #define FOV 60
-#define MINIMAP_X (WIN_WIDTH * 0.01)
-#define MINIMAP_Y (WIN_HEIGHT * 0.01)
-#define MINIMAP_WIDTH (WIN_WIDTH / 4)
-#define MINIMAP_HEIGHT (WIN_HEIGHT / 4)
-#define GROUND_COLOR ft_color(0, 255, 0)
-#define CEILING_COLOR ft_color(0, 0, 255)
 
 #include <math.h>
 #include <stdio.h>
@@ -42,15 +32,11 @@
 #include "../minilibx-linux/mlx.h"
 #include "objects.h"
 
-int         ft_search_character(t_map *map, t_character *character);
-
-t_vector    ft_check_map(t_game *game, t_vector coordinate);
-
-void        ft_trace_line(t_vector onset, t_vector offset, t_window window, t_color color);
+void        ft_trace_column(t_vector onset, t_vector offset, t_window *window, t_color color);
 void        ft_draw_ground(t_vector onset, t_vector offset, t_game *game, t_color color);
 void        ft_draw_wall(t_vector onset, t_vector offset, t_game *game, double l_ratio);
 void        find_obstacles(t_map *map, int x, int y);
-void        ft_choose_texture(t_vector point, t_game *game);
+void        ft_choose_texture(t_vector point, t_game *game, t_vector hit_point);
 void        ft_display_message(char *message);
 void        ft_display_process_status(char *process, char *status);
 void        ft_display_error(char *message, const char *fun_name);
@@ -68,6 +54,8 @@ int         ft_split_and_check(char *str, int c, char *charcode, int n);
 int         test_map_border(t_list *map);
 int         test_map_content(t_list *map);
 int         ft_is_texture_line(char *line);
+int         ft_search_character(t_map *map, t_character *character);
+int         ft_is_wall(t_game *game, int x, int y);
 
 
 char        *ft_move_until(char *str, char* bool, int (*f)(int c));
@@ -77,7 +65,11 @@ double      ft_degree_to_rad(double angle);
 double      ft_map_value(double val, double min1, double max1, double max2);
 
 t_vector    ft_get_window_dimensions(char *path);
+
 t_texture   ft_create_texture_from_file(char *path, char *charcode, t_window *window);
+t_color     ft_get_color(char *path, char *charcode);
+t_list      ft_get_map(char *path);
+char        **ft_map_list_to_char(char *path);
 
 
 #endif

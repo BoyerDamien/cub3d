@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 13:49:20 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/12 18:30:18 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/27 17:15:30 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void ft_character_show(t_game *game)
 		a = 0;
 		while (a < 360)
 		{
-			coordinate.x = game->character.coordinate.x * game->map.cube_width + MINIMAP_X + r * sin(a);
-			coordinate.y = game->character.coordinate.y * game->map.cube_height + MINIMAP_Y + r * cos(a);
+			coordinate.x = game->character.coordinate.x * game->map.cube_width + game->map.coordinate.x + r * sin(a);
+			coordinate.y = game->character.coordinate.y * game->map.cube_height + game->map.coordinate.y + r * cos(a);
 			game->window.draw(&game->window, coordinate, game->character.color);
 			a++;
 		}

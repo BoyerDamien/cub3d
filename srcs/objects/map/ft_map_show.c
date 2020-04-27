@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 13:00:35 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/12 18:34:13 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/27 14:15:27 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void ft_map_show(t_game *game)
 	while (game->map.content[j])
 	{
 		i = 0;
-		while (game->map.content[i])
+		while (game->map.content[j][i])
 		{
 			if (game->map.content[j][i] == '1')
 			{
 				coordinate = ft_vector(game->map.coordinate.x + i * game->map.cube_width, game->map.coordinate.y + j * game->map.cube_height, 0);
 				rect = ft_rectangle(game->map.cube_width, game->map.cube_height, coordinate , game->map.color);
-				rect.show(&rect, game->window);
+				rect.show(&rect, &game->window);
 			}
 			i++;
 		}
