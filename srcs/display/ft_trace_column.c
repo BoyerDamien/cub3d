@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 16:38:26 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/27 14:22:57 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/28 19:38:31 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void ft_trace_column(t_vector onset, t_vector offset, t_window *window, t_color color)
+inline void ft_trace_column(t_vector onset, t_vector offset, t_window *window, t_color color)
 {
 	while (onset.y <= offset.y)
 	{

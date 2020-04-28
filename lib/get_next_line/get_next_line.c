@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 11:35:32 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/21 18:15:44 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/28 17:41:20 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		append_line(char **line, char **stock)
 int		get_next_line(int fd, char **line)
 {
 	int			ret;
-	char		buffer[ BUFFER_SIZE ];
+	char		buffer[ BUFFER_SIZE + 1];
 	static char *stock = NULL;
 
 	if (fd >= 0 && BUFFER_SIZE > 0 && line != NULL && !read(fd, buffer, 0))

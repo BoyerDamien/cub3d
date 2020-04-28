@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/27 17:26:15 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/28 19:11:22 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct	s_window
 
 t_window		ft_window(int width, int height, char *name);
 t_image			ft_image(t_window window, int width, int height);
-void			put_pixel(t_window *window, t_vector point, t_color color);
+void			put_pixel(t_window *window, t_vector point, t_color color) __attribute__((hot));
 void			ft_clear_image(t_window *window);
 
 
@@ -82,7 +82,7 @@ typedef struct s_rectangle
 }	t_rectangle;
 
 t_rectangle ft_rectangle(double width, double height, t_vector coordinate, t_color);
-void ft_show_rectangle(t_rectangle *rect, t_window *window);
+void ft_show_rectangle(t_rectangle *rect, t_window *window) __attribute__((hot));
 
 
 /*********************************************************************/
@@ -158,6 +158,7 @@ typedef struct s_game
 	t_color ceil_color;
 	t_color floor_color;
 	int text_column;
+	int win_center;
 	void (*map_show)(struct s_game *);
 	void (*character_move)(struct s_game*, int);
 	void (*cast_ray)(struct s_game*);
@@ -166,12 +167,12 @@ typedef struct s_game
 	void (*finish)(struct s_game *);
 }	t_game;
 
-t_game  ft_game(char *path);
-void    ft_map_show(t_game *game);
-void	ft_character_show(t_game *game);
-void	ft_character_move(t_game *game, int move);
-void	ft_cast_ray(t_game *game);
-void	ft_character_rotate(t_game *game, int rotation);
+t_game  ft_game(char *path) __attribute__((hot));
+void    ft_map_show(t_game *game) __attribute__((hot));
+void	ft_character_show(t_game *game) __attribute__((hot));
+void	ft_character_move(t_game *game, int move) __attribute__((hot));
+void	ft_cast_ray(t_game *game) __attribute__((hot));
+void	ft_character_rotate(t_game *game, int rotation) __attribute__((hot));
 
 
 #endif

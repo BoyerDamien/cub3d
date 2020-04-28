@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 15:19:35 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 15:13:25 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/28 17:35:15 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int test_map_border(t_list *map)
         ft_display_error("Your map is not closed", __func__);
         result = 0;
     }
+    printf("memory = %d\n", memory.size);
     memory.clear(&memory);
     return (result);
 }

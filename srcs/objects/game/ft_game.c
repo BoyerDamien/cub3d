@@ -17,6 +17,7 @@ static void init_method(t_game *game){
     game->cast_ray = ft_cast_ray;
     game->character_rotate = ft_character_rotate;
     game->character_show = ft_character_show;
+    game->finish = finish;
 }
 
 t_game ft_game(char *path)
@@ -39,6 +40,6 @@ t_game ft_game(char *path)
     new.wall_texture_E = ft_create_texture_from_file(path, "EA", &new.window);
     new.ceil_color = ft_get_color(path, "C");
     new.floor_color = ft_get_color(path, "F");
-    new.finish = finish;
+    new.win_center = window_dimensions.y / 2;
     return (new);
 }

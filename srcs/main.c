@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:47:29 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/27 09:33:24 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/28 18:03:34 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int ft_handle_events(int keycode, void *param){
 		game->character_rotate(game, 'l');
 	else if (keycode == KEY_Z)
 		game->character_rotate(game, 'r');
+	//mlx_clear_window(game->window.mlx_ptr, game->window.win_ptr);
 	game->cast_ray(game);
 	game->map_show(game);
 	mlx_put_image_to_window(game->window.mlx_ptr, game->window.win_ptr, game->window.img.img_ptr, 0, 0);
@@ -62,7 +63,7 @@ int main(int ac, char **av)
 		ft_check_resolution(av[1]);
 		ft_check_texture(av[1]);
 		ft_check_color(av[1]);
-		ft_test_map(av[1]);
+		//ft_test_map(av[1]);
 		
 		t_game game = ft_game(av[1]);
 		mlx_hook(game.window.win_ptr, 2, 1L << 0, ft_handle_events, &game);

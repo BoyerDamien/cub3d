@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:12:34 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/11 10:54:00 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/28 18:07:19 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef	struct	s_vector
 	double			(*dist)(struct s_vector*, struct s_vector);
 }			t_vector;
 
-t_vector	ft_vector(double x, double y, double z);
+t_vector	ft_vector(double x, double y, double z) __attribute__((hot));
 t_vector	ft_vec_add(t_vector *vec1, t_vector vec2);
 t_vector	ft_vec_sub(t_vector *vec1, t_vector vec2);
 t_vector	ft_vec_div(t_vector *vec1, t_vector vec2);

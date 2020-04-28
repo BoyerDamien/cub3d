@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 15:43:23 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/26 11:52:38 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/28 17:31:13 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void ft_test_map(char *path)
     ft_display_message("Check map...");
     map = ft_get_map(path);
     result = apply_test(&map);
+    map.iter(map.first, print);
     map.iter(map.first, clear_map_content);
     map.clear(&map);
     if (!result)

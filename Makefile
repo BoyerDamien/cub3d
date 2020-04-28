@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/04/27 13:11:39 by dboyer           ###   ########.fr        #
+#    Updated: 2020/04/28 17:40:45 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ OBJS_MAIN = $(MAIN:.c=.o)
 
 OBJS    = 	$(SRCS:.c=.o)
 
-CFLAGS  =	-Werror -Wall -Wextra
+CFLAGS  =	-Werror -Wall -Wextra -O3
 
 LIBFT		= -L ./lib/libft -lft
 

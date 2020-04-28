@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:59:35 by dboyer            #+#    #+#             */
-/*   Updated: 2020/01/23 17:17:58 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/28 18:57:46 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_isascii(int c)
+inline int	ft_isascii(int c)
 {
 	return (c >= 0 && c <= 127);
 }

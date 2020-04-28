@@ -1,6 +1,6 @@
 #include "../../../includes/cub3d.h"
 
-static t_vector ft_cast_one_ray(t_game *game, double angle)
+static inline t_vector ft_cast_one_ray(t_game *game, double angle)
 {
     t_vector direction;
     t_vector point;
@@ -13,24 +13,22 @@ static t_vector ft_cast_one_ray(t_game *game, double angle)
     return (point);
 }
 
-static void render(t_game *game, double dist, int x)
+static inline void render(t_game *game, double dist, int x)
 {
     double height;
     t_vector onset;
     t_vector offset;
-    int win_center;
     int win_height;
 
-    win_center = game->window.width / 2 ;
     win_height = game->window.height;
     if (dist >= 0)
     {
-        height = win_height * 0.5 / (dist + 0.00001);
+        height = dist > 0 ? win_height / dist : win_height;
         height = height > win_height ? win_height : height;
-        if (height < win_height)
+        if (height <= win_height)
         {
-            onset = ft_vector(x,  win_center - height / 2, 0);
-            offset = ft_vector(x, win_center + height / 2, 0);
+            onset = ft_vector(x,  game->win_center - height / 2, 0);
+            offset = ft_vector(x, game->win_center + height / 2, 0);
             ft_trace_column(ft_vector(x, 0, 0), onset, &game->window, game->ceil_color);
             ft_draw_wall(onset, offset, game, 255 / dist * LIGHT_RATIO);
             ft_draw_ground(offset, ft_vector(x, win_height, 0), game, game->floor_color);
