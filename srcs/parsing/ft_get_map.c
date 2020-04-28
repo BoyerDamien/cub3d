@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 11:48:07 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/26 11:50:18 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/28 20:31:52 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_list ft_get_map(char *path)
     t_list map;
 
     map = ft_list();
+    line = NULL;
     if ((fd = open(path, O_RDONLY)) != -1)
     {
         while (get_next_line(fd, &line) == 1)

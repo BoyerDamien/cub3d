@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 18:42:28 by dboyer            #+#    #+#              #
-#    Updated: 2020/04/28 19:03:19 by dboyer           ###   ########.fr        #
+#    Updated: 2020/04/28 20:33:45 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,7 @@ OBJS 	=	$(SRCS:.c=.o)
 
 CFLAGS 	= -Werror -Wall -Wextra
 
-CC 		= gcc
+CC 		= clang
 
 CLEAN = clean
 

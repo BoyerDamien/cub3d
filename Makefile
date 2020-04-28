@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/04/28 17:40:45 by dboyer           ###   ########.fr        #
+#    Updated: 2020/04/28 20:29:17 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ LIBFT		= -L ./lib/libft -lft
 
 MLX 	= 	-L./minilibx-linux -lmlx -lm -lXext -lX11 -lbsd
 
-CC      = 	gcc
+CC      = 	clang
 
 RM      = 	rm -f
 

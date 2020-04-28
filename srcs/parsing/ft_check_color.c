@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 10:51:52 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/24 14:23:09 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/28 20:31:25 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int test_color_line(char *line)
     int i;
 
     i = 0;
+    line_splitted = NULL;
     line = ft_move_until(line, "not", ft_isalpha);
     if (line && (line_splitted = ft_split(line, ',')))
     {

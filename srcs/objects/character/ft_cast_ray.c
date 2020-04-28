@@ -8,7 +8,7 @@ static inline t_vector ft_cast_one_ray(t_game *game, double angle)
     point = game->character.coordinate;
     direction = ft_vector(sin(angle), cos(angle), 0);
     while (!ft_is_wall(game, point.x, point.y)){
-      point = point.add(&point, direction.mul_scalar(&direction, 0.01));
+      point = point.add(&point, direction.mul_scalar(&direction, 0.03));
     }
     return (point);
 }
