@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 18:02:26 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 18:50:12 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #define STEP 0.3
 #define ROTATION 3
 #define LIGHT_RATIO 0.1
-#define FOV 66
+#define FOV 60
 
 #include <math.h>
 #include <stdio.h>
