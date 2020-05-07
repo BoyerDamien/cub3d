@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 10:57:21 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/21 14:25:58 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "cub3d.h"
 
 t_color ft_add_color(t_color *color1, t_color color2)
 {

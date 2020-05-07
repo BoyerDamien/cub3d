@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:25:44 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/11 16:17:37 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "cub3d.h"
 
 t_vector	ft_vector(double x, double y, double z)
 {

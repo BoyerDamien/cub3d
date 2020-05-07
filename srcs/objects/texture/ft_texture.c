@@ -1,4 +1,4 @@
-#include "../../../includes/cub3d.h"
+#include "cub3d.h"
 
 t_texture ft_texture(void *mlx_ptr, char *path)
 {

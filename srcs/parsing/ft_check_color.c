@@ -6,64 +6,39 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 10:51:52 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 20:31:25 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
-int is_correct(int color)
+static int is_correct(int color)
 {
     return (color >= 0 && color <= 255);
 }
 
-int is_number(char *color)
+static int test_color_line(char *line, int n)
 {
-    while(ft_isspace(*color))
-        color++;
-    while (*color)
-    {
-        if (!ft_isdigit(*color))
+    if (line &&  *line && n < 3){
+        if (!ft_isdigit(*line))
+            line = ft_move_until(line, "is", ft_isdigit);
+        if (!ft_isdigit(*line) || !is_correct(ft_atoi(line)))
             return (0);
-        color++;
-    }
-    return (1);
-}
-
-int test_color_line(char *line)
-{
-    char **line_splitted;
-    int i;
-
-    i = 0;
-    line_splitted = NULL;
-    line = ft_move_until(line, "not", ft_isalpha);
-    if (line && (line_splitted = ft_split(line, ',')))
-    {
-        while (line_splitted[i])
-        {
-            if (!is_number(line_splitted[i]) || !is_correct(ft_atoi(line_splitted[i])))
-            {
-                printf("color = %s\n", line_splitted[i]);
-                ft_split_clean(line_splitted);
-                return (0);
-            }
-            i++;
+        if (ft_isdigit(*line)){
+            line = ft_move_until(line, "not", ft_isdigit);
+            return (test_color_line(ft_move_until(line, "is", ft_isdigit), n + 1));
         }
-        ft_split_clean(line_splitted);
-        return (1);
     }
-    ft_split_clean(line_splitted);
-    return (0);
+    return ( !line && n == 3 );
 }
 
-int ft_check_one_color(char *path, char *charcode)
+static int ft_check_one_color(char *path, char *charcode)
 {
     char *line;
     char *message;
 
     message = ft_strjoin("Check color\t\t", charcode);
-    if ((line = ft_tag_line(path, charcode, 2)) && test_color_line(line))
+    if ((line = ft_tag_line(path, charcode)) && test_color_line(line, 0))
     {
         ft_display_process_status(message, "ok");
         free(message);

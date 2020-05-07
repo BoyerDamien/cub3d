@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 09:11:41 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 15:46:11 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 static int ft_check_one_texture(char *path, char *orientation)
 {
@@ -19,7 +19,7 @@ static int ft_check_one_texture(char *path, char *orientation)
     char *status;
 
     status = ft_strjoin("Check texture\t\t", orientation);
-    if ((line = ft_tag_line(path, orientation, 2)) && ft_is_texture_line(line))
+    if ((line = ft_tag_line(path, orientation)) && ft_is_texture_line(line))
     {
         ft_display_process_status(status, "ok");
         free(line);
@@ -39,7 +39,7 @@ void ft_check_texture(char *path){
     int i;
 
     i = 0;
-    while( i < 5 ){
+    while ( i < 5 ){
         if (!ft_check_one_texture(path, charcode[i]))
             exit(0);
         i++;

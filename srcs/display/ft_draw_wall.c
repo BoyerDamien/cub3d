@@ -6,12 +6,12 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 09:53:23 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 19:46:15 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 static inline t_color get_color(char *img, int x, int y, int size_line)
 {

@@ -1,4 +1,4 @@
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 double ft_map_value(double val, double min1, double max1, double max2)
 {

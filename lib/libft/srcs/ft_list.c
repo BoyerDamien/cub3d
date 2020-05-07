@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 12:30:29 by dboyer            #+#    #+#             */
-/*   Updated: 2020/03/03 14:26:16 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/04/30 19:20:49 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_list		ft_list(void)
 	t_list new;
 
 	new.size = 0;
+	new.first = NULL;
 	new.append = ft_add_back;
 	new.clear = ft_clear;
 	new.concat = ft_concat;

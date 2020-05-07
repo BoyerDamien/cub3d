@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 12:43:07 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/27 17:31:23 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "cub3d.h"
 
 t_map ft_minimap(char **map, size_t width, size_t height, t_vector coordinate)
 {

@@ -1,4 +1,4 @@
-#include "../../../includes/cub3d.h"
+#include "cub3d.h"
 
 
 double choose_orientation(char c){

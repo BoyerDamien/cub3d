@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 12:32:12 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/27 10:06:36 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 static void fill_n_map(char **n_map, t_element *element){
 	if (element){
@@ -29,9 +29,6 @@ char **ft_map_list_to_char(char *path){
 	if (!(n_map = (char **)malloc( (height + 1) * sizeof(char *))))
 		return (NULL);
 	fill_n_map(n_map, map.first);
-	for (int i = 0; i < height; i++){
-		ft_printf("map = %s\n", n_map[i]);
-	}
 	n_map[height] = NULL;
     map.clear(&map);
 	return (n_map);

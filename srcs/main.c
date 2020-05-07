@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:47:29 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 20:54:43 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:07:18 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int get_map_width(t_element *element, int max_width)
 {
@@ -45,6 +45,7 @@ int ft_handle_events(int keycode, void *param){
 		game->character_rotate(game, 'l');
 	else if (keycode == KEY_Z)
 		game->character_rotate(game, 'r');
+	mlx_clear_window(game->window.mlx_ptr, game->window.win_ptr);
 	game->cast_ray(game);
 	game->map_show(game);
 	mlx_put_image_to_window(game->window.mlx_ptr, game->window.win_ptr, game->window.img.img_ptr, 0, 0);

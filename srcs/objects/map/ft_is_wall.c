@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/27 10:35:13 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 19:46:35 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "cub3d.h"
 
 inline int ft_is_wall(t_game *game, int x, int y){
     return (game->map.content[y][x] == '1');

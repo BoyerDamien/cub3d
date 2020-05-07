@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 16:53:50 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/24 11:03:05 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/02 17:28:52 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,27 +28,4 @@ typedef struct		s_format
 	char			*flag;
 }					t_format;
 
-typedef struct		s_element
-{
-	void				*content;
-	int					index;
-	struct s_element	*previous;
-	struct s_element	*next;
-}					t_element;
-
-typedef struct		s_list
-{
-	int					size;
-	struct s_element	*first;
-
-	void (*append)(struct s_list*, void*);
-	void (*clear)(struct s_list*);
-	void (*remove)(struct s_list*, t_element*);
-	void (*iter)(t_element*, void (*f)(t_element*));
-	t_element *(*last)(struct s_list*);
-	t_element *(*get)(struct s_list*, int);
-	struct s_list (*concat)(struct s_list*, struct s_list);
-	struct s_list (*copy)(struct s_list*);
-	struct s_list (*map)(struct s_list*, void *(*f)(t_element*));
-}					t_list;
 #	endif

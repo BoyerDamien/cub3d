@@ -6,14 +6,14 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:32:57 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 18:28:03 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cub3d.h"
+#include "cub3d.h"
 
 
-static void move_right(t_game *game)
+static void move_left(t_game *game)
 {
 	double angle;
 	t_vector move_vector;
@@ -27,7 +27,7 @@ static void move_right(t_game *game)
 		game->character.coordinate = move_vector;
 }
 
-static void move_left(t_game *game)
+static void move_right(t_game *game)
 {
 	double angle;
 	t_vector move_vector;

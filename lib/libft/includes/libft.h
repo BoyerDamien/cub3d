@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:32:33 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/25 14:43:44 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/02 17:44:26 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,6 @@ void				ft_putnbr_fd(long nb, int fd);
 void				ft_bzero(void *s, size_t n);
 void				ft_putchar(char c);
 void				ft_putstr(char *str);
-void				ft_add_back(t_list *list, void *content);
-void				ft_del(t_list *list, t_element *element);
-void				ft_clear(t_list *list);
-void				ft_list_iter(t_element *element, \
-											void (*f)(t_element *element));
 void 				ft_split_clean(char **split);
 void				ft_putnbr_hex(long nb, char *base, char *neg);
 void				ft_putnbr_unsigned(unsigned int nb);
@@ -104,14 +99,5 @@ t_format			ft_minmax_unsigned_nb(t_format format, unsigned int arg);
 t_format			ft_minmax_memory(t_format format, long arg);
 t_format			ft_parsing(t_format format, va_list *va);
 t_format			ft_format(char *flag, va_list *va);
-
-t_element			*ft_new_element(void *content);
-t_element			*ft_get_last_element(t_list *list);
-t_element			*ft_get_list_element(t_list *list, int index);
-t_list				ft_map(t_list *list, void *(*f)(t_element *element));
-
-t_list				ft_list(void);
-t_list				ft_concat(t_list *list1, t_list list2);
-t_list				ft_list_copy(t_list *list);
 
 #	endif

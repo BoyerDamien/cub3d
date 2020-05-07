@@ -1,4 +1,4 @@
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 double ft_intersect_distance(t_vector point_dir, t_vector origin_dir)
 {

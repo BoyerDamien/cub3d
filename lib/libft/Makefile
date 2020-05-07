@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 18:42:28 by dboyer            #+#    #+#              #
-#    Updated: 2020/04/28 20:33:45 by dboyer           ###   ########.fr        #
+#    Updated: 2020/05/02 17:58:38 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ SRCS 	=	srcs/ft_atoi.c\
 			srcs/ft_strtrim.c\
 			srcs/ft_cinset.c\
 			srcs/ft_split.c\
+			srcs/ft_split_clean.c\
 			srcs/ft_itoa.c\
 			srcs/ft_strmapi.c\
 			srcs/ft_putchar_fd.c\
@@ -84,18 +85,6 @@ SRCS 	=	srcs/ft_atoi.c\
 			srcs/ft_print_space_before.c\
 			srcs/ft_print_space_after.c\
 			srcs/ft_print_zero_padding.c\
-			srcs/ft_add_back.c\
-			srcs/ft_clear.c\
-			srcs/ft_concat.c\
-			srcs/ft_del.c\
-			srcs/ft_list_copy.c\
-			srcs/ft_list_iter.c\
-			srcs/ft_list.c\
-			srcs/ft_map.c\
-			srcs/ft_new_element.c\
-			srcs/ft_split_clean.c\
-			srcs/ft_get_last_element.c\
-			srcs/ft_get_list_element.c\
 
 OBJS 	=	$(SRCS:.c=.o)
 

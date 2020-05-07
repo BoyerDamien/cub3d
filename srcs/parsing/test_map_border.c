@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 15:19:35 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 17:35:15 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 int is_valid_neighbour(t_element *element, int index, t_list *memory)
 {
@@ -33,7 +33,7 @@ t_element *back_element(t_list *memory, t_list *map)
 {
     t_element *element;
 
-    element = (memory->last(memory))->previous;
+    element = (memory->last)->previous;
     return (map->get(map, *((int *)(element->content))));
 }
 
@@ -41,9 +41,9 @@ int back_index(t_list *memory)
 {
     int index;
 
-    index = *((int *)(memory->last(memory)->content));
-    memory->remove(memory, (memory->last(memory))->previous);
-    memory->remove(memory, memory->last(memory));
+    index = *((int *)(memory->last->content));
+    memory->remove(memory, (memory->last)->previous);
+    memory->remove(memory, memory->last);
     return (index);
 }
 
@@ -97,7 +97,6 @@ int test_map_border(t_list *map)
         ft_display_error("Your map is not closed", __func__);
         result = 0;
     }
-    printf("memory = %d\n", memory.size);
     memory.clear(&memory);
     return (result);
 }

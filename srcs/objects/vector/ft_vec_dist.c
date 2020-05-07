@@ -1,4 +1,4 @@
-#include "../../../includes/cub3d.h"
+#include "cub3d.h"
 
 double ft_vec_dist(t_vector *vec1, t_vector vec2)
 {

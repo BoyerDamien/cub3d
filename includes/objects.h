@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 19:11:22 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/04 18:42:28 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,8 @@ typedef struct s_game
 	t_texture wall_texture_O;
 	t_texture wall_texture_E;
 	t_texture actual_text;
+	t_list sprites;
+	t_texture sprite_texture;
 	t_color ceil_color;
 	t_color floor_color;
 	int text_column;
@@ -175,4 +177,18 @@ void	ft_cast_ray(t_game *game) __attribute__((hot));
 void	ft_character_rotate(t_game *game, int rotation) __attribute__((hot));
 
 
+
+typedef struct s_sprite
+{
+	t_vector onset;
+	double height;
+	double ratio;
+	double dist;
+	int screen_x;
+	int x;
+	int y;
+	int column;
+}	t_sprite;
+
+t_sprite *ft_sprite(t_game *game, t_vector point, double x, double angle);
 #endif

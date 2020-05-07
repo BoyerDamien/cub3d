@@ -1,12 +1,14 @@
-#include "../../../includes/cub3d.h"
+#include "cub3d.h"
 
 static void finish(t_game *game){
     mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_N.img_ptr);
     mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_S.img_ptr);
 	mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_E.img_ptr);
 	mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_O.img_ptr);
-	mlx_destroy_image(game->window.mlx_ptr, game->window.img.img_ptr);
+	mlx_destroy_image(game->window.mlx_ptr, game->sprite_texture.img_ptr);
+    mlx_destroy_image(game->window.mlx_ptr, game->window.img.img_ptr);
     mlx_destroy_window(game->window.mlx_ptr, game->window.win_ptr);
+    //game->sprites.clear(&game->sprites);
     game->map.clear(&game->map);
 }
 
@@ -38,8 +40,10 @@ t_game ft_game(char *path)
     new.wall_texture_S = ft_create_texture_from_file(path, "SO", &new.window);
     new.wall_texture_O = ft_create_texture_from_file(path, "WE", &new.window);
     new.wall_texture_E = ft_create_texture_from_file(path, "EA", &new.window);
+    new.sprite_texture = ft_create_texture_from_file(path, "S", &new.window);
     new.ceil_color = ft_get_color(path, "C");
     new.floor_color = ft_get_color(path, "F");
     new.win_center = window_dimensions.y / 2;
+    new.sprites = ft_list();
     return (new);
 }
