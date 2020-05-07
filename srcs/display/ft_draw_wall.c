@@ -6,10 +6,9 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 09:53:23 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 17:44:28 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "cub3d.h"
 
@@ -27,11 +26,11 @@ void ft_draw_wall(t_vector onset, t_vector offset, t_game *game, double l_ratio)
 	t_color text_color;
 	t_vector point;
 	int y;
-	(void)l_ratio;
 
 	y = 0;
-	point = ft_vector(onset.x, onset.y, 0);
-	while (point.y <= offset.y){
+	point = onset;
+	while (point.y <= offset.y)
+	{
 		cy = y / (offset.y - onset.y) * game->actual_text.height;
 		text_color = get_color(game->actual_text.img_data, game->text_column, cy, game->actual_text.size_line);
 		text_color = text_color.add_light(&text_color, text_color, l_ratio);

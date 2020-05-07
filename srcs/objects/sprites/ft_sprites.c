@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/30 19:56:56 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 12:04:07 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 t_sprite *ft_sprite(t_game *game, t_vector point, double x, double angle){
     t_sprite *new;
+    (void)angle;
     
     if (!(new = (t_sprite *)malloc(sizeof(t_sprite))))
         return (NULL);
     new->dist = point.dist(&point, game->character.coordinate);
-    new->dist = new->dist * cos(game->character.orientation - angle);
+    //new->dist = new->dist * cos(game->character.orientation - angle);
     new->x = (int)point.x;
     new->y = (int)point.y;
     new->height = new->dist > 0 ? game->window.height / new->dist : game->window.height;

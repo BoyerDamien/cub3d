@@ -1,7 +1,7 @@
 #include "cub3d.h"
 
 
-double choose_orientation(char c){
+static inline double choose_orientation(char c){
 	if (c == 'E')
 		return (90);
 	else if ( c == 'N')

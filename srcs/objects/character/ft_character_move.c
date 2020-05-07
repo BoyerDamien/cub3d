@@ -6,65 +6,30 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:32:57 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 12:55:10 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-static void move_left(t_game *game)
+static inline void move_minus(t_game *game, t_vector ref)
 {
-	double angle;
 	t_vector move_vector;
 	t_vector coordinate;
 
 	coordinate = game->character.coordinate;
-	angle = game->character.orientation - ft_degree_to_rad(90);
-	move_vector = ft_vector(sin(angle), cos(angle), 0);
-	move_vector = coordinate.add(&coordinate, move_vector.mul_scalar(&move_vector, STEP));
+	move_vector = coordinate.sub(&coordinate, ref.mul_scalar(&ref, STEP));
 	if (!ft_is_wall(game, move_vector.x, move_vector.y))
 		game->character.coordinate = move_vector;
 }
 
-static void move_right(t_game *game)
+static inline void move_plus(t_game *game, t_vector ref)
 {
-	double angle;
 	t_vector move_vector;
 	t_vector coordinate;
 
 	coordinate = game->character.coordinate;
-	angle = game->character.orientation + ft_degree_to_rad(90);
-	move_vector = ft_vector(sin(angle), cos(angle), 0);
-	move_vector = coordinate.add(&coordinate, move_vector.mul_scalar(&move_vector, STEP));
-	if (!ft_is_wall(game, move_vector.x, move_vector.y))
-		game->character.coordinate = move_vector;
-}
-
-static void move_up(t_game *game)
-{
-	double angle;
-	t_vector move_vector;
-	t_vector coordinate;
-
-	coordinate = game->character.coordinate;
-	angle = game->character.orientation;
-	move_vector = ft_vector(sin(angle), cos(angle), 0);
-	move_vector = coordinate.add(&coordinate, move_vector.mul_scalar(&move_vector, STEP));
-	if (!ft_is_wall(game, move_vector.x, move_vector.y))
-		game->character.coordinate = move_vector;
-}
-
-static void move_down(t_game *game)
-{
-	double angle;
-	t_vector move_vector;
-	t_vector coordinate;
-
-	coordinate = game->character.coordinate;
-	angle = game->character.orientation;
-	move_vector = ft_vector(sin(angle), cos(angle), 0);
-	move_vector = coordinate.sub(&coordinate, move_vector.mul_scalar(&move_vector, STEP));
+	move_vector = coordinate.add(&coordinate, ref.mul_scalar(&ref, STEP));
 	if (!ft_is_wall(game, move_vector.x, move_vector.y))
 		game->character.coordinate = move_vector;
 }
@@ -72,11 +37,11 @@ static void move_down(t_game *game)
 void ft_character_move(t_game *game, int move)
 {
 	if (move == RIGHT)
-		move_right(game);
+		move_plus(game, game->character.plane);
 	else if (move == LEFT)
-		move_left(game);
+		move_minus(game, game->character.plane);
 	else if (move == DOWN)
-		move_down(game);
+		move_minus(game, game->character.orientation);
 	else if (move == UP)
-		move_up(game);
+		move_plus(game, game->character.orientation);
 }

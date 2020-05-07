@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:15:50 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 18:02:26 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 #define STEP 0.3
 #define ROTATION 3
 #define LIGHT_RATIO 0.1
-#define FOV 60
+#define FOV 66
 
 #include <math.h>
 #include <stdio.h>
@@ -37,7 +37,7 @@ void        ft_trace_column(t_vector onset, t_vector offset, t_window *window, t
 void        ft_draw_ground(t_vector onset, t_vector offset, t_game *game, t_color color) __attribute__((hot));
 void        ft_draw_wall(t_vector onset, t_vector offset, t_game *game, double l_ratio) __attribute__((hot));
 void        ft_draw_ceil(t_vector onset, t_vector offset, t_game *game, t_color color) __attribute__((hot));
-void        ft_choose_texture(t_vector point, t_game *game) __attribute__((hot));
+void        ft_choose_texture(t_ray *ray, t_game *game, double dist) __attribute__((hot));
 void        ft_display_message(char *message);
 void        ft_display_process_status(char *process, char *status);
 void        ft_display_error(char *message, const char *fun_name);

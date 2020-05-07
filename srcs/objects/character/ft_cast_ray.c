@@ -6,49 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 11:46:22 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 17:04:09 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void display_sprites(t_game *game)
-{
-    t_sprite *sprite;
-    t_element *last;
-
-    while (game->sprites.size > 0)
-    {
-        last = game->sprites.last;
-        sprite = (t_sprite *)last->content;
-        ft_draw_sprite(sprite, game);
-        game->map.content[sprite->y][sprite->x] = '2';
-        free(sprite);
-        game->sprites.remove(&game->sprites, last);
-    }
-}
-
-static inline t_vector ft_cast_one_ray(t_game *game, double angle, int x)
-{
-    t_vector direction;
-    t_vector point;
-    t_sprite *sprite;
-
-    point = game->character.coordinate;
-    direction = ft_vector(sin(angle), cos(angle), 0);
-    while (!ft_is_wall(game, point.x, point.y))
-    {
-        if (ft_is_sprite(game, point.x, point.y) && (point.x - point.x) < 0.03 && (point.y - (int)point.y) < 0.03)
-        {
-            printf("point = %f -- %f -- x = %d\n", point.x, point.y, x);
-            sprite = ft_sprite(game, point, x, angle);
-            game->map.content[sprite->y][sprite->x] = 'a';
-            game->sprites.append(&game->sprites, sprite);
-        }
-        point = point.add(&point, direction.mul_scalar(&direction, 0.03));
-    }
-    return (point);
-}
 
 static inline void render(t_game *game, double dist, int x)
 {
@@ -76,26 +38,19 @@ static inline void render(t_game *game, double dist, int x)
 
 void ft_cast_ray(t_game *game)
 {
-    t_vector point;
-    double angle_max;
+    t_ray ray;
     double dist;
-    double step;
-    int x;
-
-    x = game->window.width;
-    angle_max = game->character.orientation + (game->character.fov / 2);
-    step = game->character.fov / x;
-    printf("\n--------------------------------\n");
-    while (x)
-    {
-        point = ft_cast_one_ray(game, angle_max, x);
-        dist = point.dist(&point, game->character.coordinate);
-        dist = dist * cos(game->character.orientation - angle_max);
-        ft_choose_texture(point, game);
+    
+    ray = ft_ray(game);
+    for (int x = 0; x < game->window.width; x++)
+    {   
+        ray.update(&ray, game, x);
+        ray.cast(&ray, game);
+        if (ray.side == 0)
+            dist = (ray.point.x - game->character.coordinate.x + (1 - ray.step.x) / 2) / ray.direction.x;
+        else
+            dist = (ray.point.y - game->character.coordinate.y + (1 - ray.step.y) / 2) / ray.direction.y;
+        ft_choose_texture(&ray, game, dist);
         render(game, dist, x);
-        angle_max -= step;
-        x--;
     }
-    if (game->sprites.size > 0)
-        display_sprites(game);
 }

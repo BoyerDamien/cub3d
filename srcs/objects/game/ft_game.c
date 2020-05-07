@@ -1,22 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_game.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/07 14:10:42 by dboyer            #+#    #+#             */
+/*   Updated: 2020/05/07 14:10:52 by dboyer           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-static void finish(t_game *game){
+static void finish(t_game *game)
+{
     mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_N.img_ptr);
     mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_S.img_ptr);
-	mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_E.img_ptr);
-	mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_O.img_ptr);
-	mlx_destroy_image(game->window.mlx_ptr, game->sprite_texture.img_ptr);
+    mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_E.img_ptr);
+    mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_O.img_ptr);
+    mlx_destroy_image(game->window.mlx_ptr, game->sprite_texture.img_ptr);
     mlx_destroy_image(game->window.mlx_ptr, game->window.img.img_ptr);
     mlx_destroy_window(game->window.mlx_ptr, game->window.win_ptr);
     //game->sprites.clear(&game->sprites);
     game->map.clear(&game->map);
 }
 
-static void init_method(t_game *game){
+static void init_method(t_game *game)
+{
 
     game->map_show = ft_map_show;
     game->character_move = ft_character_move;
-    game->cast_ray = ft_cast_ray;
     game->character_rotate = ft_character_rotate;
     game->character_show = ft_character_show;
     game->finish = finish;
@@ -31,7 +44,7 @@ t_game ft_game(char *path)
 
     init_method(&new);
     map = ft_map_list_to_char(path);
-    window_dimensions =  ft_get_window_dimensions(path);
+    window_dimensions = ft_get_window_dimensions(path);
     size = window_dimensions.mul_scalar(&window_dimensions, 0.1);
     new.map = ft_minimap(map, size.x, size.y, size);
     ft_search_character(&new.map, &new.character);

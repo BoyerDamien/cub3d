@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/05/07 09:32:09 by dboyer           ###   ########.fr        #
+#    Updated: 2020/05/07 14:27:45 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,6 +83,7 @@ SRCS    			=	srcs/parsing/ft_display_message.c\
 						srcs/objects/game/ft_game.c\
 						srcs/objects/texture/ft_texture.c\
 						srcs/objects/sprites/ft_sprites.c\
+						srcs/objects/ray/ft_ray.c\
 						lib/get_next_line/get_next_line.c\
 						lib/get_next_line/get_next_line_utils.c\
 

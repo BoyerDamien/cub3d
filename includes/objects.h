@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/04 18:42:28 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/07 14:55:51 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,9 @@ typedef struct s_character
 	t_vector coordinate;
 	t_map map;
 	t_color color;
+	t_vector plane;
+	t_vector orientation;
 	double fov;
-	double orientation;
 }	t_character;
 
 t_character ft_character(t_vector coordinate, double orientation, t_map map);
@@ -163,7 +164,6 @@ typedef struct s_game
 	int win_center;
 	void (*map_show)(struct s_game *);
 	void (*character_move)(struct s_game*, int);
-	void (*cast_ray)(struct s_game*);
 	void (*character_rotate)(struct s_game*, int);
 	void (*character_show)(struct s_game *);
 	void (*finish)(struct s_game *);
@@ -173,10 +173,26 @@ t_game  ft_game(char *path) __attribute__((hot));
 void    ft_map_show(t_game *game) __attribute__((hot));
 void	ft_character_show(t_game *game) __attribute__((hot));
 void	ft_character_move(t_game *game, int move) __attribute__((hot));
-void	ft_cast_ray(t_game *game) __attribute__((hot));
 void	ft_character_rotate(t_game *game, int rotation) __attribute__((hot));
 
 
+
+typedef struct s_ray
+{
+	t_vector point;
+	t_vector direction;
+	t_vector sidedist;
+	t_vector deltadist;
+	t_vector step;
+	int side;
+	double cam_coordinate;
+
+	void (*cast)(struct s_ray*, t_game*);
+	void (*update)(struct s_ray*, t_game*, int);
+}	t_ray;
+
+t_ray	ft_ray(t_game *game);
+void	ft_cast_ray(t_game *game) __attribute__((hot));
 
 typedef struct s_sprite
 {
