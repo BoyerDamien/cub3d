@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/02 12:14:57 by dboyer            #+#    #+#             */
-/*   Updated: 2020/01/23 17:17:58 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:31:06 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 size_t	ft_nbrlen_base(long nb, int n_base)
 {

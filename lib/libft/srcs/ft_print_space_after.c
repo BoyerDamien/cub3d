@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/27 13:08:35 by dboyer            #+#    #+#             */
-/*   Updated: 2020/01/23 17:17:58 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:53:00 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-int	ft_print_space_after(t_format format)
+inline int	ft_print_space_after(t_format format)
 {
 	int i;
 

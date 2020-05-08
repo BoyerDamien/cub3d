@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vec_add_scalar.c                                :+:      :+:    :+:   */
+/*   ft_vec_update.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 16:16:59 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Created: 2020/02/25 14:21:51 by dboyer            #+#    #+#             */
+/*   Updated: 2020/05/08 16:28:35 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "ft_vector.h"
 
-t_vector	ft_vec_add_scalar(t_vector *vec1, double scalar)
+void	ft_vec_update(t_vector *vec, double x, double y, double z)
 {
-	t_vector new;
-
-	new = ft_vector(0,0,0);
-	new.x = vec1->x + scalar;
-	new.y = vec1->y + scalar;
-	new.z = vec1->z + scalar;
-	return (new);
+	vec->x = x;
+	vec->y = y;
+	vec->z = z;
 }
-

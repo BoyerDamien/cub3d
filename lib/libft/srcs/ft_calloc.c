@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:37:25 by dboyer            #+#    #+#             */
-/*   Updated: 2020/01/23 17:17:58 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:31:06 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {

@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/05/07 14:27:45 by dboyer           ###   ########.fr        #
+#    Updated: 2020/05/08 17:11:20 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,22 +41,6 @@ SRCS    			=	srcs/parsing/ft_display_message.c\
 						srcs/maths/ft_atof.c\
 						srcs/maths/ft_degree_to_rad.c\
 						srcs/maths/ft_map_value.c\
-						srcs/objects/vector/ft_vec_add.c\
-						srcs/objects/vector/ft_vec_sub.c\
-						srcs/objects/vector/ft_vec_mul.c\
-						srcs/objects/vector/ft_vec_div.c\
-						srcs/objects/vector/ft_vec_add_scalar.c\
-						srcs/objects/vector/ft_vec_sub_scalar.c\
-						srcs/objects/vector/ft_vec_mul_scalar.c\
-						srcs/objects/vector/ft_vec_div_scalar.c\
-						srcs/objects/vector/ft_vec_dot.c\
-						srcs/objects/vector/ft_vec_length.c\
-						srcs/objects/vector/ft_vec_direction.c\
-						srcs/objects/vector/ft_vector.c\
-						srcs/objects/vector/ft_vec_update.c\
-						srcs/objects/vector/ft_vec_normalise.c\
-						srcs/objects/vector/ft_vec_cross_product.c\
-						srcs/objects/vector/ft_vec_dist.c\
 						srcs/objects/color/ft_color.c\
 						srcs/objects/color/ft_add_light.c\
 						srcs/objects/color/ft_add_color.c\
@@ -84,12 +68,11 @@ SRCS    			=	srcs/parsing/ft_display_message.c\
 						srcs/objects/texture/ft_texture.c\
 						srcs/objects/sprites/ft_sprites.c\
 						srcs/objects/ray/ft_ray.c\
-						lib/get_next_line/get_next_line.c\
-						lib/get_next_line/get_next_line_utils.c\
 
 LIBFT_PATH			= 	"./lib/libft/"
 LIB_FT_LIST_PATH	= 	"./lib/lib_ft_list/"
 MLX_PATH			= 	"./lib/minilibx-linux/"
+FT_VECTOR_PATH		= "./lib/ft_vector/"
 
 MAIN 				= 	srcs/main.c
 
@@ -98,7 +81,8 @@ OBJS    			= 	$(SRCS:.c=.o)
 
 LIBRARY	 			= 	-L ./lib/minilibx-linux -lmlx -lm -lXext -lX11 -lbsd \
 		  				-L ./lib/lib_ft_list -lftlist \
-		  				-L ./lib/libft -lft 
+		  				-L ./lib/libft -lft \
+						-L ./lib/ft_vector -lftvector
 
 CC      			= 	clang
 
@@ -108,7 +92,7 @@ HEADERS 			= 	-I ./includes/ -I ./lib/
 
 CFLAGS  			= 	-Werror -Wall -Wextra -O3 ${HEADERS}
 
-INCS = ./includes/cub3d.h ./includes/objects.h ./includes/vector.h
+INCS = ./includes/cub3d.h ./includes/objects.h
 
 ################################################################################
 #									cube3d make
@@ -123,18 +107,21 @@ $(NAME) : $(OBJS) $(OBJS_MAIN)
 	make -C $(LIBFT_PATH)
 	make -C $(LIB_FT_LIST_PATH)
 	make -C $(MLX_PATH)
+	make -C $(FT_VECTOR_PATH)
 	${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_MAIN} ${LIBRARY}
 
 clean   :
 	make clean -C $(LIBFT_PATH)
 	make clean -C $(LIB_FT_LIST_PATH)
 	make clean -C $(MLX_PATH)
+	make clean -C $(FT_VECTOR_PATH)
 	$(RM) $(OBJS)
 	$(RM) ${OBJS_MAIN}
 
 fclean  : clean
 	make fclean -C $(LIBFT_PATH)
 	make fclean -C $(LIB_FT_LIST_PATH)
+	make fclean -C $(FT_VECTOR_PATH)
 	$(RM) $(NAME)
 
 run 	: all

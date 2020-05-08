@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 10:44:41 by dboyer            #+#    #+#             */
-/*   Updated: 2020/01/23 17:17:58 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:49:46 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-int		ft_isflag(const char *flag)
+inline int		ft_isflag(const char *flag)
 {
 	int i;
 

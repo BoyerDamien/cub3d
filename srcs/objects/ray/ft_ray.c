@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:12:58 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 14:52:25 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 15:55:44 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static inline void update_side(t_ray *ray, t_game *game)
     if (ray->direction.x < 0)
     {
         ray->step.x = -1;
-        ray->sidedist.x = (game->character.coordinate.x - ray->point.x) * ray->deltadist.x; 
+        ray->sidedist.x = (game->character.coordinate.x - ray->point.x) * ray->deltadist.x;
     }
     else
     {
@@ -27,7 +27,7 @@ static inline void update_side(t_ray *ray, t_game *game)
     if (ray->direction.y < 0)
     {
         ray->step.y = -1;
-        ray->sidedist.y = (game->character.coordinate.y - ray->point.y) * ray->deltadist.y; 
+        ray->sidedist.y = (game->character.coordinate.y - ray->point.y) * ray->deltadist.y;
     }
     else
     {
@@ -35,7 +35,6 @@ static inline void update_side(t_ray *ray, t_game *game)
         ray->sidedist.y = (ray->point.y + 1.0 - game->character.coordinate.y) * ray->deltadist.y;
     }
 }
-
 
 static inline void update(t_ray *ray, t_game *game, int x)
 {
@@ -51,8 +50,18 @@ static inline void update(t_ray *ray, t_game *game, int x)
 
 static inline void cast_one_ray(t_ray *ray, t_game *game)
 {
+    t_sprite *sprite;
+    double dist;
+
     while (!ft_is_wall(game, ray->point.x, ray->point.y))
     {
+        if (ft_is_sprite(game, ray->point.x, ray->point.y))
+        {
+            dist = ray->point.dist(&ray->point, game->character.coordinate);
+            sprite = ft_sprite(game, ray, dist);
+            game->map.content[(int)ray->point.y][(int)ray->point.x] = 'a';
+            game->sprites.append(&game->sprites, sprite);
+        }
         if (ray->sidedist.x < ray->sidedist.y)
         {
             ray->sidedist.x += ray->deltadist.x;

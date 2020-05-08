@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 15:32:33 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/02 17:44:26 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 18:59:21 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 #	include <stdlib.h>
 #	include <unistd.h>
 #	include <stdarg.h>
+#	include <fcntl.h>
 #	include "libft_objects.h"
-#	include "libft_def.h"
+#	define CONVERTER "cspdiuxX%"
 
 int					ft_atoi(const char *str);
 int					ft_isalpha(int c);
@@ -46,8 +47,8 @@ int					ft_print_memory(t_format format, va_list *va);
 int					ft_print_space_before(t_format format);
 int					ft_print_space_after(t_format format);
 int					ft_print_zero_padding(t_format format);
-int					ft_printf(const char *str, ...) __attribute__((format(printf, 1, 2)));
-
+int					ft_printf(const char *str, ...);
+int					get_next_line(int fd, char **line);
 size_t				ft_strlen(const char *str);
 size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
@@ -79,7 +80,7 @@ void				ft_putnbr_fd(long nb, int fd);
 void				ft_bzero(void *s, size_t n);
 void				ft_putchar(char c);
 void				ft_putstr(char *str);
-void 				ft_split_clean(char **split);
+void				ft_split_clean(char **split);
 void				ft_putnbr_hex(long nb, char *base, char *neg);
 void				ft_putnbr_unsigned(unsigned int nb);
 void				ft_putnstr(char *str, int n);

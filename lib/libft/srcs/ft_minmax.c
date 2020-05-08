@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 12:06:25 by dboyer            #+#    #+#             */
-/*   Updated: 2020/01/23 17:17:58 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:51:12 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-t_format	ft_minmax(t_format format, int nbrlen)
+inline t_format	ft_minmax(t_format format, int nbrlen)
 {
 	format.zero_padding = format.max > nbrlen ? format.max - nbrlen : 0;
 	if (format.min > 0)

@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:12:20 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 19:01:40 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:53:43 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+inline void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }

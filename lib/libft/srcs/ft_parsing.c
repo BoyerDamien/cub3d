@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 12:37:27 by dboyer            #+#    #+#             */
-/*   Updated: 2020/01/23 17:17:58 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:51:38 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-static t_format	ft_convert_star(t_format format, va_list *va)
+static inline t_format	ft_convert_star(t_format format, va_list *va)
 {
 	format.min = !format.point ? va_arg(*va, int) : format.min;
 	format.min_zero = format.min < 0 && format.min_zero ? 0 : format.min_zero;
@@ -23,7 +23,7 @@ static t_format	ft_convert_star(t_format format, va_list *va)
 	return (format);
 }
 
-static t_format	ft_convert_minmax(t_format format, int i)
+static inline t_format	ft_convert_minmax(t_format format, int i)
 {
 	if (format.flag[i] == '0')
 	{
@@ -35,7 +35,7 @@ static t_format	ft_convert_minmax(t_format format, int i)
 	return (format);
 }
 
-t_format		ft_parsing(t_format format, va_list *va)
+inline t_format		ft_parsing(t_format format, va_list *va)
 {
 	int i;
 

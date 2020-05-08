@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 11:16:06 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 18:57:25 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:48:08 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-inline double ft_abs(double nb)
+inline double	ft_abs(double nb)
 {
 	return (nb < 0 ? -nb : nb);
 }

@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vec_direction.c                                 :+:      :+:    :+:   */
+/*   ft_vec_dist.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/19 14:22:22 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Created: 2020/05/08 16:29:36 by dboyer            #+#    #+#             */
+/*   Updated: 2020/05/08 16:29:38 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "ft_vector.h"
 
-t_vector	ft_vec_direction(t_vector *point, t_vector origin)
+double ft_vec_dist(t_vector *vec1, t_vector vec2)
 {
-	t_vector diff;
+    t_vector diff;
 
-	diff = point->sub(point, origin);
-	return (diff.normalise(&diff));
+    diff = vec1->sub(vec1, vec2);
+    return (diff.length(&diff));
 }

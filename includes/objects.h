@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 14:55:51 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:08:46 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJECTS_H
 #define	OBJECTS_H
-#include "vector.h"
+#include "ft_vector/includes/ft_vector.h"
 
 /*********************************************************************/
 /** 							COLOR								**/
@@ -196,15 +196,17 @@ void	ft_cast_ray(t_game *game) __attribute__((hot));
 
 typedef struct s_sprite
 {
+	t_vector sprite;
+	t_vector transform;
 	t_vector onset;
-	double height;
+	t_vector offset;
+	t_vector point;
+	double inv_det;
 	double ratio;
-	double dist;
 	int screen_x;
-	int x;
-	int y;
-	int column;
+	int height;
+	int width;
 }	t_sprite;
 
-t_sprite *ft_sprite(t_game *game, t_vector point, double x, double angle);
+t_sprite *ft_sprite(t_game *game,t_ray *ray, double dist);
 #endif

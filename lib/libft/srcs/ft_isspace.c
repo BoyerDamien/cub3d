@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 16:43:13 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/23 09:32:05 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:50:07 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
-int	ft_isspace(int c)
+inline int	ft_isspace(int c)
 {
 	return (ft_cinset(c, "\t\n\r\v\f "));
 }

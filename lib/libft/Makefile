@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 18:42:28 by dboyer            #+#    #+#              #
-#    Updated: 2020/05/02 17:58:38 by dboyer           ###   ########.fr        #
+#    Updated: 2020/05/08 17:31:44 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,10 +85,13 @@ SRCS 	=	srcs/ft_atoi.c\
 			srcs/ft_print_space_before.c\
 			srcs/ft_print_space_after.c\
 			srcs/ft_print_zero_padding.c\
+			srcs/get_next_line.c\
 
 OBJS 	=	$(SRCS:.c=.o)
 
-CFLAGS 	= -Werror -Wall -Wextra
+HEADERS = -I ./includes/
+
+CFLAGS 	= -Werror -Wall -Wextra -O3 ${HEADERS}
 
 CC 		= clang
 
@@ -96,8 +99,13 @@ CLEAN = clean
 
 RM	=	rm -f
 
+INCS = ./includes/libft.h
+
+%.o: %.c ${INCS}
+	$(CC) $(CFLAGS) -c $< -o $@
+
 $(NAME)	: $(OBJS)
-		ar rc libft.a $(OBJS)
+		ar rc $(NAME) $(OBJS)
 
 all		:	$(NAME)
 

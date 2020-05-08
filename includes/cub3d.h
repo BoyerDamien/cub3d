@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 18:50:12 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 17:07:19 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 #define STEP 0.3
 #define ROTATION 3
 #define LIGHT_RATIO 0.1
-#define FOV 60
+#define FOV 66
 
 #include <math.h>
 #include <stdio.h>
-#include "get_next_line/get_next_line.h"
 #include "libft/includes/libft.h"
 #include "minilibx-linux/mlx.h"
 #include "lib_ft_list/includes/ft_list.h"
+#include "ft_vector/includes/ft_vector.h"
 #include "objects.h"
 
 void        ft_trace_column(t_vector onset, t_vector offset, t_window *window, t_color color) __attribute__((hot));

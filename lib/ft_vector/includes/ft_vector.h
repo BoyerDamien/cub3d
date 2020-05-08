@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.h                                           :+:      :+:    :+:   */
+/*   ft_vector.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:12:34 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 18:07:19 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/08 16:43:20 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VECTOR_H
-#define VECTOR_H
+#ifndef FT_VECTOR_H
+#define FT_VECTOR_H
+
+#include <math.h>
 
 typedef	struct	s_vector
 {

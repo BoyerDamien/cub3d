@@ -10,23 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
-{
-	int	i;
-
-	if (str != NULL)
-	{
-		i = 0;
-		while (str[i])
-			i++;
-		return (i);
-	}
-	return (0);
-}
-
-int		append_stock(char **stock, char *buffer)
+static inline int		append_stock(char **stock, char *buffer)
 {
 	char	*new;
 
@@ -45,7 +31,7 @@ int		append_stock(char **stock, char *buffer)
 	return (0);
 }
 
-void	update_stock(char **stock, int i)
+static inline void	update_stock(char **stock, int i)
 {
 	char *temp;
 
@@ -62,7 +48,7 @@ void	update_stock(char **stock, int i)
 	}
 }
 
-int		append_line(char **line, char **stock)
+static inline int		append_line(char **line, char **stock)
 {
 	int		i;
 
@@ -86,12 +72,12 @@ int		append_line(char **line, char **stock)
 int		get_next_line(int fd, char **line)
 {
 	int			ret;
-	char		buffer[ BUFFER_SIZE + 1];
+	char		buffer[2];
 	static char *stock = NULL;
 
-	if (fd >= 0 && BUFFER_SIZE > 0 && line != NULL && !read(fd, buffer, 0))
+	if (fd >= 0 && line != NULL && !read(fd, buffer, 0))
 	{
-		while ((ret = read(fd, buffer, BUFFER_SIZE)))
+		while ((ret = read(fd, buffer, 1)))
 		{
 			buffer[ret] = '\0';
 			append_stock(&stock, buffer);

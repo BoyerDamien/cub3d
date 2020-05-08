@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vec_cross_product.c                             :+:      :+:    :+:   */
+/*   ft_vec_length.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/11 10:48:10 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Created: 2020/02/19 14:02:43 by dboyer            #+#    #+#             */
+/*   Updated: 2020/05/08 16:28:35 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "ft_vector.h"
 
-t_vector ft_vec_cross_product(t_vector *vec1, t_vector vec2)
+double	ft_vec_length(t_vector *vec)
 {
-	t_vector result;
-
-	result = ft_vector(0, 0, 0);
-	result.x = vec1->y * vec2.z - vec1->z * vec2.y;
-	result.y = vec1->z * vec2.x - vec1->x * vec2.z;
-	result.z = vec1->x * vec2.y - vec1->y * vec2.x;
-	return (result);
+	return (sqrt(vec->dot(vec, (*vec))));
 }
