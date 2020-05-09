@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:10:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 14:10:52 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/09 15:32:55 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void finish(t_game *game)
 {
-    mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_N.img_ptr);
-    mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_S.img_ptr);
-    mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_E.img_ptr);
-    mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_O.img_ptr);
+    mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_n.img_ptr);
+    mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_s.img_ptr);
+    mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_e.img_ptr);
+    mlx_destroy_image(game->window.mlx_ptr, game->wall_texture_o.img_ptr);
     mlx_destroy_image(game->window.mlx_ptr, game->sprite_texture.img_ptr);
     mlx_destroy_image(game->window.mlx_ptr, game->window.img.img_ptr);
     mlx_destroy_window(game->window.mlx_ptr, game->window.win_ptr);
@@ -49,10 +49,10 @@ t_game ft_game(char *path)
     new.map = ft_minimap(map, size.x, size.y, size);
     ft_search_character(&new.map, &new.character);
     new.window = ft_window(window_dimensions.x, window_dimensions.y, GAME_NAME);
-    new.wall_texture_N = ft_create_texture_from_file(path, "NO", &new.window);
-    new.wall_texture_S = ft_create_texture_from_file(path, "SO", &new.window);
-    new.wall_texture_O = ft_create_texture_from_file(path, "WE", &new.window);
-    new.wall_texture_E = ft_create_texture_from_file(path, "EA", &new.window);
+    new.wall_texture_n = ft_create_texture_from_file(path, "NO", &new.window);
+    new.wall_texture_s = ft_create_texture_from_file(path, "SO", &new.window);
+    new.wall_texture_o = ft_create_texture_from_file(path, "WE", &new.window);
+    new.wall_texture_e = ft_create_texture_from_file(path, "EA", &new.window);
     new.sprite_texture = ft_create_texture_from_file(path, "S", &new.window);
     new.ceil_color = ft_get_color(path, "C");
     new.floor_color = ft_get_color(path, "F");
