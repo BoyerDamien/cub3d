@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 13:03:32 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:53:17 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/09 13:55:54 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static inline void	ft_display(t_format format, unsigned int arg)
 	ft_putnbr_unsigned(arg);
 }
 
-int			ft_print_unsigned_nb(t_format format, va_list *va)
+int					ft_print_unsigned_nb(t_format format, va_list *va)
 {
 	unsigned int		arg;
 	int					result;

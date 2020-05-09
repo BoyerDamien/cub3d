@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/05/08 17:11:20 by dboyer           ###   ########.fr        #
+#    Updated: 2020/05/09 11:07:37 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SRCS    			=	srcs/parsing/ft_display_message.c\
 						srcs/objects/texture/ft_texture.c\
 						srcs/objects/sprites/ft_sprites.c\
 						srcs/objects/ray/ft_ray.c\
+						srcs/objects/bitmap/ft_bitmap.c\
 
 LIBFT_PATH			= 	"./lib/libft/"
 LIB_FT_LIST_PATH	= 	"./lib/lib_ft_list/"

@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 10:48:10 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 16:28:35 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/09 13:49:53 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-t_vector ft_vec_cross_product(t_vector *vec1, t_vector vec2)
+t_vector	ft_vec_cross_product(t_vector *vec1, t_vector vec2)
 {
 	t_vector result;
 

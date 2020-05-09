@@ -6,12 +6,12 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:07:19 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/09 14:09:25 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINI_RT_H
-#define MINI_RT_H
+#ifndef CUB3D_H
+#define CUB3D_H
 
 #define GAME_NAME "cub3d"
 #define RIGHT 65363
@@ -33,11 +33,11 @@
 #include "ft_vector/includes/ft_vector.h"
 #include "objects.h"
 
-void        ft_trace_column(t_vector onset, t_vector offset, t_window *window, t_color color) __attribute__((hot));
-void        ft_draw_ground(t_vector onset, t_vector offset, t_game *game, t_color color) __attribute__((hot));
-void        ft_draw_wall(t_vector onset, t_vector offset, t_game *game, double l_ratio) __attribute__((hot));
-void        ft_draw_ceil(t_vector onset, t_vector offset, t_game *game, t_color color) __attribute__((hot));
-void        ft_choose_texture(t_ray *ray, t_game *game, double dist) __attribute__((hot));
+void        ft_trace_column(t_vector onset, t_vector offset, t_window *window, t_color color);
+void        ft_draw_ground(t_vector onset, t_vector offset, t_game *game, t_color color);
+void        ft_draw_wall(t_vector onset, t_vector offset, t_game *game, double l_ratio);
+void        ft_draw_ceil(t_vector onset, t_vector offset, t_game *game, t_color color);
+void        ft_choose_texture(t_ray *ray, t_game *game, double dist);
 void        ft_display_message(char *message);
 void        ft_display_process_status(char *process, char *status);
 void        ft_display_error(char *message, const char *fun_name);
@@ -45,7 +45,8 @@ void        ft_check_texture(char *path);
 void        ft_check_color(char *path);
 void        ft_test_map(char *path);
 void        ft_convert_map(t_element *element);
-void        ft_draw_sprite(t_sprite *sprite, t_game *game) __attribute__((hot));
+void        ft_draw_sprite(t_sprite *sprite, t_game *game);
+void        ft_write_bmp_file(t_game *game);
 
 int         ft_check_resolution(char *path);
 int         ft_check_extension(char *filename, char* extension);
@@ -70,9 +71,8 @@ double      ft_map_value(double val, double min1, double max1, double max2);
 t_vector    ft_get_window_dimensions(char *path);
 
 t_texture   ft_create_texture_from_file(char *path, char *charcode, t_window *window);
-t_color     ft_get_color(char *path, char *charcode) __attribute__((hot));
+t_color     ft_get_color(char *path, char *charcode);
 t_list      ft_get_map(char *path);
 char        **ft_map_list_to_char(char *path);
-
 
 #endif

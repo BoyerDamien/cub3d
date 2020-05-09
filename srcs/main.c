@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:47:29 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 14:41:30 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/09 12:24:14 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int ft_handle_events(int keycode, void *param){
 		game->character_rotate(game, 'r');
 	mlx_clear_window(game->window.mlx_ptr, game->window.win_ptr);
 	ft_cast_ray(game);
-	//game->cast_ray(game);
 	game->map_show(game);
+	ft_write_bmp_file(game);
 	mlx_put_image_to_window(game->window.mlx_ptr, game->window.win_ptr, game->window.img.img_ptr, 0, 0);
 	mlx_do_sync(game->window.mlx_ptr);
 	return (0);

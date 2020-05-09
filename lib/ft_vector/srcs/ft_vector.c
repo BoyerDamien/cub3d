@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:25:44 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 16:30:55 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/09 13:46:56 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-static inline void init_method(t_vector *new)
+static inline void	init_method(t_vector *new)
 {
 	new->add = ft_vec_add;
 	new->sub = ft_vec_sub;
@@ -30,7 +30,7 @@ static inline void init_method(t_vector *new)
 	new->dist = ft_vec_dist;
 }
 
-t_vector	ft_vector(double x, double y, double z)
+t_vector			ft_vector(double x, double y, double z)
 {
 	t_vector new;
 

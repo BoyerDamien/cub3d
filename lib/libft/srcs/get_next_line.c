@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 11:35:32 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/28 17:41:20 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/09 13:57:12 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static inline int		append_stock(char **stock, char *buffer)
 	return (0);
 }
 
-static inline void	update_stock(char **stock, int i)
+static inline void		update_stock(char **stock, int i)
 {
 	char *temp;
 
@@ -69,7 +69,7 @@ static inline int		append_line(char **line, char **stock)
 	return (0);
 }
 
-int		get_next_line(int fd, char **line)
+int						get_next_line(int fd, char **line)
 {
 	int			ret;
 	char		buffer[2];

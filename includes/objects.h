@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 17:08:46 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/09 13:26:37 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,3 +210,18 @@ typedef struct s_sprite
 
 t_sprite *ft_sprite(t_game *game,t_ray *ray, double dist);
 #endif
+
+
+
+typedef struct s_bmp_header
+{
+	int			fd;
+	int			file_size;
+	int			unused;
+	int			pixel_offset;
+	int			header_size;
+	int			image_width;
+	int			image_height;
+	short int	planes;
+	short int	bpp;
+}	t_bmp_header;

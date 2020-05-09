@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:16:59 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 16:28:35 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/09 13:47:20 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ double	ft_vec_dot(t_vector *vec1, t_vector vec2)
 	result += vec1->z * vec2.z;
 	return (result);
 }
-
