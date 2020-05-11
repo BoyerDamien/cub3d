@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/05/09 11:07:37 by dboyer           ###   ########.fr        #
+#    Updated: 2020/05/11 11:22:30 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS    			=	srcs/parsing/ft_display_message.c\
 						srcs/parsing/ft_get_color.c\
 						srcs/parsing/ft_get_map.c\
 						srcs/parsing/ft_map_list_to_char.c\
+						srcs/parsing/ft_check_character.c\
 						srcs/window/ft_window.c\
 						srcs/window/put_pixel.c\
 						srcs/image/ft_image.c\
@@ -127,6 +128,9 @@ fclean  : clean
 
 run 	: all
 	./${NAME} ./maps/map1.cub
+
+save: all
+	./${NAME} ./maps/map1.cub --save
 
 re      : fclean all
 

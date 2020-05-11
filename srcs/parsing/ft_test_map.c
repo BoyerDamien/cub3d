@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 15:43:23 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/11 11:24:44 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void print(t_element *element)
     printf("|%s| \n", (char *)(element->content));
 }
 
-void clear_map_content(t_element *element)
+static void clear_map_content(t_element *element)
 {
     free(element->content);
 }
@@ -41,9 +41,15 @@ void ft_test_map(char *path)
     result = 0;
     ft_display_message("Check map...");
     map = ft_get_map(path);
-    result = apply_test(&map);
-    map.iter(map.first, clear_map_content);
-    map.clear(&map);
+    if (map.size > 0)
+	{
+		result = apply_test(&map);
+    	map.iter(map.first, clear_map_content);
+    	map.clear(&map);
+	}
     if (!result)
-        exit(EXIT_FAILURE);
+	{
+		ft_display_error("No valid map was found", "error");
+		exit(EXIT_FAILURE);
+	}
 }

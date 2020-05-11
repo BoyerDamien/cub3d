@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/26 11:48:07 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/11 10:31:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ t_list ft_get_map(char *path)
     else
         free(line);
     close(fd);
-    map.iter(map.first, ft_convert_map);
+    if (map.size > 0)
+		map.iter(map.first, ft_convert_map);
     return (map);
 }

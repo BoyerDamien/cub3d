@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/09 15:36:24 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/10 10:43:52 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ typedef struct		s_game
 	t_color			floor_color;
 	int				text_column;
 	int				win_center;
+	int				save;
 	void			(*map_show)(struct s_game *);
 	void			(*character_move)(struct s_game *, int);
 	void			(*character_rotate)(struct s_game *, int);

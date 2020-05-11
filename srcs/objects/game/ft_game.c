@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:10:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/09 15:32:55 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/10 10:45:08 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,6 @@ t_game ft_game(char *path)
     new.floor_color = ft_get_color(path, "F");
     new.win_center = window_dimensions.y / 2;
     new.sprites = ft_list();
+	new.save = 0;
     return (new);
 }

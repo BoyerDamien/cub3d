@@ -6,12 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/24 16:51:12 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/11 18:59:37 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 static int test_content(t_element *element){
     int i;
@@ -32,8 +31,7 @@ static int test_content(t_element *element){
 }
 
 int test_map_content(t_list *map)
-{   
-    //clean_map(map->first);
+{
     if (test_content(map->first)){
         ft_display_process_status("Map content", "ok");
         return (1);

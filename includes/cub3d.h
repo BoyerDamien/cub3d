@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/09 15:05:08 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/11 11:21:57 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void		ft_test_map(char *path);
 void		ft_convert_map(t_element *element);
 void		ft_draw_sprite(t_sprite *sprite, t_game *game);
 void		ft_write_bmp_file(t_game *game);
+void		ft_check_character(char *path);
 
 int			ft_check_resolution(char *path);
 int			ft_check_extension(char *filename, char *extension);
