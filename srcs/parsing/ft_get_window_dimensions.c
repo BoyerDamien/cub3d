@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/25 19:00:32 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/11 20:12:19 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_vector ft_get_window_dimensions(char *path){
 
 	line = ft_tag_line(path, "R");
 	width = ft_atoi(ft_move_until(line, "is", ft_isdigit));
-	height = ft_atoi((ft_move_until(ft_move_until(line, "not", ft_isdigit), "is", ft_isdigit)));
+	height = ft_atoi((ft_move_until(ft_move_until(line, "is", ft_isdigit), "not", ft_isdigit)));
 	free(line);
 	return (ft_vector(width, height, 0));
 }

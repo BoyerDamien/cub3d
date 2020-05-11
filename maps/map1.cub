@@ -1,4 +1,4 @@
-R 600 600
+R 1440 900
 NO ./textures/redbrick.xpm
 SO ./textures/stone.xpm
 WE ./textures/eagle.xpm
