@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 13:49:20 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/11 20:20:11 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/11 20:27:25 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void ft_character_show(t_game *game)
 	int r;
 	t_vector coordinate;
 	
-	r = 2;
+	r = game->map.height * 0.03;
 	coordinate = ft_vector(0, 0, 0);
 	while (r)
 	{
