@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:10:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/11 20:12:44 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/12 11:44:51 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void finish(t_game *game)
     mlx_destroy_image(game->window.mlx_ptr, game->sprite_texture.img_ptr);
     mlx_destroy_image(game->window.mlx_ptr, game->window.img.img_ptr);
     mlx_destroy_window(game->window.mlx_ptr, game->window.win_ptr);
-    //game->sprites.clear(&game->sprites);
     game->map.clear(&game->map);
+	free(game->z_buffer);
 }
 
 static void init_method(t_game *game)
@@ -59,5 +59,6 @@ t_game ft_game(char *path)
     new.win_center = window_dimensions.y / 2;
     new.sprites = ft_list();
 	new.save = 0;
+	new.z_buffer = (double *)malloc(window_dimensions.x * sizeof(double));
     return (new);
 }

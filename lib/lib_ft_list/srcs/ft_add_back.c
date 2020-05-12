@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 11:27:04 by dboyer            #+#    #+#             */
-/*   Updated: 2020/04/29 19:59:53 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/12 16:12:23 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_list.h"
+#include "ft_list.h"
 
 void		ft_add_back(t_list *list, void *content)
 {

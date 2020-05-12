@@ -6,44 +6,49 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 18:42:28 by dboyer            #+#    #+#              #
-#    Updated: 2020/05/02 17:33:07 by dboyer           ###   ########.fr        #
+#    Updated: 2020/05/12 16:19:53 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libftlist.a
- 
+
 SRCS 	=	srcs/ft_add_back.c\
-			srcs/ft_clear.c\
-			srcs/ft_concat.c\
-			srcs/ft_del.c\
-			srcs/ft_list_copy.c\
-			srcs/ft_list_iter.c\
-			srcs/ft_list.c\
-			srcs/ft_new_element.c\
-			srcs/ft_get_list_element.c\
-			srcs/ft_search.c\
+		srcs/ft_clear.c\
+		srcs/ft_concat.c\
+		srcs/ft_del.c\
+		srcs/ft_list_copy.c\
+		srcs/ft_list_iter.c\
+		srcs/ft_list.c\
+		srcs/ft_new_element.c\
+		srcs/ft_get_list_element.c\
+		srcs/ft_search.c\
+		srcs/ft_insert_before.c\
 
-OBJS 	=	$(SRCS:.c=.o)
+OBJS    =       $(SRCS:.c=.o)
+HEADERS = -I ./includes/
 
-CFLAGS 	= -Werror -Wall -Wextra -O3
+CFLAGS  = -Werror -Wall -Wextra -O3 ${HEADERS} 
 
-CC 		= clang
+CC              = clang
 
-CLEAN = clean
+RM      =       rm -f
 
-RM	=	rm -f
+INCS = ./includes/ft_list.h
 
-$(NAME)	: $(OBJS)
-		ar rc $(NAME) $(OBJS)
+%.o: %.c ${INCS}
+	$(CC) $(CFLAGS) -c $< -o $@
 
-all		:	$(NAME)
+$(NAME) : $(OBJS)
+	ar rcs $(NAME) $(OBJS) 
 
-clean	:
-		$(RM) $(OBJS) $(BON_OBJS)
+all             :       $(NAME)
 
-fclean	:	clean
-		$(RM) $(NAME)
+clean   :
+	$(RM) $(OBJS)
 
-re		:	fclean all
+fclean  :       clean
+	$(RM) $(NAME)
 
-.PHONY	: all clean fclean re
+re              :       fclean all
+
+.PHONY  : all clean fclean re

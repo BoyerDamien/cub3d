@@ -6,15 +6,17 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 20:45:45 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/10 12:10:38 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/12 16:46:50 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_list.h"
+#include "ft_list.h"
 
-t_element	*ft_search(t_element *element, int (*f)(t_element *element))
+t_element	*ft_search(t_element *element,  void *content, int (*f)(t_element *element, void *content))
 {
-	if (element && !f(element))
-		return (ft_search(element->next, f));
+	if (element && !f(element, content))
+		return (ft_search(element->next, content, f));
+	else if (!element)
+		return (NULL);
 	return (element);
 }

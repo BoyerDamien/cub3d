@@ -26,7 +26,7 @@ int ft_search_character(t_map *map, t_character *character)
 			if (ft_cinset(map->content[j][i], "NESW"))
 			{
 				orientation = choose_orientation(map->content[j][i]);
-                *character = ft_character(ft_vector(i, j, 0), orientation, *map);
+                *character = ft_character(ft_vector(i + 0.5, j + 0.5, 0), orientation, *map);
 				return (1);
 			}
 			i++;

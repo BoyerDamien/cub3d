@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/10 10:43:52 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/12 11:56:26 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ typedef struct		s_game
 	t_texture		sprite_texture;
 	t_color			ceil_color;
 	t_color			floor_color;
+	double			*z_buffer;
 	int				text_column;
 	int				win_center;
 	int				save;
@@ -209,7 +210,7 @@ typedef struct		s_sprite
 	int				width;
 }					t_sprite;
 
-t_sprite			*ft_sprite(t_game *game, t_ray *ray, double dist);
+t_sprite			*ft_sprite(t_game *game, t_ray *ray);
 
 /*
 ** 									BITMAP

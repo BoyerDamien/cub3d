@@ -6,11 +6,11 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 11:58:08 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/11 16:57:46 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/12 16:12:23 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_list.h"
+#include "ft_list.h"
 
 static inline void	correct_index(t_element *element)
 {
@@ -19,7 +19,7 @@ static inline void	correct_index(t_element *element)
 
 void				ft_del(t_list *list, t_element *element)
 {
-	if (element && list->size)
+	if (element)
 	{
 		if (element->previous && element->next)
 		{
