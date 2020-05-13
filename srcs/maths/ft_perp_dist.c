@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_color.c                                     :+:      :+:    :+:   */
+/*   ft_perp_dist.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/04 10:57:21 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/13 11:29:14 by dboyer           ###   ########.fr       */
+/*   Created: 2020/05/13 10:36:29 by dboyer            #+#    #+#             */
+/*   Updated: 2020/05/13 10:42:53 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_color	ft_add_color(t_color *color1, t_color color2)
+double	ft_perp_dist(t_game *game, t_ray *ray)
 {
-	t_color new;
+	t_vector coordinate;
 
-	new = ft_color(0, 0, 0);
-	new.r = (color1->r / 255) * (color2.r / 255) * 255;
-	new.g = (color1->g / 255) * (color2.g / 255) * 255;
-	new.b = (color1->b / 255) * (color2.b / 255) * 255;
-	return (new);
+	coordinate = game->character.coordinate;
+	if (ray->side == 0)
+		return ((ray->point.x - coordinate.x + (1 - ray->step.x) / 2) / \
+				ray->direction.x);
+	else
+		return ((ray->point.y - coordinate.y + (1 - ray->step.y) / 2) / \
+				ray->direction.y);
 }

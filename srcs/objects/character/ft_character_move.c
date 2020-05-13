@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 14:32:57 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/08 15:51:38 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 10:50:05 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static inline void move_minus(t_game *game, t_vector ref)
+static inline void	move_minus(t_game *game, t_vector ref)
 {
 	t_vector move_vector;
 	t_vector coordinate;
@@ -24,7 +24,7 @@ static inline void move_minus(t_game *game, t_vector ref)
 		game->character.coordinate = move_vector;
 }
 
-static inline void move_plus(t_game *game, t_vector ref)
+static inline void	move_plus(t_game *game, t_vector ref)
 {
 	t_vector move_vector;
 	t_vector coordinate;
@@ -36,7 +36,7 @@ static inline void move_plus(t_game *game, t_vector ref)
 		game->character.coordinate = move_vector;
 }
 
-void ft_character_move(t_game *game, int move)
+void				ft_character_move(t_game *game, int move)
 {
 	if (move == RIGHT)
 		move_plus(game, game->character.plane);

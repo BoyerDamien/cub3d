@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/12 09:41:00 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 16:18:05 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # define UP 65362
 # define KEY_A 97
 # define KEY_Z 122
+# define ESCAPE 65307
 # define STEP 0.3
 # define ROTATION 3
 # define LIGHT_RATIO 0.1
@@ -50,6 +51,7 @@ void		ft_convert_map(t_element *element);
 void		ft_draw_sprite(t_sprite *sprite, t_game *game);
 void		ft_write_bmp_file(t_game *game);
 void		ft_check_character(char *path);
+void		ft_add_sprite(t_list *list, t_sprite *sprite);
 
 int			ft_check_resolution(char *path);
 int			ft_check_extension(char *filename, char *extension);
@@ -63,13 +65,15 @@ int			ft_is_texture_line(char *line);
 int			ft_search_character(t_map *map, t_character *character);
 int			ft_is_wall(t_game *game, int x, int y);
 int			ft_is_sprite(t_game *game, int x, int y);
+int			ft_backtrack(t_element *element, int n_index, t_list *map, t_list *memory);
+int			ft_map_is_closed(t_list *map, t_element *element, t_list *memory);
 
 char		*ft_move_until(char *str, char *bool, int (*f)(int c));
 char		*ft_tag_line(char *path, char *charcode);
 char		**ft_map_list_to_char(char *path);
 
 double		ft_degree_to_rad(double angle);
-double		ft_map_value(double val, double min1, double max1, double max2);
+double		ft_perp_dist(t_game *game, t_ray *ray);
 
 t_vector	ft_get_window_dimensions(char *path);
 

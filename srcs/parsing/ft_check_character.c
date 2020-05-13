@@ -6,22 +6,21 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/11 11:09:50 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/11 11:26:07 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 15:29:40 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-static void clear_map_content(t_element *element)
+static inline void	clear_map_content(t_element *element)
 {
-    free(element->content);
+	free(element->content);
 }
 
-int count_characters(t_element *element, int count)
+static inline int	count_characters(t_element *element, int count)
 {
-	char *content;
-	int i;
+	char	*content;
+	int		i;
 
 	i = 0;
 	if (element)
@@ -37,10 +36,10 @@ int count_characters(t_element *element, int count)
 	return (count);
 }
 
-void ft_check_character(char *path)
+void				ft_check_character(char *path)
 {
-	t_list map;
-	int result;
+	t_list	map;
+	int		result;
 
 	result = 0;
 	map = ft_get_map(path);
@@ -54,7 +53,8 @@ void ft_check_character(char *path)
 	if (!result)
 	{
 		ft_display_process_status("N character", "error");
-		ft_display_error("No character or several characters were found", __func__);
+		ft_display_error("No character or several characters \
+							were found", __func__);
 		exit(EXIT_FAILURE);
 	}
 }

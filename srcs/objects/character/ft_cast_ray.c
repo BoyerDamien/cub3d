@@ -6,13 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/01 11:46:22 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/12 11:47:14 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 10:46:34 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static inline void display(t_list *list, t_game *game)
+static inline void	display(t_list *list, t_game *game)
 {
 	t_sprite *sprite;
 
@@ -27,12 +27,12 @@ static inline void display(t_list *list, t_game *game)
 	}
 }
 
-static inline void render(t_game *game, double dist, int x)
+static inline void	render(t_game *game, double dist, int x)
 {
-	double height;
-	t_vector onset;
-	t_vector offset;
-	int win_height;
+	double		height;
+	t_vector	onset;
+	t_vector	offset;
+	int			win_height;
 
 	win_height = game->window.height;
 	if (dist >= 0)
@@ -51,23 +51,23 @@ static inline void render(t_game *game, double dist, int x)
 	}
 }
 
-void ft_cast_ray(t_game *game)
+void				ft_cast_ray(t_game *game)
 {
-	t_ray ray;
-	double dist;
+	t_ray	ray;
+	double	dist;
+	int		x;
 
+	x = 0;
 	ray = ft_ray(game);
-	for (int x = 0; x < game->window.width; x++)
+	while (x < game->window.width)
 	{
 		ray.update(&ray, game, x);
 		ray.cast(&ray, game);
-		if (ray.side == 0)
-			dist = (ray.point.x - game->character.coordinate.x + (1 - ray.step.x) / 2) / ray.direction.x;
-		else
-			dist = (ray.point.y - game->character.coordinate.y + (1 - ray.step.y) / 2) / ray.direction.y;
+		dist = ft_perp_dist(game, &ray);
 		game->z_buffer[x] = dist;
 		ft_choose_texture(&ray, game, dist);
 		render(game, dist, x);
+		x++;
 	}
 	if (game->sprites.size > 0)
 		display(&game->sprites, game);

@@ -6,32 +6,36 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 13:49:20 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/11 20:27:25 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 11:28:22 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-void ft_character_show(t_game *game)
+void	ft_character_show(t_game *game)
 {
-	int a;
-	int r;
-	t_vector coordinate;
-	
+	int			a;
+	int			r;
+	t_vector	coordinate;
+	t_vector	cube;
+	t_vector	angle;
+
 	r = game->map.height * 0.03;
-	coordinate = ft_vector(0, 0, 0);
+	cube = ft_vector(game->map.cube_width, game->map.cube_height, 0);
+	angle = ft_vector(0, 0, 0);
 	while (r)
 	{
 		a = 0;
 		while (a < 360)
 		{
-			coordinate.x = game->character.coordinate.x * game->map.cube_width + game->map.coordinate.x + r * sin(a);
-			coordinate.y = game->character.coordinate.y * game->map.cube_height + game->map.coordinate.y + r * cos(a);
+			angle.update(&angle, sin(a), cos(a), 0);
+			angle = angle.mul_scalar(&angle, r);
+			coordinate = cube.mul(&cube, game->character.coordinate);
+			coordinate = coordinate.add(&coordinate, game->map.coordinate);
+			coordinate = coordinate.add(&coordinate, angle);
 			game->window.draw(&game->window, coordinate, game->character.color);
 			a++;
 		}
 		r--;
 	}
 }
-

@@ -6,68 +6,62 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:12:58 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/12 18:11:05 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 15:04:46 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static inline void update_side(t_ray *ray, t_game *game)
+static inline void	update_side(t_ray *ray, t_game *game)
 {
+	t_vector coordinate;
+
+	coordinate = game->character.coordinate;
 	if (ray->direction.x < 0)
 	{
 		ray->step.x = -1;
-		ray->sidedist.x = (game->character.coordinate.x - ray->point.x) * ray->deltadist.x;
+		ray->sidedist.x = (coordinate.x - ray->point.x) * ray->deltadist.x;
 	}
 	else
 	{
 		ray->step.x = 1;
-		ray->sidedist.x = (ray->point.x + 1.0 - game->character.coordinate.x) * ray->deltadist.x;
+		ray->sidedist.x = (ray->point.x + 1.0 - coordinate.x) * \
+		ray->deltadist.x;
 	}
 	if (ray->direction.y < 0)
 	{
 		ray->step.y = -1;
-		ray->sidedist.y = (game->character.coordinate.y - ray->point.y) * ray->deltadist.y;
+		ray->sidedist.y = (coordinate.y - ray->point.y) * ray->deltadist.y;
 	}
 	else
 	{
 		ray->step.y = 1;
-		ray->sidedist.y = (ray->point.y + 1.0 - game->character.coordinate.y) * ray->deltadist.y;
-	}	
+		ray->sidedist.y = (ray->point.y + 1.0 - coordinate.y) * \
+		ray->deltadist.y;
+	}
 }
 
-static inline void update(t_ray *ray, t_game *game, int x)
+static inline void	update(t_ray *ray, t_game *game, int x)
 {
 	t_vector direction;
+	t_vector coordinate;
+	t_vector plane;
 
+	coordinate = game->character.coordinate;
+	plane = game->character.plane;
 	ray->cam_coordinate = 2 * x / (double)game->window.width - 1;
-	direction = game->character.plane.mul_scalar(&game->character.plane, ray->cam_coordinate);
+	direction = plane.mul_scalar(&plane, ray->cam_coordinate);
 	ray->direction = direction.add(&direction, game->character.orientation);
-	ray->point = ft_vector((int)game->character.coordinate.x, (int)game->character.coordinate.y, 0);
-	ray->deltadist = ft_vector(fabs(1 / ray->direction.x), fabs(1 / ray->direction.y), 0);
+	ray->point = ft_vector((int)coordinate.x, (int)coordinate.y, 0);
+	ray->deltadist = ft_vector(fabs(1 / ray->direction.x),\
+								fabs(1 / ray->direction.y), 0);
 	update_side(ray, game);
 }
 
-
-static int fun(t_element *element, void *content)
+static inline void	cast_one_ray(t_ray *ray, t_game *game)
 {
-	return (((t_sprite *)content)->transform.y <= ((t_sprite *)element->content)->transform.y);
-}
-
-static void add_sprite(t_list *list, t_sprite *sprite)
-{
-	t_element *found;
-
-	if (list->size && (found = list->search(list->first, sprite, fun)))
-		list->insert_before(list, found, sprite);
-	else
-		list->append(list, sprite);
-}
-
-static inline void cast_one_ray(t_ray *ray, t_game *game)
-{
-	t_sprite *sprite;
-	double dist;
+	t_sprite	*sprite;
+	double		dist;
 
 	while (!ft_is_wall(game, ray->point.x, ray->point.y))
 	{
@@ -76,7 +70,7 @@ static inline void cast_one_ray(t_ray *ray, t_game *game)
 			dist = ray->point.dist(&ray->point, game->character.coordinate);
 			sprite = ft_sprite(game, ray);
 			game->map.content[(int)ray->point.y][(int)ray->point.x] = 'a';
-			add_sprite(&game->sprites, sprite);
+			ft_add_sprite(&game->sprites, sprite);
 		}
 		if (ray->sidedist.x < ray->sidedist.y)
 		{
@@ -93,7 +87,7 @@ static inline void cast_one_ray(t_ray *ray, t_game *game)
 	}
 }
 
-t_ray ft_ray(t_game *game)
+t_ray				ft_ray(t_game *game)
 {
 	t_ray new;
 

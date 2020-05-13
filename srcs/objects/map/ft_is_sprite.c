@@ -6,12 +6,13 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 16:12:38 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 11:31:49 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-inline int ft_is_sprite(t_game *game, int x, int y){
-    return (game->map.content[y][x] == '2');
+inline int	ft_is_sprite(t_game *game, int x, int y)
+{
+	return (game->map.content[y][x] == '2');
 }

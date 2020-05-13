@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_degree_to_rad.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/05/13 10:32:24 by dboyer            #+#    #+#             */
+/*   Updated: 2020/05/13 10:32:52 by dboyer           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-double ft_degree_to_rad(double angle)
+double	ft_degree_to_rad(double angle)
 {
-    if (angle >= 0 && angle <= 360)
-        return (angle * M_PI / 180);
-    return (0);
+	if (angle >= 0 && angle <= 360)
+		return (angle * M_PI / 180);
+	return (0);
 }

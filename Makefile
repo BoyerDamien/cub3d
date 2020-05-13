@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/05/11 11:22:30 by dboyer           ###   ########.fr        #
+#    Updated: 2020/05/13 16:03:46 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,12 +36,13 @@ SRCS    			=	srcs/parsing/ft_display_message.c\
 						srcs/parsing/ft_get_map.c\
 						srcs/parsing/ft_map_list_to_char.c\
 						srcs/parsing/ft_check_character.c\
+						srcs/parsing/ft_backtrack.c\
+						srcs/parsing/ft_map_is_closed.c\
 						srcs/window/ft_window.c\
 						srcs/window/put_pixel.c\
 						srcs/image/ft_image.c\
-						srcs/maths/ft_atof.c\
 						srcs/maths/ft_degree_to_rad.c\
-						srcs/maths/ft_map_value.c\
+						srcs/maths/ft_perp_dist.c\
 						srcs/objects/color/ft_color.c\
 						srcs/objects/color/ft_add_light.c\
 						srcs/objects/color/ft_add_color.c\
@@ -69,6 +70,7 @@ SRCS    			=	srcs/parsing/ft_display_message.c\
 						srcs/objects/texture/ft_texture.c\
 						srcs/objects/sprites/ft_sprites.c\
 						srcs/objects/ray/ft_ray.c\
+						srcs/objects/ray/ft_add_sprite.c\
 						srcs/objects/bitmap/ft_bitmap.c\
 
 LIBFT_PATH			= 	"./lib/libft/"
@@ -92,7 +94,7 @@ RM      			= 	rm -f
 
 HEADERS 			= 	-I ./includes/ -I ./lib/
 
-CFLAGS  			= 	-Werror -Wall -Wextra -O3 ${HEADERS}
+CFLAGS  			= 	-Werror -Wall -Wextra -O3 -pedantic-errors ${HEADERS}
 
 INCS = ./includes/cub3d.h ./includes/objects.h
 

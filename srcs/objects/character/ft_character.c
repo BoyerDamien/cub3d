@@ -6,17 +6,16 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 13:46:36 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 18:51:29 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 10:49:25 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-static inline t_vector plane_orientation(double orientation)
+static inline t_vector	plane_orientation(double orientation)
 {
-	t_vector result;
-	double coeff;
+	t_vector	result;
+	double		coeff;
 
 	coeff = tan(ft_degree_to_rad(FOV) / 2);
 	result = ft_vector(0, 0, 0);
@@ -31,11 +30,11 @@ static inline t_vector plane_orientation(double orientation)
 	return (result);
 }
 
-
-t_character ft_character(t_vector coordinate, double orientation, t_map map)
+t_character				ft_character(t_vector coordinate,\
+						double orientation, t_map map)
 {
 	t_character new;
-	double rad_orientation;
+	double		rad_orientation;
 
 	rad_orientation = ft_degree_to_rad(orientation);
 	new.coordinate = coordinate;

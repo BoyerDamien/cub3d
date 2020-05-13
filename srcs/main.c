@@ -6,36 +6,17 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:47:29 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/11 17:13:32 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 16:17:51 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int get_map_width(t_element *element, int max_width)
-{
-	int width;
-	char *content;
-	
-	width = 0;
-	if (element){
-		content = (char *)element->content;
-		while (content[width])
-			width++;
-		if ( width > max_width )
-			return (get_map_width(element->next, width));
-		else 
-			return (get_map_width(element->next, max_width));
-	}
-	return (max_width);
-}
-
-
-int ft_handle_events(int keycode, void *param){
+int		ft_handle_events(int keycode, void *param){
 	t_game *game;
 
 	game = (t_game *)param;
-	if (keycode == 65307){
+	if (keycode == ESCAPE){
 		game->finish(game);
 		exit(EXIT_SUCCESS);	
 	}

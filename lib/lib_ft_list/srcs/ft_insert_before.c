@@ -6,18 +6,19 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/12 12:29:19 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/12 17:39:23 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 10:05:42 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 
-static inline void correct_index(t_element *element)
+static inline void	correct_index(t_element *element)
 {
 	element->index++;
 }
 
-void ft_insert_before(t_list *list, t_element *element, void *content)
+void				ft_insert_before(t_list *list, t_element *element,\
+									void *content)
 {
 	t_element *new_elem;
 

@@ -6,36 +6,37 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 13:00:35 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/07 09:06:48 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/13 11:48:04 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-void ft_map_show(t_game *game)
+void	ft_map_show(t_game *game)
 {
-	int i;
-	int j;
-	t_rectangle rect;
-	t_vector coordinate;
+	t_vector	index;
+	t_rectangle	rect;
+	t_vector	coordinate;
+	t_vector	cube;
 
-	i = 0;
-	j = 0;
-	while (game->map.content[j])
+	index = ft_vector(0, 0, 0);
+	coordinate = ft_vector(0, 0, 0);
+	cube = ft_vector(game->map.cube_width, game->map.cube_height, 0);
+	while (game->map.content[(int)index.y])
 	{
-		i = 0;
-		while (game->map.content[j][i])
+		while (game->map.content[(int)index.y][(int)index.x])
 		{
-			if (game->map.content[j][i] == '1')
+			if (game->map.content[(int)index.y][(int)index.x] == '1')
 			{
-				coordinate = ft_vector(game->map.coordinate.x + i * game->map.cube_width, game->map.coordinate.y + j * game->map.cube_height, 0);
-				rect = ft_rectangle(game->map.cube_width, game->map.cube_height, coordinate , game->map.color);
+				coordinate = cube.mul(&cube, index);
+				coordinate = coordinate.add(&coordinate, game->map.coordinate);
+				rect = ft_rectangle(cube.x, cube.y,\
+						coordinate, game->map.color);
 				rect.show(&rect, &game->window);
 			}
-			i++;
+			index.x++;
 		}
-		j++;
+		index.update(&index, 0, index.y + 1, 0);
 	}
 	game->character_show(game);
 }
