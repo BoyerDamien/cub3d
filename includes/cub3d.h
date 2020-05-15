@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/15 11:22:22 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 18:31:45 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int			ft_is_sprite(t_game *game, int x, int y);
 int			ft_backtrack(t_element *element, int n_index,\
 							t_list *map, t_list *memory);
 int			ft_map_is_closed(t_list *map, t_element *element, t_list *memory);
+int			ft_check_line(char *line);
 
 char		*ft_move_until(char *str, char *bool, int (*f)(int c));
 char		*ft_tag_line(char *path, char *charcode);

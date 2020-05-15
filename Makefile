@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/05/15 10:26:49 by dboyer           ###   ########.fr        #
+#    Updated: 2020/05/15 18:32:11 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS    			=	srcs/parsing/ft_display_message.c\
 						srcs/parsing/ft_check_character.c\
 						srcs/parsing/ft_backtrack.c\
 						srcs/parsing/ft_map_is_closed.c\
+						srcs/parsing/ft_check_line.c\
 						srcs/window/ft_window.c\
 						srcs/window/put_pixel.c\
 						srcs/image/ft_image.c\

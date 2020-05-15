@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 18:04:04 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/15 10:52:29 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 18:44:43 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static inline int	is_resolution(int c)
 
 static inline int	test_size(char *line, int n)
 {
-	if (line && *line && n < 2)
+	if (line && *line && n < 2 && ft_check_line(line))
 	{
 		if (!is_resolution(*line))
 			line = ft_move_until(line, "is", is_resolution);

@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 10:51:52 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/15 10:52:18 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 18:33:48 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static inline int	is_correct(int color)
 
 static inline int	test_color_line(char *line, int n)
 {
-	if (line && *line && n < 3)
+	if (line && *line && n < 3 && ft_check_line(line))
 	{
 		if (!is_color(*line))
 			line = ft_move_until(line, "is", is_color);
