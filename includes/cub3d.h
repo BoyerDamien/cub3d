@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/13 16:18:05 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 10:54:39 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ int			ft_is_texture_line(char *line);
 int			ft_search_character(t_map *map, t_character *character);
 int			ft_is_wall(t_game *game, int x, int y);
 int			ft_is_sprite(t_game *game, int x, int y);
-int			ft_backtrack(t_element *element, int n_index, t_list *map, t_list *memory);
+int			ft_backtrack(t_element *element, int n_index,\
+							t_list *map, t_list *memory);
 int			ft_map_is_closed(t_list *map, t_element *element, t_list *memory);
 
 char		*ft_move_until(char *str, char *bool, int (*f)(int c));

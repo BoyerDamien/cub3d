@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:10:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/13 11:30:51 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 10:35:20 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_game			ft_game(char *path)
 	size = window_dimensions.mul_scalar(&window_dimensions, 0.1);
 	new.window = ft_window(window_dimensions.x, window_dimensions.y, GAME_NAME);
 	map = ft_map_list_to_char(path);
-	new.map = ft_minimap(map, size.x, size.y, size);
+	new.map = ft_minimap(map, size.x, size.y, ft_vector(0, 0, 0));
 	ft_search_character(&new.map, &new.character);
 	new.wall_texture_n = ft_create_texture_from_file(path, "NO", &new.window);
 	new.wall_texture_s = ft_create_texture_from_file(path, "SO", &new.window);

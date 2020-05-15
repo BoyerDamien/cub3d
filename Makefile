@@ -6,7 +6,7 @@
 #    By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 09:03:17 by dboyer            #+#    #+#              #
-#    Updated: 2020/05/13 16:03:46 by dboyer           ###   ########.fr        #
+#    Updated: 2020/05/15 10:26:49 by dboyer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,7 @@ RM      			= 	rm -f
 
 HEADERS 			= 	-I ./includes/ -I ./lib/
 
-CFLAGS  			= 	-Werror -Wall -Wextra -O3 -pedantic-errors ${HEADERS}
+CFLAGS  			= 	-Werror -Wall -Wextra -Ofast -pedantic-errors ${HEADERS}
 
 INCS = ./includes/cub3d.h ./includes/objects.h
 

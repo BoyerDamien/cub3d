@@ -6,11 +6,16 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/22 10:51:52 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/13 15:35:42 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 10:52:18 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static inline int	is_color(int c)
+{
+	return (ft_isdigit(c) || c == '-');
+}
 
 static inline int	is_correct(int color)
 {
@@ -21,14 +26,13 @@ static inline int	test_color_line(char *line, int n)
 {
 	if (line && *line && n < 3)
 	{
-		if (!ft_isdigit(*line))
-			line = ft_move_until(line, "is", ft_isdigit);
-		if (!ft_isdigit(*line) || !is_correct(ft_atoi(line)))
+		if (!is_color(*line))
+			line = ft_move_until(line, "is", is_color);
+		if (!is_color(*line) || !(is_correct(ft_atoi(line))))
 			return (0);
-		if (ft_isdigit(*line))
+		else
 		{
-			line = ft_move_until(line, "not", ft_isdigit);
-			line = ft_move_until(line, "is", ft_isdigit);
+			line = ft_move_until(line, "not", is_color);
 			return (test_color_line(line, n + 1));
 		}
 	}

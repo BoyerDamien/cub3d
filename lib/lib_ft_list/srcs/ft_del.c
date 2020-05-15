@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 11:58:08 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/12 16:12:23 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/14 10:26:24 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static inline void	correct_index(t_element *element)
 
 void				ft_del(t_list *list, t_element *element)
 {
-	if (element)
+	if (list->size && element)
 	{
 		if (element->previous && element->next)
 		{

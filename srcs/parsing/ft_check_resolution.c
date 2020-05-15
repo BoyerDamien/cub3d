@@ -6,31 +6,35 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 18:04:04 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/13 15:40:06 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 10:52:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	test_size(char *line, int n)
+static inline int	is_resolution(int c)
+{
+	return (ft_isdigit(c) || c == '-');
+}
+
+static inline int	test_size(char *line, int n)
 {
 	if (line && *line && n < 2)
 	{
-		if (!ft_isdigit(*line))
-			line = ft_move_until(line, "is", ft_isdigit);
-		if (!ft_isdigit(*line) || !(ft_atoi(line) > 0))
+		if (!is_resolution(*line))
+			line = ft_move_until(line, "is", is_resolution);
+		if (!is_resolution(*line) || !(ft_atoi(line) > 0))
 			return (0);
-		if (ft_isdigit(*line))
+		else
 		{
-			line = ft_move_until(line, "not", ft_isdigit);
-			line = ft_move_until(line, "is", ft_isdigit);
+			line = ft_move_until(line, "not", is_resolution);
 			return (test_size(line, n + 1));
 		}
 	}
 	return (!line && n == 2);
 }
 
-int			ft_check_resolution(char *path)
+int					ft_check_resolution(char *path)
 {
 	char *line;
 
