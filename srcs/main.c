@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:47:29 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/15 10:49:47 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 11:25:15 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int			ft_handle_events(int keycode, void *param)
 		game->finish(game);
 		exit(EXIT_SUCCESS);
 	}
-	else if (keycode >= LEFT && keycode <= DOWN)
+	else if (keycode >= LEFT && keycode <= UP)
 		game->character_move(game, keycode);
 	else if (keycode == KEY_A)
 		game->character_rotate(game, 'l');

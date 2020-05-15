@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/29 16:03:00 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/13 10:21:46 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 11:15:58 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static inline t_color	get_color(t_game *game, int x, int y, double ratio)
 	size_line = game->sprite_texture.size_line;
 	img = game->sprite_texture.img_data;
 	index = (int)(y * size_line + x * 4);
-	color = ft_color(img[index], img[index + 1], img[index + 2]);
+	color = ft_color(img[index + 2], img[index + 1], img[index]);
 	return (color.add_light(&color, color, ratio));
 }
 

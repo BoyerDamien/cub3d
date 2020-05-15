@@ -3,10 +3,9 @@ NO ./textures/redbrick.xpm
 SO ./textures/stone.xpm
 WE ./textures/eagle.xpm
 EA ./textures/grass.xpm
-
 S ./textures/pillar.xpm
-F 200 200 0
-C 0 200 0
+F 200 200 200
+C 200 200 200
 
    1111  111111111111111111111111
    100111100000000000000000000001   11111

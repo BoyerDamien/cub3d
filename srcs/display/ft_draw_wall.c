@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/04/21 09:53:23 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/09 16:09:22 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 11:16:00 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static inline t_color	get_color(t_game *game, int x, int y)
 	img = game->actual_text.img_data;
 	size_line = game->actual_text.size_line;
 	index = (int)(y * size_line + x * 4);
-	return (ft_color(img[index], img[index + 1], img[index + 2]));
+	return (ft_color(img[index + 2], img[index + 1], img[index]));
 }
 
 void					ft_draw_wall(t_vector onset, t_vector offset,\

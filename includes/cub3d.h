@@ -6,19 +6,19 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:17:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/15 10:54:39 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/15 11:22:22 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # define GAME_NAME "cub3d"
-# define RIGHT 65363
-# define LEFT 65361
-# define DOWN 65364
-# define UP 65362
-# define KEY_A 97
-# define KEY_Z 122
+# define RIGHT 100
+# define LEFT 97
+# define DOWN 115
+# define UP 119
+# define KEY_A 65361
+# define KEY_Z 65363
 # define ESCAPE 65307
 # define STEP 0.3
 # define ROTATION 3
