@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/07 14:10:42 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/15 18:39:02 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/16 11:28:47 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void		finish(t_game *game)
 	mlx_destroy_window(game->window.mlx_ptr, game->window.win_ptr);
 	game->map.clear(&game->map);
 	free(game->z_buffer);
+	ft_display_message("Game finish...");
 }
 
 static void		init_method(t_game *game)
@@ -43,8 +44,9 @@ t_game			ft_game(char *path)
 
 	init_method(&new);
 	window_dimensions = ft_get_window_dimensions(path);
+	new.window = ft_window(&window_dimensions.x, &window_dimensions.y,\
+							GAME_NAME);
 	size = window_dimensions.mul_scalar(&window_dimensions, 0.1);
-	new.window = ft_window(window_dimensions.x, window_dimensions.y, GAME_NAME);
 	map = ft_map_list_to_char(path);
 	new.map = ft_minimap(map, size.x, size.y, ft_vector(0, 0, 0));
 	ft_search_character(&new.map, &new.character);

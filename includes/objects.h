@@ -6,7 +6,7 @@
 /*   By: dboyer <dboyer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 10:55:54 by dboyer            #+#    #+#             */
-/*   Updated: 2020/05/15 18:36:57 by dboyer           ###   ########.fr       */
+/*   Updated: 2020/05/16 11:22:29 by dboyer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct		s_window
 	void			(*clear)(struct s_window *);
 }					t_window;
 
-t_window			ft_window(int width, int height, char *name);
+t_window			ft_window(double *width, double *height, char *name);
 t_image				ft_image(t_window window, int width, int height);
 void				put_pixel(t_window *window, t_vector point, t_color color);
 void				ft_clear_image(t_window *window);
