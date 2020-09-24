@@ -1,5 +1,5 @@
 INC=/usr/include
-HT=Linux
+HT=x86_64
 DOCP=do_cp
 ##
 ## Makefile for MiniLibX in /home/boulon/work/c/raytraceur/minilibx
@@ -31,7 +31,7 @@ SRC	= mlx_init.c mlx_new_window.c mlx_pixel_put.c mlx_loop.c \
 	mlx_rgb.c mlx_destroy_image.c mlx_mouse.c mlx_screen_size.c
 
 OBJ	=$(SRC:.c=.o)
-CFLAGS	= -O3 -I$(INC)
+CFLAGS	= -O3 -I$(INC) -fcommon
 
 all	: $(NAME) $(DOCP)
 
